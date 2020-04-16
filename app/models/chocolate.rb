@@ -1,0 +1,2 @@
+class Chocolate < ApplicationRecord
+end
