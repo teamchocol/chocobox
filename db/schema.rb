@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_053735) do
+ActiveRecord::Schema.define(version: 2020_04_18_043037) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
 
   create_table "brands", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "content"
-    t.string "image"
+    t.string "status"
+    t.string "brand_image_id"
   end
 
   create_table "chocolates", force: :cascade do |t|
@@ -34,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_053735) do
     t.integer "cost_performance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
+    t.string "chocolate_image_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -41,9 +57,9 @@ ActiveRecord::Schema.define(version: 2020_04_16_053735) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.text "content"
-    t.bigint "user_id"
-    t.string "image"
-    t.bigint "chocolate_id"
+    t.integer "user_id"
+    t.integer "chocolate_id"
+    t.string "image_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -78,8 +94,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_053735) do
     t.string "gender"
     t.string "comment"
     t.string "job"
-    t.boolean "admin"
-    t.string "profile_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -91,10 +105,10 @@ ActiveRecord::Schema.define(version: 2020_04_16_053735) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "profile_image_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index [nil], name: "index_users_on_unlock_token", unique: true
   end
 
 end

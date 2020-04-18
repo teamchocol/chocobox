@@ -1,0 +1,40 @@
+
+<%= render 'admin/admin_header' %>
+<div class="col-md-8 col-md-offset-2">
+
+<h2>ジャンル追加・一覧画面</h2>
+<!-- form_for部分 -->
+<%= form_for(@brand,url: admin_brands_path ) do |f| %>
+    <h4>ブランド名</h4>
+    <%= f.select :name, [['明治'], ['ロッテ'],['江崎グリコ'], ['森永'],['ネスレ'], ['マース'],['モンデリーズ'], ['フェレロ'],['ハーシー'], ['リンツ&シュプリングリー']], { id: "brand_name", class: "brand_class" } %>
+    <%= f.radio_button :status, '有効' %>有効
+    <%= f.radio_button :status, '無効' %>無効
+    <%= f.attachment_field :brand_image  %>
+    
+    <%= f.submit '追加', class: "btn btn-primary" %>
+<% end %>
+
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>ブランド</th>
+			<th>状態</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @brands.each do |brand| %>
+		 <tr>
+			<td><%= brand.name %></td>
+			<td><%= brand.status %></td>
+			<td><%= attachment_image_tag brand, :brand_image, format: 'jpeg', fallback: "no_image.jpg" ,size:'100x70' %></td>
+			
+			<td><%= link_to "編集する", edit_admin_brand_path(brand), class: "btn btn-primary" %></td>
+
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
