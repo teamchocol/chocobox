@@ -22,7 +22,7 @@
 - 認証関連(ログイン, 管理者ユーザー)
 - ユーザー関連（フォロー・フォロワー）
 - アイテム関連（お気に入り登録, ランキング表示）
-
+https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6xT4/edit#gid=0
 ## 使用技術
 - フロント
     - HTML Scss 

@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px">商品一覧</h3>
+			<div class="row">
+				<% @chocolates.each do |chocolate| %>
+				<div class="col-xs-3">
+					<table>
+						<tr>
+							<th>
+								<%= link_to (image_tag(chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;")) %>
+							</th>
+						</tr>
+						<tr>
+							<th><%= chocolate.brand_id %></th>
+						</tr>
+						<tr>
+							<th><%= chocolate.name %></th>
+						</tr>
+						<tr>
+							<th>¥<%= chocolate.price %></th>
+						</tr>
+					</table>
+				</div>
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+</div>
