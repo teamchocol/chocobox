@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+  get 'users/index'
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/show'
 
-  root to: "home#index"
+  root to: "chocolates#search"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :chocolates, only: [:new, :create, :index, :show]

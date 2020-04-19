@@ -29,6 +29,7 @@ class Admin::ChocolatesController < ApplicationController
 
   def update
     @chocolate = Chocolate.find(params[:id])
+    @amazon_url = "https://amazon.co.j/s?k=" + 楽天APIの実行結果の商品タイトル + "&__mk_ja_JP=カタカナ&ref=nb_sb_noss"
     redirect_to admin_chocolate_path(@chocolate)
   end
 

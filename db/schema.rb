@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_043037) do
+ActiveRecord::Schema.define(version: 2020_04_19_052042) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,10 +37,8 @@ ActiveRecord::Schema.define(version: 2020_04_18_043037) do
   create_table "chocolates", force: :cascade do |t|
     t.string "name"
     t.text "url"
-    t.string "image_url"
     t.string "asin"
     t.integer "price"
-    t.string "brand_amazon_name"
     t.text "official_url"
     t.string "brand_id"
     t.integer "taste"
@@ -50,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_04_18_043037) do
     t.datetime "updated_at", null: false
     t.text "content"
     t.string "chocolate_image_id"
+    t.string "rakuten_chocolate_name_url"
+    t.string "medium_image_url"
   end
 
   create_table "comments", force: :cascade do |t|
