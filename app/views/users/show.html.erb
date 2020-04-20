@@ -1,7 +1,7 @@
  <table class="table">
 		<tr>
 		<td>
-		<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+		<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
 		</td>
 	  </tr>
 
@@ -12,22 +12,22 @@
 
 		<tr>
 			<td>introduction</td>
-			<td><%= current_user.introduction %></td>
+			<td><%= current_user.comment %></td>
 		</tr>
 		
   </table>
-			<% if user == current_user %>
+			<% if @user == current_user %>
 				
 				
-				<p><%= link_to "", edit_user_path(user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
+				<p><%= link_to "", edit_user_path(@user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
 					
-				<% elsif current_user.following?(user) %>
+				<% elsif current_user.following?(@user) %>
 
-					<%= link_to "unfollow", unfollow_path(user.id), class: "btn btn-block btn-default", method: :post %> 
+					<%= link_to "unfollow", unfollow_path(@user.id), class: "btn btn-block btn-default", method: :post %> 
 
 				<% else %>	
 
-					<%= link_to "follow", follow_path(user.id), class: "btn btn-block btn-default" ,method: :post %> 
+					<%= link_to "follow", follow_path(@user.id), class: "btn btn-block btn-default" ,method: :post %> 
 				
 			
 			<% end %>
@@ -36,7 +36,7 @@
 		<tbody>
 			<tr>
 			<td>
-					<% user ||= current_user %>
+					<% @user ||= current_user %>
 						<div class="stats">
 						
 								<strong id="following" class="stat">

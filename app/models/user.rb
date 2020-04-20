@@ -5,19 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # ユーザー登録用
-  before_save { email.downcase! }
-  validates :name, presence: true, length: {maximum: 50}
-  validates :nickname, presence: true, length: {maximum: 50}
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
-  validates :email, presence: true, length: {maximum: 255},
-                    format: {with: VALID_EMAIL_REGEX},
-                    uniqueness: {case_sensitive: false}
-  validates :password, length: {minimum: 6}, allow_nil: true
-  validates :comment, length: {maximum: 100}
+  # before_save { email.downcase! }
+  # validates :name, presence: true, length: {maximum: 50}
+  # validates :nickname, presence: true, length: {maximum: 50}
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  # validates :email, presence: true, length: {maximum: 255},
+  #                   format: {with: VALID_EMAIL_REGEX},
+  #                   uniqueness: {case_sensitive: false}
+  # validates :password, length: {minimum: 6}, allow_nil: true
+  # validates :comment, length: {maximum: 100}
   
 
   # ページネーションの表示件数追加
-  paginates_per 9
+  # paginates_per 9
 
   # 口コミ投稿との関連付け
   has_many :comments, dependent: :destroy

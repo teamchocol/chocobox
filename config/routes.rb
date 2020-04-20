@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/index'
+
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -21,6 +20,13 @@ Rails.application.routes.draw do
     get '/sign_out' => 'devise/sessions#destroy', as: 'destroy_user_session'
   end
   
+  resources :users, only: [:edit,:show,:create,:update,:destroy,:index]
+  devise_scope :user do
+  get 'users/:id/password' => 'users/registrations#edit', as: 'passwordchange'
+  get 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw' 
+  end
+
+
   namespace  :admin do
     resources :users
     resources :chocolates
