@@ -23,8 +23,10 @@
 - ユーザー関連（フォロー・フォロワー）
 - アイテム関連（お気に入り登録, ランキング表示）
 
+
 chocobox機能一覧
 https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6xT4/edit#gid=0
+
 
 ## 使用技術
 - フロント
