@@ -1,2 +1,57 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="col-xs-9">
+	<h2>Users</h2>
+	<!--users一覧 -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th>image</th>
+				<th>name</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", width: '100px') %></td>
+				<td><%= user.name %></td>
+				
+				<td>	<% user ||= current_user %>
+				<div class="stats">
+				
+						<strong id="following" class="stat">
+						following
+            <%= user.following.count %>人
+						</strong>
+						
+					
+				</td>
+				<td>	
+					
+						<strong id="followers" class="stat">
+						followers
+            <%= user.followers.count %>人
+						</strong>
+						
+					
+				</div>
+				</td>	
+				<td>
+			  <% unless current_user.id == user.id %>
+					<div id="follow_form">
+					<% if current_user.following?(user) %>
+					
+					 <%= link_to "unfollow", unfollow_path(user.id), class: "btn btn-block btn-default", method: :post %> 
+				
+					<% else %>	
+					
+					 <%= link_to "follow", follow_path(user.id), class: "btn btn-block btn-default" ,method: :post %> 
+					<% end %>	
+					</div>
+				<% end %>
+				</td>
+			  <td><%= link_to "詳細ページ", user, class: "user_#{user.id}" %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
