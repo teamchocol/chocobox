@@ -11,5 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require_tree ../../../app/assets/stylesheets/.
  *= require_self
  */
+
+ .theTarget { 
+   
+    
+  }
+
+

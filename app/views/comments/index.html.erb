@@ -1,0 +1,38 @@
+<table class="col-xs-12">	
+	 <tbody>
+	 <% chocolate.comments.current_user.each do |comment| %>
+		
+		<tr class="comment">
+		  <td>
+				<div class="comment-body bb">
+						<div class="comment-avatar">
+						<div class="avatar">
+						<%= attachment_image_tag(chocolate.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
+						</div>
+				</div>
+			</td>
+			<td>
+				<div class="comment-text">
+					<div class="comment-author">
+						<a href="#" class="link-author">
+						<%= comment.user.name %></a>
+					</div>
+	    </td>		
+			<td>					
+				<span class="comment-meta">
+					<span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+				</span>
+				</div>
+			</td>
+			<td>	
+				<div class="comment-entry"><%= comment.comment %></div>
+			</td>
+			<% unless current_user != comment.user %>
+			<td><%= link_to comments_path(comment.id), method: :delete, remote: true  do %> <button class="btn btn-danger">destroy</button><% end %></td>
+      <% end %>
+		</tr>
+		<% end %>
+	 </div>
+	 </tbody>
+</table>
+	

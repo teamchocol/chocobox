@@ -6,7 +6,7 @@ class Brand < ApplicationRecord
   paginates_per 9
 
   # 検証
-  validates :name, presence: true, length: {maximum: 50}
+  # validates :name, presence: true, length: {maximum: 50}
  
 
   

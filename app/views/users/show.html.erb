@@ -1,25 +1,35 @@
  <table class="table">
 		<tr>
 		<td>
-		<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+		<%= attachment_image_tag @user, :profile_image,  size:'200x200', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'200x200' %>
 		</td>
 	  </tr>
 
 		<tr>
-			<td>name</td>
-			<td><%= current_user.name %></td>
+			<td>ニックネーム</td>
+			<td><%= current_user.nickname %></td>
+		</tr>
+	
+		<tr>
+			<td>性別</td>
+			<td><%= current_user.gender %></td>
 		</tr>
 
 		<tr>
-			<td>introduction</td>
+			<td>年齢</td>
+			<td><%= current_user.age %></td>
+		</tr>
+    
+		<tr>
+			<td>自己紹介</td>
 			<td><%= current_user.comment %></td>
 		</tr>
 		
   </table>
-			<% if @user == current_user %>
+			 <% if @user == current_user && @user.email != "test@example.com" %>
 				
 				
-				<p><%= link_to "", edit_user_path(@user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
+				<p><%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
 					
 				<% elsif current_user.following?(@user) %>
 
@@ -40,8 +50,9 @@
 						<div class="stats">
 						
 								<strong id="following" class="stat">
-								following
-									<%= link_to current_user.following.count, follows_users_path(current_user.id) %>
+								フォロー数
+									<%= link_to current_user.following.count, following_user_path(current_user.id) %>
+									人
 								</strong>
 								
 			</td>
@@ -52,8 +63,9 @@
 			<tr>
 			<td>
 					<strong id="followers" class="stat">
-					followers
-					<%= link_to user.followers.count, followers_users_path(current_user.id) %>
+					フォロワー数
+					<%= link_to current_user.followers.count, followers_user_path(current_user.id) %>
+					人
 					</strong>
 					
 			</td>

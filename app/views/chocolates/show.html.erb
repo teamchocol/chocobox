@@ -1,7 +1,6 @@
-<%= render 'admin/admin_header' %>
-  <div class="col-md-8 col-md-offset-2">
+   <div class="col-md-8 col-md-offset-2">
     <h2>商品 詳細画面</h2>
-        <%= link_to (image_tag(@chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;")) %>
+        <%= image_tag(@chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;") %>
          <h3>メーカー名</h3>
         
         <h3><%= @chocolate.brand_id %></h3>
@@ -9,6 +8,4 @@
         <h3><%= @chocolate.rakuten_chocolate_name_url %></h3>
         
         <h3>価格<%= @chocolate.price %>円</h3>
-        
-       
-  </div>
+   </div>

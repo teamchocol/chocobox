@@ -1,0 +1,21 @@
+- breadcrumb :contact
+<%  お問い合わせ %>
+/ お問い合わせ入力フォーム
+<%= form_for @contact do |f| %>
+  / エラーメッセージ
+<%= render 'layouts/error_messages', model: f.object %>
+  / お名前
+  <%= f.label :name, 'お名前'%>
+  <%= f.text_field :name %>
+  / メールアドレス
+  <%= f.label :email, 'メールアドレス'%>
+  <%= f.text_field :email %>
+  / タイトル
+  <%= f.label :title, 'タイトル ' %>
+  <%= f.text_field :title %>
+  / お問い合わせ
+  <%= f.label :content, 'お問い合わせ内容 '%>
+  <%= f.text_area :content %>
+  / 確認ボタン
+  <%= f.submit '送信する'%>
+/ /お問い合わせ入力フォーム
