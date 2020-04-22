@@ -1,0 +1,14 @@
+<% if chocolate.favorited_by?(current_user) %>
+					
+  <%= link_to chocolate_favorites_path(chocolate), class: "glyphicon glyphicon-heart" ,method: :delete, remote: true do %>
+    <%= chocolate.favorites.count %> 
+  <% end %>
+
+<% else %>
+  
+    <%= link_to chocolate_favorites_path(chocolate),class: "glyphicon glyphicon-heart-empty", method: :post, remote: true do %>
+    
+      <%= chocolate.favorites.count %> 
+    <% end %>
+  
+<% end %>

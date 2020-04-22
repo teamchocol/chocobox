@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_052042) do
+ActiveRecord::Schema.define(version: 2020_04_22_161813) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_052042) do
     t.string "chocolate_image_id"
     t.string "rakuten_chocolate_name_url"
     t.string "medium_image_url"
+    t.integer "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -90,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_052042) do
     t.string "name"
     t.string "password_digest"
     t.string "nickname"
-    t.integer "age"
     t.string "gender"
     t.string "comment"
     t.string "job"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_052042) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "profile_image_id"
+    t.string "age"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -1,0 +1,16 @@
+ <%= form_for [chocolate, comment],remote: true do |f| %>
+    <% if comment.errors.any? %>
+			<h3><%= comment.errors.count %>error occurrence</h3>
+			<ul>
+				<% comment.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+		  </ul>
+		<% end %>
+	 <% end %>
+	<div class="row">
+			<div class="col-sm-12">
+					<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+			</div>
+	</div>
+	<%= f.submit "送信する", class: "btn btn-primary btn-base-1 mt-20 pull-right" %>
+	<% end %>
