@@ -7,6 +7,46 @@ class Comment < ApplicationRecord
 
   attachment :image, destroy: false
 
+  def self.total_taste(id: id)
+    chocolate = Chocolate.find_by(id: id) 
+      # レコードが見つからない場合は規定値を返す
+      unless chocolate
+        return 0 
+      end
+    comments = chocolate.comment
+    sum = 0
+    comments.each do |a|
+      sum += (a.taste.round(1))/comments.count.to_i
+    end
+    return sum
+  end
+  def self.total_healthy(id: id)
+    chocolate = Chocolate.find_by(id: id) 
+      # レコードが見つからない場合は規定値を返す
+      unless chocolate
+        return 0 
+      end
+    comments = chocolate.comment
+    sum = 0
+    comments.each do |a|
+      sum += (a.healthy.round(1))/comments.count.to_i
+    end
+    return sum
+  end
+  def self.total_cost_performance(id: id)
+    chocolate = Chocolate.find_by(id: id) 
+      # レコードが見つからない場合は規定値を返す
+      unless chocolate
+        return 0 
+      end
+    comments = chocolate.comment
+    sum = 0
+    comments.each do |a|
+      sum += (a.taste.round(1))/comments.count.to_i
+    end
+    return sum
+  end
+
   # ページネーションの表示件数追加
   # paginates_per 10
 

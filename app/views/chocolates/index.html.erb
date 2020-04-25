@@ -8,18 +8,35 @@
 					<table>
 						<tr>
 							<th>
-								<%= link_to (image_tag(chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;")) %>
+								<%= image_tag(chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;") %>
 							</th>
 						</tr>
 						<tr>
 							<th><%= chocolate.brand_id %></th>
 						</tr>
 						<tr>
-							<th><%= chocolate.name %></th>
+							<th><%= chocolate.rakuten_chocolate_name_url %></th>
 						</tr>
 						<tr>
 							<th>¥<%= chocolate.price %></th>
 						</tr>
+						<tr>
+							<th>
+							<% if chocolate.favorited_by?(current_user) %>
+		
+							<%= link_to chocolate_favorites_path(chocolate), class: "glyphicon glyphicon-heart" ,method: :delete do %>
+								
+							<% end %>
+							
+							<% else %>
+							<%= link_to chocolate_favorites_path(chocolate),class: " glyphicon glyphicon-heart-empty", method: :post do %>
+							<%= chocolate.favorites.count %> 
+							<% end %>
+						
+							<% end %>
+							</th>
+						</tr>
+
 					</table>
 				</div>
 				<% end %>
