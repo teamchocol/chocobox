@@ -1,4 +1,4 @@
- <%= form_for [chocolate, comment],remote: true do |f| %>
+<%= form_for [chocolate, comment],remote: true do |f| %>
     <% if comment.errors.any? %>
 			<h3><%= comment.errors.count %>error occurrence</h3>
 			<ul>
@@ -7,10 +7,63 @@
 		  </ul>
 		<% end %>
 	 <% end %>
-	<div class="row">
+   <div class="row">
 			<div class="col-sm-12">
-					<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+			    <%= f.label :タイトル %>
+					<%= f.text_field :title, rows:'5', class: "form-control",placeholder: "タイトルをここに" %>
 			</div>
-	</div>
-	<%= f.submit "送信する", class: "btn btn-primary btn-base-1 mt-20 pull-right" %>
-	<% end %>
+			<!-- おいしさ評価 -->
+			<div class="form-group row" id="taste">
+				<%= f.label :taste,'おいしさ ', class:'col-md-3 col-form-label' %>
+				<%= f.hidden_field :taste, id: :review_star %>
+			</div>
+			<!-- 健康評価 -->
+			<div class="form-group row" id="healthy">
+				<%= f.label :healthy,'健康的', class:'col-md-3 col-form-label' %>
+				<%= f.hidden_field :healthy, id: :review_star %>
+			</div>	  
+			<!-- コスパ評価 -->
+			<div class="form-group row" id="cost_performance">
+				<%= f.label :cost_performance,'コスパ', class:'col-md-3 col-form-label' %>
+				<%= f.hidden_field :cost_performance, id: :review_star %>
+			</div>
+      <div class="col-sm-12">
+					<%= f.text_area :content, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+			</div>
+			<div class="col-sm-12">
+				  <%= f.label :画像を投稿 %>
+					<%= f.attachment_field :image, class: "comment_image" %>
+			</div>
+	 </div>
+	  <%= f.submit "投稿する", class: "btn btn-primary btn-base-1 mt-20 pull-right" %>
+<% end %>
+	
+      <script>
+		// <!-- おいしさ評価javascript -->	
+			$('#taste').raty({
+				size     : 36,
+				starOff:  '<%= asset_path('star-off.jpg') %>',
+				starOn : '<%= asset_path('star-on.jpg') %>',
+				starHalf: '<%= asset_path('star-half.jpg') %>',
+				scoreName: 'comment[taste]',
+				half: true,
+			});
+				// <!-- 健康評価javascript -->
+			$('#healthy').raty({
+				size     : 36,
+				starOff:  '<%= asset_path('star-off.jpg') %>',
+				starOn : '<%= asset_path('star-on.jpg') %>',
+				starHalf: '<%= asset_path('star-half.jpg') %>',
+				scoreName: 'comment[healthy]',
+				half: true,
+			});
+			// <!-- コスパ評価javascript -->
+			$('#cost_performance').raty({
+				size     : 36,
+				starOff:  '<%= asset_path('star-off.jpg') %>',
+				starOn : '<%= asset_path('star-on.jpg') %>',
+				starHalf: '<%= asset_path('star-half.jpg') %>',
+				scoreName: 'comment[cost_performance]',
+				half: true,
+			});
+			</script>  

@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require Chart.min
 //= require bootstrap-sprockets
 //= require_tree ../../../app/assets/javascripts/.
 //= require_tree .
@@ -64,4 +65,15 @@ $(function(){
       // 中央のpadding
       centerPadding: '160px'
     })
+  });
+
+  $(function() {
+ 
+    $('#back a').on('click',function(){
+      $('body, html').animate({
+        scrollTop:0
+      }, 800);
+        return false;
+    });
+   
   });

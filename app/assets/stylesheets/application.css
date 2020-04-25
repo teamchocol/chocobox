@@ -15,9 +15,13 @@
  *= require_self
  */
 
- .theTarget { 
-   
-    
-  }
-
+ #back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+ 
+#back img {
+  width: 50px;
+} 
 

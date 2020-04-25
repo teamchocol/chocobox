@@ -1,11 +1,32 @@
    <div class="col-md-8 col-md-offset-2">
     <h2>商品 詳細画面</h2>
-        <%= image_tag(@chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;") %>
-         <h3>メーカー名</h3>
+        <table class="table">
+			<tbody>
+		    <tr>
+				<td>
+                <%= image_tag(@chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;") %>
+                </td>
+                <td>
+                <h3>メーカー名</h3>
+                </td>
+                <td>
+                <h3><%= @chocolate.brand_id %></h3>
+                </td>
+                <td>
+                <h3><%= @chocolate.rakuten_chocolate_name_url %></h3>
+                </td>
+                <td>
+                <h3>価格<%= @chocolate.price %>円</h3>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id='comment_area'>
+                <%= render 'comments/index', chocolates: @chocolates, chocolate: @chocolate %>
+        </div>
+                    
+        <div  id="comment_form">
+                <%= render 'comments/newform', chocolates: @chocolates,  chocolate: @chocolate, comment: @comment %>
+        </div>
         
-        <h3><%= @chocolate.brand_id %></h3>
-        
-        <h3><%= @chocolate.rakuten_chocolate_name_url %></h3>
-        
-        <h3>価格<%= @chocolate.price %>円</h3>
    </div>

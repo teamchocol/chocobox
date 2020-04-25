@@ -73,5 +73,11 @@ gem 'jquery-rails'
 
 gem 'pry-byebug'
 
+gem 'chart-js-rails', '~> 0.1.4'
 	
 gem 'rakuten_web_service'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails'
