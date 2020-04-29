@@ -22,16 +22,13 @@ class ChocolatesController < ApplicationController
 
   def search
     if params[:keyword]
+      
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
-      maker=%w(明治 meiji 森永 morinaga ロッテ Lotte 江崎グリコ グリコ ネスレ nestle マース mars モンデリーズ ナビスコ フェレロ FERRERO ハーシー HERSHEY'S リンツ&シュプリングリー)
-     
+      @items = []
       items.each do |item|
-       if item.name.include?("チョコレート" ) and maker.any?{|m| item.name.include?(m)} 
-         @items = []
+        if item.name.include?("チョコレート")
          @items.push(item)        
-         @chocolate = Hash[]
-       end
-
+         end
       end
     end
   end
