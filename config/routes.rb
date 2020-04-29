@@ -20,30 +20,32 @@ Rails.application.routes.draw do
     post 'users/sign_in' => 'users/sessions#create', as: 'user_session'
     delete '/sign_out' => 'devise/sessions#destroy', as: 'destroy_user_session'
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
-  end
- 
+ end
+    
   resources :users, only: [:edit,:show,:create,:update,:destroy,:index] do
     member do
-      get :following, :followers
+      get :following, :followers 
     end
     collection do
       get 'search'  
+      put "/users/:id/hide" => "users#hide", as: 'users_hide'
     end 
   end
-  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す 
+      get 'users/:id/follows' => 'users#follows', as:'follows_users'
+      get 'users/:id/followers' => 'users#followers', as:'followers_users'
+      post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+      post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す 
   
   resources :brands
   resources :chocolates do 
    collection do
     get 'search' 
    end
-    resource :favorites, only: [:create, :destroy]  
-    resource :comments, only: [:create, :destroy]
   end
-  resources :comments, only: [:index]
-  
-  get 'favorites/destroy'
+
+  resources :favorites, only: [:create, :destroy] 
+   
+  resources :comments, only: [:create, :destroy, :index]
   
   resources :relationships, only: [:create, :destroy]
 

@@ -18,6 +18,7 @@
   <body>
     <!--ヘッダーの記述-->
     <header class="navbar navbar-fixed-top navbar-inverse">
+    <div id="sp-menu">
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
@@ -35,7 +36,11 @@
             <li><%= link_to 'あなたの好きなチョコレートを登録する', search_chocolates_path, class: 'glyphicon glyphicon-chocolate search' %></li>
             <li><%#= link_to 'マイページ', user_path(current_user), class: 'glyphicon glyphicon-chocolate ' %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
-            
+            <li>
+            <%# if user_signed_in? && @user.id == current_user.id %>
+                    <%#= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+            <% #end %>
+            </li>
           <% else %>
             <li><%= link_to ' ホーム', "/", class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to 'このサイトについて ', "/home/about", class: 'glyphicon glyphicon-link about' %></li>
@@ -47,6 +52,16 @@
           </ul>
         </nav>
 
+      </div>
+    </div>
+    <div class="yubi">
+      <div id="hm-icon">
+      <a class="menu-trigger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+      </div>
       </div>
     </header>
     <!--ヘッダーの記述-->

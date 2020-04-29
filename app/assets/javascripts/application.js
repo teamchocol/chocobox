@@ -67,13 +67,46 @@ $(function(){
     })
   });
 
+  $(function(){
+    var back = $('#back');
+    // ボタン非表示
+    back.hide();
+    // 100px スクロールしたらボタン表示
+    $(window).scroll(function () {
+       if ($(this).scrollTop() > 100) {
+            back.fadeIn();
+       } else {
+            back.fadeOut();
+       }
+    });
+    back.click(function () {
+       $('body, html').animate({ scrollTop: 0 }, 500);
+       return false;
+    });
+  });
+
   $(function() {
  
-    $('#back a').on('click',function(){
-      $('body, html').animate({
-        scrollTop:0
-      }, 800);
-        return false;
+    //マウスを乗せたら発動
+    $('#back').hover(function() {
+   
+     
+      $(this).css('opacity', '0.5');
+      
+    }, function() {
+ 
+   
+      $(this).css('opacity', '1.0');
+   
+    });
+  });
+
+  $(function() {
+ 
+    $('.menu-trigger').on('click', function() {
+      $(this).toggleClass('active');
+      $('#sp-menu').fadeToggle();
+      return false;
     });
    
-  });
+   });

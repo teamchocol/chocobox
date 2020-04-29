@@ -51,7 +51,7 @@
 						
 								<strong id="following" class="stat">
 								フォロー数
-									<%= link_to current_user.following.count, following_user_path(current_user.id) %>
+									<%= link_to current_user.following.count, follows_users_path(current_user.id) %>
 									人
 								</strong>
 								

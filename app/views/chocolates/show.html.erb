@@ -1,32 +1,41 @@
-   <div class="col-md-8 col-md-offset-2">
+<html>
+<body>
+
+   <body class="col-md-8 col-md-offset-2">
     <h2>商品 詳細画面</h2>
         <table class="table">
 			<tbody>
 		    <tr>
+            <% pp @chocolate %>
 				<td>
-                <%= image_tag(@chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;") %>
+                <%= image_tag(@chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"], style: "width: 230px;height: 200px;display: inline-block;") %>
                 </td>
                 <td>
                 <h3>メーカー名</h3>
                 </td>
                 <td>
-                <h3><%= @chocolate.brand_id %></h3>
+                <h3><%= @chocolate["Items"][0]["Item"]["itemName"] %></h3>
                 </td>
                 <td>
-                <h3><%= @chocolate.rakuten_chocolate_name_url %></h3>
+                <h3>価格<%= @chocolate["Items"][0]["Item"]["itemPrice"]%>円</h3>
                 </td>
                 <td>
-                <h3>価格<%= @chocolate.price %>円</h3>
-                </td>
+                <%= render 'favorites/index', chocolates: @chocolates, chocolate: @chocolate %>
+                <td>
             </tr>
             </tbody>
-        </table>
+        </table>  
         <div id='comment_area'>
-                <%= render 'comments/index', chocolates: @chocolates, chocolate: @chocolate %>
+                <%= render 'comments/index', chocolates: @chocolates, chocolate: @choco %>
         </div>
                     
         <div  id="comment_form">
-                <%= render 'comments/newform', chocolates: @chocolates,  chocolate: @chocolate, comment: @comment %>
+                <%= render 'comments/newform', chocolates: @chocolates,  chocolate: @choco, comment: @comment, taste: @taste %>
         </div>
-        
-   </div>
+        <div class="yubi">
+        <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
+        </div>
+  </div>
+</body>
+</html>        
+

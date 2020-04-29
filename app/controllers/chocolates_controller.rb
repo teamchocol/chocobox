@@ -1,19 +1,20 @@
 class ChocolatesController < ApplicationController
-  def new
-   
-  end
-  
   def index
-    @chocolates = Chocolate.all
+    @chocolate = []
+    @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
+    
   end
-
+ 
   def show
-    @chocolate = Chocolate.find(params[:id])
+    @comments = Comment.where(item_code: params[:id])
+    @chocolate = Rakuten.get_item(params[:id])
+    @choco = Chocolate.new
+    @choco.set_item_code(params[:id])
     @comment = Comment.new
   end
 
   def create
-    @chocolate = Chocolate.new(chocolate_params)
+    @chocolate = Comment.new(chocolate_params)
     @chocolate.user = current_user
     @chocolate.save!
     redirect_to chocolate_path(@chocolate)
@@ -22,20 +23,25 @@ class ChocolatesController < ApplicationController
   def search
     if params[:keyword]
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
-      @items = []
+      maker=%w(明治 meiji 森永 morinaga ロッテ Lotte 江崎グリコ グリコ ネスレ nestle マース mars モンデリーズ ナビスコ フェレロ FERRERO ハーシー HERSHEY'S リンツ&シュプリングリー)
+     
       items.each do |item|
-       if item.name.include?("チョコレート")
-         @items.push(item)
+       if item.name.include?("チョコレート" ) and maker.any?{|m| item.name.include?(m)} 
+         @items = []
+         @items.push(item)        
+         @chocolate = Hash[]
        end
+
       end
     end
   end
-    
+  
  private
   def chocolate_params
-    params.permit(:rakuten_chocolate_name_url, :medium_image_url, :price, :brand_id)
+    params.permit(:name, :medium_image_url, :price, :item_code)
   end
   def comment_params
-    params.permit(:content, :title, :image_id )
+    params.permit(:content, :title, :image_id, :item_code )
   end
+  helper_method :total_taste
 end
