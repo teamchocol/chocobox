@@ -1,22 +1,18 @@
 class CommentsController < ApplicationController
+  
   def create
-    @chocolates = Chocolate.all
-    @new = Chocolate.new
-    @chocolate = Chocolate.find(params[:chocolate_id])
     @comment = current_user.comments.new(comment_params)
-    puts comment_params
-    @comment.chocolate_id = @chocolate.id
     
     if @comment.save 
       flash[:success] = "You have commented  successfully."
-      redirect_to chocolate_path(@chocolate)
+      redirect_to chocolate_path(@comment.item_code)
     else 
       render template:'chocolates/show'
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:chocolate_id])
+    @comment = Comment.find(params[:item_code])
     if comment.user != current_user
       redirect_to request.referer
     end
@@ -27,11 +23,12 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
-    @chocolate = Chocolate.find(params[:id])
+    @users = User.all
+    @chocolate = Rakuten.get_item(params[:item_code])
   end
-
+ 
   private
   def comment_params
-      params.require(:comment).permit(:title, :content, :image, :taste, :healthy, :cost_performance,)
+      params.require(:comment).permit(:title, :content, :image, :taste, :healthy, :cost_performance, :item_code)
   end
 end

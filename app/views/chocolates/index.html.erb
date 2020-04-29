@@ -3,37 +3,30 @@
 		<div class="col-xs-9">
 			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px">商品一覧</h3>
 			<div class="row">
+			
 				<% @chocolates.each do |chocolate| %>
 				<div class="col-xs-3">
+			
 					<table>
 						<tr>
 							<th>
-								<%= image_tag(chocolate.medium_image_url, style: "width: 230px;height: 200px;display: inline-block;") %>
+								<%= image_tag(chocolate.medium_image_urls[0], style: "width: 230px;height: 200px;display: inline-block;") %>
 							</th>
 						</tr>
 						<tr>
-							<th><%= chocolate.brand_id %></th>
-						</tr>
-						<tr>
-							<th><%= chocolate.rakuten_chocolate_name_url %></th>
+							<th><%= chocolate.name %></th>
 						</tr>
 						<tr>
 							<th>¥<%= chocolate.price %></th>
 						</tr>
 						<tr>
 							<th>
-							<% if chocolate.favorited_by?(current_user) %>
-		
-							<%= link_to chocolate_favorites_path(chocolate), class: "glyphicon glyphicon-heart" ,method: :delete do %>
-								
-							<% end %>
-							
-							<% else %>
-							<%= link_to chocolate_favorites_path(chocolate),class: " glyphicon glyphicon-heart-empty", method: :post do %>
-							<%= chocolate.favorites.count %> 
-							<% end %>
-						
-							<% end %>
+					
+							<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate.params["itemCode"]), class: '' %></th>
+						</tr>
+						<tr>
+							<th>
+								<%= render 'favorites/index', chocolates: @chocolates, chocolate: chocolate %>
 							</th>
 						</tr>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_070658) do
+ActiveRecord::Schema.define(version: 2020_04_28_083829) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_070658) do
     t.string "rakuten_chocolate_name_url"
     t.string "medium_image_url"
     t.integer "user_id"
+    t.string "code"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -59,12 +60,12 @@ ActiveRecord::Schema.define(version: 2020_04_24_070658) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
-    t.integer "chocolate_id"
     t.string "image_id"
     t.float "rate"
     t.float "taste"
     t.float "healthy"
     t.float "cost_performance"
+    t.string "item_code"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -80,8 +81,8 @@ ActiveRecord::Schema.define(version: 2020_04_24_070658) do
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "chocolate_id"
+    t.integer "user_id"
+    t.string "item_code"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_070658) do
     t.string "age"
     t.string "uid"
     t.string "provider"
+    t.string "item_code"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

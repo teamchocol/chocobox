@@ -1,9 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
-  
+devise :database_authenticatable, :registerable,
+      :recoverable, :rememberable, :validatable, :omniauthable
+
+# ゲストログイン機能
 def self.guest
   find_or_create_by!(email: 'guest@example.com') do |user|
     user.password = SecureRandom.urlsafe_base64
@@ -11,7 +10,6 @@ def self.guest
     # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
   end
 end
-
 def self.find_for_oauth(auth)
   user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -25,6 +23,7 @@ def self.find_for_oauth(auth)
   end
   user
 end
+
   # ユーザー登録用
   # before_save { email.downcase! }
   # validates :name, presence: true, length: {maximum: 50}
@@ -40,33 +39,45 @@ end
   # ページネーションの表示件数追加
   # paginates_per 9
 
+  # フォローフォロワー関係
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
+  
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
+
+  has_many :following, through: :follower, source: :followed
+  
+  has_many :followers, through: :followed, source: :follower
+  
   # 口コミ投稿との関連付け
   has_many :comments, dependent: :destroy
 
   # お問い合わせとの関連付け
   has_many :contacts, dependent: :destroy
 
-  # お気に入り機能追加用中間テーブル追加
+  # お気に入り機能関連付け
   has_many :favorites, dependent: :destroy
-  has_many :chocolates, dependent: :destroy
 
+  # 画像投稿
   attachment :profile_image, destroy: false
-
+  
+  # お気に入り登録判定
+  def favorited_by?(item_code)
+    favorites.find_by(item_code: item_code)
+  end
    # ユーザーをフォローする関数
    def follow(user_id)
     follower.create(followed_id: user_id)
   end
-
   # ユーザーをフォロー解除する関数
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
-
   # フォローしているかを調べる関数
   def following?(user)
     following.include?(user)
   end
 
+  # 検索機能
   def self.search(search,word)
 		if search == "forward_match"
 						@user = User.where("name LIKE?","#{word}%")
@@ -81,18 +92,7 @@ end
 		end
   end
  
-  # has_many :active_relationships, class_name:  "Relationship",
-  # foreign_key: "follower_id",
-  # dependent:   :destroy
-
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
-  
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
-
-  has_many :following, through: :follower, source: :followed
-  
-  has_many :followers, through: :followed, source: :follower
-  
+#  Facebookでのログイン
  def self.without_sns_data(auth)
   user = User.where(email: auth.info.email).first
 
@@ -139,4 +139,8 @@ end
   end
   return { user: user ,sns: sns}
   end
+end
+# 退会済みユーザーを弾く
+def active_for_authentication?
+  super && (self.is_deleted == false)
 end

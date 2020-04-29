@@ -1,50 +1,15 @@
 class Comment < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   # ユーザーとの関連付け
   belongs_to :user
-
-  # チョコとの関連付け
-  belongs_to :chocolate
-
   attachment :image, destroy: false
 
-  def self.total_taste(id: id)
-    chocolate = Chocolate.find_by(id: id) 
-      # レコードが見つからない場合は規定値を返す
-      unless chocolate
-        return 0 
-      end
-    comments = chocolate.comment
-    sum = 0
-    comments.each do |a|
-      sum += (a.taste.round(1))/comments.count.to_i
-    end
-    return sum
+  def set_item_code(item_code)
+    @item_code = item_code
   end
-  def self.total_healthy(id: id)
-    chocolate = Chocolate.find_by(id: id) 
-      # レコードが見つからない場合は規定値を返す
-      unless chocolate
-        return 0 
-      end
-    comments = chocolate.comment
-    sum = 0
-    comments.each do |a|
-      sum += (a.healthy.round(1))/comments.count.to_i
-    end
-    return sum
-  end
-  def self.total_cost_performance(id: id)
-    chocolate = Chocolate.find_by(id: id) 
-      # レコードが見つからない場合は規定値を返す
-      unless chocolate
-        return 0 
-      end
-    comments = chocolate.comment
-    sum = 0
-    comments.each do |a|
-      sum += (a.taste.round(1))/comments.count.to_i
-    end
-    return sum
+  
+  def get_item_code()
+    return @item_code
   end
 
   # ページネーションの表示件数追加

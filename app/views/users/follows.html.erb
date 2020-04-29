@@ -14,24 +14,24 @@
 		<tbody>
 			<% @follows.following.each do |user| %>
 			<tr>
-				<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
-				<td><%= user.name%></td>
+				<td><%= attachment_image_tag(user, :profile_image,  size:'200x200', fallback: "no_image.jpg", size:'200x200') %></td>
+				<td><%= user.nickname%></td>
 				
 				<td>	<% @user ||= current_user %>
 				<div class="stats">
 					<a href="<%= following_user_path(@user) %>">
 						<strong id="following" class="stat">
+						  フォロー数
 							<%= user.following.count %>
 						</strong>
-						following
 					</a>
 				</td>
 				<td>	
 					<a href="<%= followers_user_path(user) %>">
 						<strong id="followers" class="stat">
+						  フォロワー数
 							<%= user.followers.count %>
 						</strong>
-						followers
 					</a>
 				</div>
 				</td>	
@@ -41,17 +41,17 @@
 					<div id="follow_form">
 					<% if current_user.following?(user) %>
 					
-					 <%= link_to "unfollow", unfollow_path(user.id), class: "btn btn-block btn-default", method: :post %> 
+					 <%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-block btn-default", method: :post %> 
 				
 					<% else %>	
 					
-					 <%= link_to "follow", follow_path(user.id), class: "btn btn-block btn-default" ,method: :post %> 
+					 <%= link_to "フォローする", follow_path(user.id), class: "btn btn-block btn-default" ,method: :post %> 
 					<% end %>	
 					</div>
 				<% end %>
 				</td>
 				</td>
-			  <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+				<td><%= link_to "プロフィール", user, class: "user_#{user.id}" %></td>
 			</tr>
 			<% end %>
 		</tbody>

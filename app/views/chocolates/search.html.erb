@@ -9,6 +9,7 @@
   <div id='chocolate_list'>
     <% if @items.present? %>
       <% @items.each do |good| %>
+      <% pp good %>
         <div class="list">
         <% if good.medium_image_urls[0] %>
           <%= link_to (image_tag(good.medium_image_urls[0], style: "width: 120px;height: 100px;display: inline-block;")) %>
@@ -20,16 +21,9 @@
 
           <% good.tag_ids[0] %>
 
-         <%= form_tag('/chocolates', method: :post) do  %>
-            <%= hidden_field_tag :medium_image_url, good.medium_image_urls[0] %> 
-            <%= hidden_field_tag :rakuten_chocolate_name_url, good.name %>
-            <%= hidden_field_tag :price, good.price %>
-            <%= hidden_field_tag :id, good.tag_ids[0] %>
-            
-            <h4>メーカー名</h4>
-            <%= select_tag 'brand_id', options_for_select([['メーカー名を必ず選択して下さい'],['明治'], ['ロッテ'],['江崎グリコ'], ['森永'],['ネスレ'], ['マース'],['モンデリーズ'], ['フェレロ'],['ハーシー'], ['リンツ&シュプリングリー'],['その他']],:selected=>"メーカー名を必ず選択して下さい"), class: "brand_class" %>
-            <%= submit_tag "商品を登録する", class: "btn btn-primary" %>
-          <% end %>
+          <% pp good %>
+          <%= link_to "商品に口コミを投稿する",chocolate_path(good.params["itemCode"]), class: "btn btn-primary" %>
+         
         </div>
       <% end %>
     <% end %>
