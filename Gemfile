@@ -84,3 +84,10 @@ gem 'dotenv-rails'
 
 gem "ruby-debug-ide"
 gem "debase"
+
+gem "active_model_serializers"
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
