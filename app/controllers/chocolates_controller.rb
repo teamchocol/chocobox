@@ -1,16 +1,11 @@
 class ChocolatesController < ApplicationController
-  def index
-    
+  def index   
     @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
-    
-    
-
-    
+  
   end
  
   def show
     @comments = Comment.where(item_code: params[:id])
-  
     @chocolate = Rakuten.get_item(params[:id])
     @choco = Chocolate.new
     @choco.set_item_code(params[:id])
@@ -44,5 +39,4 @@ class ChocolatesController < ApplicationController
   def comment_params
     params.permit(:content, :title, :image_id, :item_code )
   end
-  helper_method :total_taste
 end
