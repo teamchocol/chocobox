@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'home/about', 'home#about'
-  root  'home#top'
+  root  'home#top' 
+  get 'home/sorry', 'home#sorry'
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -38,12 +39,13 @@ Rails.application.routes.draw do
   
   resources :brands
   resources :chocolates do 
-   collection do
+    collection do
     get 'search' 
-   end
+    end 
+   resource :favorites, only: [:create, :destroy]
   end
-
-  resources :favorites, only: [:create, :destroy] 
+  
+ 
    
   resources :comments, only: [:create, :destroy, :index]
   
@@ -54,4 +56,6 @@ Rails.application.routes.draw do
     resources :chocolates
     resources :brands
   end
+
+ 
 end

@@ -4,13 +4,13 @@ class Comment < ApplicationRecord
   belongs_to :user
   attachment :image, destroy: false
 
-  def set_item_code(item_code)
-    @item_code = item_code
-  end
   
-  def get_item_code()
-    return @item_code
-  end
+  # def set_item_code(item_code)
+  #   @item_code = item_code
+  # end 
+  # def get_item_code()
+  #   return @item_code
+  # end
 
   # ページネーションの表示件数追加
   # paginates_per 10

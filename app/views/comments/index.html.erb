@@ -27,9 +27,16 @@
 			<% unless current_user != comment.user %>
 			<td><%= link_to comments_path(comment.id), method: :delete, remote: true  do %> <button class="btn btn-danger">destroy</button><% end %></td>
       <% end %>
-			<% pp comment %> 
+			<%# pp comment %> 
 			<td>	
-			<div class="item-image"><%= comment.item_code.mideum_image_urls[0] %></div>
+			<div class="item-image">
+			<%# pp comment %>
+			  <%= image_tag(@image[comment.item_code].present? ? @image[comment.item_code] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
+			 </div>
+			</td>
+			<td>	
+			<div class="item-name">			
+			 <%#= comment["Items"][0]["Item"]["itemName"] %><%=  %></div>
 			</td>
 		</tr>
 		<% end %>

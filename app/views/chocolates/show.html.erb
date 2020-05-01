@@ -1,14 +1,11 @@
 <html>
-<body>
-
-   <body class="col-md-8 col-md-offset-2">
+<body class="col-md-8 col-md-offset-2">
     <h2>商品 詳細画面</h2>
         <table class="table">
 			<tbody>
 		    <tr>
-            <% pp @chocolate %>
 				<td>
-                <%= image_tag(@chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"], style: "width: 230px;height: 200px;display: inline-block;") %>
+                <%= image_tag(@chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? @chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
                 </td>
                 <td>
                 <h3>メーカー名</h3>
