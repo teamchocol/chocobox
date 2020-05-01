@@ -1,16 +1,10 @@
 class ChocolatesController < ApplicationController
-  def index
-    
-    @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
-    
-    
-
-    
+  def index 
+      @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
   end
  
   def show
     @comments = Comment.where(item_code: params[:id])
-  
     @chocolate = Rakuten.get_item(params[:id])
     @choco = Chocolate.new
     @choco.set_item_code(params[:id])
@@ -25,8 +19,7 @@ class ChocolatesController < ApplicationController
   end
 
   def search
-    if params[:keyword]
-      
+    if params[:keyword]  
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
       @items = []
       items.each do |item|
@@ -34,6 +27,22 @@ class ChocolatesController < ApplicationController
          @items.push(item)        
          end
       end
+    end
+  end
+
+  def ranking
+    @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
+    @range = params[:range]
+     if @range == '1' 
+      redirect_to chocolates_path
+     elsif 
+      @range == '2'
+      @last_chocolates = @chocolates.page(@range.to_i) 
+     elsif 
+      @range == '3'
+      @last_chocolates = @chocolates.page(@range.to_i) 
+    else
+      @last_chocolates = @chocolates.page(4) 
     end
   end
   
@@ -44,5 +53,4 @@ class ChocolatesController < ApplicationController
   def comment_params
     params.permit(:content, :title, :image_id, :item_code )
   end
-  helper_method :total_taste
 end
