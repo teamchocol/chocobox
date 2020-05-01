@@ -40,7 +40,10 @@ Rails.application.routes.draw do
   resources :brands
   resources :chocolates do 
     collection do
-    get 'search' 
+    get 'search'
+    get 'ranking' 
+    get 'ranking1' 
+    get 'ranking2' 
     end 
    resource :favorites, only: [:create, :destroy]
   end

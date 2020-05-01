@@ -1,7 +1,6 @@
 class ChocolatesController < ApplicationController
-  def index   
-    @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
-  
+  def index 
+      @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
   end
  
   def show
@@ -20,8 +19,7 @@ class ChocolatesController < ApplicationController
   end
 
   def search
-    if params[:keyword]
-      
+    if params[:keyword]  
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
       @items = []
       items.each do |item|
@@ -29,6 +27,22 @@ class ChocolatesController < ApplicationController
          @items.push(item)        
          end
       end
+    end
+  end
+
+  def ranking
+    @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
+    @range = params[:range]
+     if @range == '1' 
+      redirect_to chocolates_path
+     elsif 
+      @range == '2'
+      @last_chocolates = @chocolates.page(@range.to_i) 
+     elsif 
+      @range == '3'
+      @last_chocolates = @chocolates.page(@range.to_i) 
+    else
+      @last_chocolates = @chocolates.page(4) 
     end
   end
   
