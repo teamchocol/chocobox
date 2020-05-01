@@ -1,12 +1,16 @@
 class ChocolatesController < ApplicationController
   def index
-    @chocolate = []
+    
     @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking
+    
+    
+
     
   end
  
   def show
     @comments = Comment.where(item_code: params[:id])
+  
     @chocolate = Rakuten.get_item(params[:id])
     @choco = Chocolate.new
     @choco.set_item_code(params[:id])

@@ -20,16 +20,13 @@
 						</tr>
 						<tr>
 							<th>
-					    <% if chocolate.params["itemCode"].present? %>
-							<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate.params["itemCode"]), class: '' %>
-							<% else %>
-							<%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: '' %>
-							<% end %>
-							</th>
+					
+							<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate.params["itemCode"]), class: '' %></th>
+							<% pp ["itemCode"]%>
 						</tr>
 						<tr>
-							<th id="<%= @id_name %>">
-								<%= render 'favorites/index', chocolate: chocolate %>
+							<th>
+							 <%= Favorite.where(item_code: chocolate["itemCode"]).count %> 
 							</th>
 						</tr>
 

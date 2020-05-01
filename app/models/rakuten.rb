@@ -16,7 +16,9 @@ class Rakuten
     http.use_ssl = true
     req = Net::HTTP::Get.new(uri)
     res = http.request(req)
+    
     res_data = JSON.parse(res.body)
+    
   end
   def favorites
     Favorite.where(item_code: item_code)

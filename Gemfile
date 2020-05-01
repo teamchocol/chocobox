@@ -81,3 +81,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'dotenv-rails'
+
+gem "ruby-debug-ide"
+gem "debase"
