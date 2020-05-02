@@ -4,13 +4,20 @@ class Comment < ApplicationRecord
   belongs_to :user
   attachment :image, destroy: false
 
-  
-  # def set_item_code(item_code)
-  #   @item_code = item_code
-  # end 
-  # def get_item_code()
-  #   return @item_code
-  # end
+  def self.search(search,word)
+		if search == "forward_match"
+						@comment = Comment.where("(title || content)  LIKE?","#{word}%")
+		elsif search == "backward_match"
+						@comment = Comment.where("(title || content) LIKE?","%#{word}")
+		elsif search == "perfect_match"
+						@comment = Comment.where("#{word}")
+		elsif search == "partial_match"
+						@comment = Comment.where("(title || content) LIKE?","%#{word}%")
+		else
+						@comment = Comment.all
+		end
+  end
+
 
   # ページネーションの表示件数追加
   # paginates_per 10
@@ -35,14 +42,10 @@ class Comment < ApplicationRecord
   # validates :content, length: {maximum: 300}
   # validates :user_id, uniqueness: {scope: [:chocolate_id]}
 
-  
-  
-  
   # 画像サイズ
   # validate :image_size
 
   private
-
   # アップロードされた画像のサイズをバリデーションする
   # def picture_size
   #   errors.add(:image, 'ファイルサイズを5MBより小さくしてください') if image.size > 5.megabytes

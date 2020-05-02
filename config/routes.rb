@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     resources :chocolates
     resources :brands
   end
-
- 
+  get 'search' => 'searches#search'
+  get 'search/users' => 'searches#user_search'
+  get 'search/comments' => 'searches#comment_search'
 end

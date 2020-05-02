@@ -17,8 +17,13 @@
                 <h3>価格<%= @chocolate["Items"][0]["Item"]["itemPrice"]%>円</h3>
                 </td>
                 <td>
-                <%= render 'favorites/index', chocolates: @chocolates, chocolate: @chocolate %>
+                <div id="<%= "like-link-#{@chocolate["Items"][0]["Item"]["itemCode"].delete(":")}" %>">
+				<%= render 'favorites/show', chocolate: @chocolate %>	
                 <td>
+                <td>
+                 いいねの数
+                <%= Favorite.where(item_code: @chocolate["Items"][0]["Item"]["itemCode"]).count %>個
+                </td>
             </tr>
             </tbody>
         </table>  
@@ -29,6 +34,8 @@
         <div  id="comment_form">
                 <%= render 'comments/newform', chocolates: @chocolates,  chocolate: @choco, comment: @comment, taste: @taste %>
         </div>
+        
+        
         <div class="yubi">
         <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
         </div>

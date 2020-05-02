@@ -1,0 +1,15 @@
+<% if current_user.favorited_by?(@chocolate["Items"][0]["Item"]["itemCode"]) %>		 
+  
+  <%= link_to  chocolate_favorites_path(chocolate_id: chocolate["Items"][0]["Item"]["itemCode"]), class: "glyphicon glyphicon-heart" ,method: :delete, remote: true do %>
+  
+    <%#= Favorite.where(chocolate_id: chocolate["itemCode"]).count %> 
+  <% end %>
+
+<% else %>
+  
+  <%= link_to chocolate_favorites_path(chocolate_id: chocolate["Items"][0]["Item"]["itemCode"]), class: "glyphicon glyphicon-heart-empty", method: :post, remote: true do %>
+    
+      <%#= Favorite.where(item_code: chocolate["itemCode"]).count %> 
+  <% end %>
+  
+<% end %>
