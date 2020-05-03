@@ -25,9 +25,9 @@
         </div>
       <% end %>
     <% end %>
+    <%= paginate @items, class: "paginate" %>
     <div class="yubi">
       <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
     </div>
   </div>
 </div>
-<%= paginate @items, class: "paginate" %>
