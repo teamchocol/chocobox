@@ -34,7 +34,7 @@
 			<td>	
 			<div class="item-image">
 		
-			  <%= image_tag(@image[comment.item_code].present? ? @image[comment.item_code] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
+			  <%= image_tag(@image[comment.item_code].present? ? @image[comment.item_code] : "/assets/no_image.jpg", style: "width: 80px;height: 80px;display: inline-block;") %>
 			 </div>
 			</td>
 			<td>	
@@ -45,9 +45,9 @@
 		</tr>
 		<% end %>
 	 </div>
+	 </tbody>
+</table>
+ <%= paginate @comments, class: "paginate" %>	
 	 <div class="yubi">
 			<div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
 	 </div>
-	 </tbody>
-</table>
-<%= paginate @comments, class: "paginate" %>	
