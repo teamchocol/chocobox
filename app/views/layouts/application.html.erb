@@ -29,19 +29,16 @@
             <li><%= link_to 'ホーム画面', root_path, class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to '「ユーザー」一覧', users_path, class: 'glyphicon glyphicon-user users' %></li>
             <li><%= link_to '「楽天人気チョコレート」 １〜３０位', chocolates_path, class: 'glyphicon glyphicon-chocolate chocolates' %></li>
-            <li><%= link_to '「メーカー」一覧', brands_path, class: 'glyphicon glyphicon-chocolate brands' %></li>
+            <li><%#= link_to '「メーカー」一覧', brands_path, class: 'glyphicon glyphicon-chocolate brands' %></li>
             <li><%= link_to '「口コミ」一覧', comments_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
             <li><%= link_to '「いいねランキング」一覧', favorite_ranking_chocolates_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
             
           <% if user_signed_in? %>
             <li><%= link_to 'あなたの好きなチョコレートを登録する', search_chocolates_path, class: 'glyphicon glyphicon-chocolate search' %></li>
-            <li><%#= link_to 'マイページ', user_path(current_user), class: 'glyphicon glyphicon-chocolate ' %></li>
+            <li><%= link_to 'マイページ', user_path(current_user), class: 'glyphicon glyphicon-chocolate ' %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
             <li>
-            <%# if user_signed_in? && @user.id == current_user.id %>
-                    <%#= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-            <% #end %>
-            </li>
+           
           <% else %>
             <li><%= link_to ' ホーム', "/", class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to 'このサイトについて ', "/home/about", class: 'glyphicon glyphicon-link about' %></li>
