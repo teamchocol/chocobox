@@ -17,9 +17,9 @@ class Admin::ChocolatesController < ApplicationController
     @chocolate = Chocolate.new(chocolate_params)
     if @chocolate.save
     redirect_to admin_chocolate_path(@chocolate)
-  else
+    else
     render :index
-  end
+    end
   end
 
 
