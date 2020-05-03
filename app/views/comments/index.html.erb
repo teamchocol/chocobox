@@ -1,5 +1,8 @@
 <table class="col-xs-12">	
 	 <tbody>
+	    <div>
+			<%= render 'comments/search' %>	
+			</div>
 	 <% @comments.each do |comment| %>
 		
 		<tr class="comment">
@@ -27,16 +30,17 @@
 			<% unless current_user != comment.user %>
 			<td><%= link_to comments_path(comment.id), method: :delete, remote: true  do %> <button class="btn btn-danger">destroy</button><% end %></td>
       <% end %>
-			<%# pp comment %> 
+		 
 			<td>	
 			<div class="item-image">
-			<%# pp comment %>
+		
 			  <%= image_tag(@image[comment.item_code].present? ? @image[comment.item_code] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
 			 </div>
 			</td>
 			<td>	
 			<div class="item-name">			
-			 <%#= comment["Items"][0]["Item"]["itemName"] %><%=  %></div>
+		  <%= @name[comment.item_code].present? ? @name[comment.item_code] : "商品名がありません"  %>
+			</div>
 			</td>
 		</tr>
 		<% end %>

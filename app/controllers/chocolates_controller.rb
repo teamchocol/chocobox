@@ -6,6 +6,9 @@ class ChocolatesController < ApplicationController
   def show
     @comments = Comment.where(item_code: params[:id])
     @chocolate = Rakuten.get_item(params[:id])
+    if @chocolate["Items"] == []
+     return redirect_to home_sorry_path
+    end
     @choco = Chocolate.new
     @choco.set_item_code(params[:id])
     @comment = Comment.new
@@ -43,6 +46,18 @@ class ChocolatesController < ApplicationController
       @last_chocolates = @chocolates.page(@range.to_i) 
     else
       @last_chocolates = @chocolates.page(4) 
+    end
+  end
+
+  def favorite_ranking
+    
+    @items = []
+    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
+    ranking_list.each do |a|
+    item = Rakuten.get_item(a.item_code)
+      if item["Items"].present? 
+        @items.push(item)        
+      end 
     end
   end
   

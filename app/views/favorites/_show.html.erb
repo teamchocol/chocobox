@@ -1,4 +1,4 @@
-<% if current_user.favorited_by?(@chocolate["Items"][0]["Item"]["itemCode"]) %>		 
+<% if current_user.favorited_by?(chocolate["Items"][0]["Item"]["itemCode"]) %>		 
   
   <%= link_to  chocolate_favorites_path(chocolate_id: chocolate["Items"][0]["Item"]["itemCode"]), class: "glyphicon glyphicon-heart" ,method: :delete, remote: true do %>
   

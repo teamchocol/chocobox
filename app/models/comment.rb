@@ -5,17 +5,19 @@ class Comment < ApplicationRecord
   attachment :image, destroy: false
 
   def self.search(search,word)
+   
 		if search == "forward_match"
-						@comment = Comment.where("(title || content)  LIKE?","#{word}%")
+						@comment = Comment.where("(title)  LIKE?","#{word}%")
 		elsif search == "backward_match"
-						@comment = Comment.where("(title || content) LIKE?","%#{word}")
+						@comment = Comment.where("(title) LIKE?","%#{word}")
 		elsif search == "perfect_match"
 						@comment = Comment.where("#{word}")
 		elsif search == "partial_match"
-						@comment = Comment.where("(title || content) LIKE?","%#{word}%")
+						@comment = Comment.where("(title) LIKE?","%#{word}%")
 		else
 						@comment = Comment.all
-		end
+    end
+    
   end
 
 
