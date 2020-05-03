@@ -24,18 +24,25 @@ class CommentsController < ApplicationController
   def index
     @users = User.all
     @comments = Comment.all 
+    @name = {}
     @image = {}
     @comments.each do |comment|
       item_code = comment.item_code
       if item_code.present? 
         chocolate = Rakuten.get_item(item_code)
-        next if chocolate["Items"].empty?
+        puts chocolate
+        next if chocolate["Items"].blank?
         imageUrl = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] 
+        itemName = chocolate["Items"][0]["Item"]["itemName"]
         if imageUrl.present?
           @image[item_code] = imageUrl
         end
+        if itemName.present?
+          @name[item_code] = itemName
+        end
       end 
-    end   
+    end 
+   
   end
  
   private

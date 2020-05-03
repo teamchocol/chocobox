@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def index
-  	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
+		@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
+	
 	end
 
   def edit

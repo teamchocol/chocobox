@@ -42,8 +42,7 @@ Rails.application.routes.draw do
     collection do
     get 'search'
     get 'ranking' 
-    get 'ranking1' 
-    get 'ranking2' 
+    get 'favorite_ranking'
     end 
    resource :favorites, only: [:create, :destroy]
   end
@@ -59,6 +58,7 @@ Rails.application.routes.draw do
     resources :chocolates
     resources :brands
   end
-
- 
+  get 'search' => 'searches#search'
+  get 'search/user' => 'searches#user_search'
+  get 'search/comment' => 'searches#comment_search'
 end

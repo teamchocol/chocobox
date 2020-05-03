@@ -16,21 +16,23 @@
 							<th><%= chocolate.name %></th>
 						</tr>
 						<tr>
+
 							<th>¥<%= chocolate.price %></th>
 						</tr>
 						<tr>
 							<th>
-					    <% if chocolate.params["itemCode"].present? %>
-							<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate.params["itemCode"]), class: '' %>
+					    <% if chocolate["itemCode"].present? %>
+					
+							<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate["itemCode"]), class: '' %>
+						
 							<% else %>
 							<%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: '' %>
 							<% end %>
 							</th>
 						</tr>
 						<tr>
-							<th id="<%= @id_name %>">
-								<%= render 'favorites/index', chocolate: chocolate %>
-								
+							<th id="<%= "like-link-#{chocolate["itemCode"].delete(":")}" %>">
+								<%= render 'favorites/index', chocolate: chocolate %>								
 							</th>
 						</tr>
 						<tr>

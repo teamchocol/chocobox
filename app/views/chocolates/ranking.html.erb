@@ -27,8 +27,8 @@
               <% end %>
 						</tr>
             <tr>
-							<th id="<%= @id_name %>">
-								<%= render 'favorites/index', chocolate: chocolate %>
+						  	<th id="<%= "like-link-#{chocolate.params["itemCode"].delete(":")}" %>">
+								<%= render 'favorites/index', chocolate: chocolate %>								
 							</th>
 						</tr>
 						<tr>
