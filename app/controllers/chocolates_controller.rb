@@ -24,12 +24,13 @@ class ChocolatesController < ApplicationController
   def search
     if params[:keyword]  
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
-      @items = []
+      @items_full = []
       items.each do |item|
         if item.name.include?("チョコレート")
-         @items.push(item)        
-         end
+         @items_full.push(item)        
+        end
       end
+      @items = Kaminari.paginate_array(@items_full).page(params[:page])
     end
   end
 

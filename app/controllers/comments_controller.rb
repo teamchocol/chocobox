@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   def index
     @users = User.all
-    @comments = Comment.all 
+    @comments = Comment.page(params[:page]).reverse_order 
     @name = {}
     @image = {}
     @comments.each do |comment|
