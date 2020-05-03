@@ -88,7 +88,7 @@ $(function(){
   $(function() {
  
     //マウスを乗せたら発動
-    $('#back').hover(function() {
+    $('#back').hover('turbolinks:load',function() {
    
      
       $(this).css('opacity', '0.5');
