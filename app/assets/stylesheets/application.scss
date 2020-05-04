@@ -16,6 +16,30 @@
 @import "bootstrap-sprockets";  
 @import "bootstrap";   
 
+@font-face {
+  font-family: "名前";
+  src: url('font.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "チョコ";
+  src: url('themify.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "soft";
+  src: url('soft.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "frat";
+  src: url('Fraticon.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -29,23 +53,73 @@ header {
   }
 
 
+
 .single-blog {
   transition: all 300ms linear 0s;
   position: relative; }
   .single-blog .thumb {
+    
+    width: 90%;
+    margin: 10px;
     overflow: hidden; }
     .single-blog .thumb img {
+      filter: opacity(55%);
       width: 100%;
-      transition: all 300ms linear 0s; }
+      object-fit: cover;
+      }
   .single-blog .short_details {
+    font-family: "soft";
     background: transparent;
-    transition: all 300ms linear 0s;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+      }
+  .single-blog .short_details_kutikomi {
+    top: 60%;
+    left: 40%;
+      }
+  .single-blog .short_details_ranking {
+    top: 55%;
+    left: 50%;  
+      }
+  .single-blog .short_details_meigen {
+    top: 60%;
+    left: 45%;
+      }
+    
+  .single-blog .short_details .d-block {
+    font-family: "soft";
+    // background: transparent;
+    // transition: all 300ms linear 0s;
+    position: absolute;
+    // bottom: 0;
+    right: 40px;
+    width: 80%;
+    padding-bottom: 40px;
+     }
+  .single-blog .short_details .a-block {
+    font-family: "soft";
+    // background: #fff;
+    // transition: all 300ms linear 0s;
     position: absolute;
     bottom: 0;
-    right: 0;
-    width: 70%;
+    // right: 0;
+    // width: 70%;
     padding: 20px;
-    transition: all 300ms linear 0s; }
+   }
+   .title {
+    font-weight: 100;
+    font-size: 15px;
+    
+    }
+  .title1 {
+    font-size: 25px;
+    }
+    
+ 
     
 
 
@@ -81,7 +155,10 @@ header {
 
 
 body {
-  margin: 40px 30px;
+ padding-right: 30px;
+ padding-left: 30px;
+ padding-top: 0px;
+ padding-bottom: 30px;
 }
 
 /* TOPに戻る矢印 */
