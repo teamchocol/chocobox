@@ -6,22 +6,20 @@
 
 ## 機能
 
-- インフラ(Heroku)
+- インフラ(AWS)
 - 単体・統合テスト(RSpec, factory_bot, capybara)　
-- データベース(sqlite3)
-- 画像アップロード(Amason S3, carrierwave, mini_magick, fog)
+- データベース(MySQL)
+- 画像アップロード(mini_magick)
 - ページネーション(kaminari)
 - お問い合わせメール送信(ActionMailer)
-- アイテム情報取得(Amazon Product API, amazon-ecs)
+- アイテム情報取得(Rakuten API, rakuten-web-service)
 - 検索(ransack)
-- アクセス解析(google-analytics-rails)
-- サイトマップ(sitemap_generator)
-- メタタグ(meta-tags)
-- パンくずリスト(gretel)
 - デザイン(Bootstrap)
 - 認証関連(ログイン, 管理者ユーザー)
 - ユーザー関連（フォロー・フォロワー）
-- アイテム関連（お気に入り登録, ランキング表示）
+- アイテム関連（いいね登録（非同期）, いいねランキング表示, 楽天人気ランキング表示）
+- コメント・評価関連（星評価, レーダーチャート評価）
+
 
 
 chocobox機能一覧
@@ -35,11 +33,10 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
         - jQuery
         - Ajax
 - バックエンド
-    - Ruby　
+    - Ruby
     - Rails 
 - インフラ
-    - Docker
-         
+    - Docker   
     - AWS
     
 ## アプリ制作の背景（テーマ選定理由）

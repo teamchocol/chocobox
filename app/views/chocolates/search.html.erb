@@ -13,19 +13,18 @@
         <div class="list">
         <% if good.medium_image_urls[0] %>
           <%= link_to (image_tag(good.medium_image_urls[0], style: "width: 120px;height: 100px;display: inline-block;")) %>
+        <% else %>
+          <%= link_to (image_tag(no_image.jpg, style: "width: 120px;height: 100px;display: inline-block;")) %>
         <%end%></br>
-
-          <%= good.name %>
-
-          ¥<%= good.price %>
-
-          <% good.tag_ids[0] %>
+          
+          <%= good.name.present? ? good.name : "商品名がありません"  %>
+         ¥ <%= good.price.present? ? good.price : "-"  %>
 
           <%= link_to "商品に口コミを投稿する",chocolate_path(good.params["itemCode"]), class: "btn btn-primary" %>
         </div>
       <% end %>
     <% end %>
-    <%= paginate @items, class: "paginate" %>
+    <%#= paginate @items, class: "paginate" %>
     <div class="yubi">
       <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
     </div>
