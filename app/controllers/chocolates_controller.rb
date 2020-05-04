@@ -30,7 +30,9 @@ class ChocolatesController < ApplicationController
          @items_full.push(item)        
         end
       end
-      @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(15)
+      if @items_full.present?
+       @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(20)
+      end
     end
   end
 
