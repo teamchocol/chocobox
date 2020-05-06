@@ -9,7 +9,7 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ /*
  *= require_tree .
  *= require_self
  */
@@ -51,8 +51,6 @@ header {
   padding-top: 10px;
   padding-bottom: 40px;
   }
-
-
 
 .single-blog {
   transition: all 300ms linear 0s;
@@ -118,28 +116,10 @@ header {
   .title1 {
     font-size: 25px;
     }
-    
- 
-    
-
-
-
-.jumbotron {
-  padding-top: 100px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eeeeee;
-}
-
-.jumbotron-extend {
-  position: relative;
-  height: 100vh;
-  min-height: 300px;
-}
 
 
 .menu-trigger {
+  font-family: "soft";
   position: fixed;
   float: right;
   padding: 9px 10px;
@@ -152,13 +132,11 @@ header {
   border-radius: 4px;
 }
 
-
-
-body {
- padding-right: 30px;
- padding-left: 30px;
- padding-top: 0px;
- padding-bottom: 30px;
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding-bottom:0 ;
+  margin-top: 20px ;
 }
 
 /* TOPに戻る矢印 */
@@ -182,6 +160,12 @@ body {
   position: relative;
   right: 20px;
   top: 20px;
+  z-index: 10;
+}
+#chocobox-logo {
+  position: relative;
+  left: 60px;
+  top: 15px;
   z-index: 10;
 }
 
@@ -270,15 +254,20 @@ body {
 /* ------------------------ */
 
 #sp-menu {
+  font-family: "soft";
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   background: #000;
   color: #fff;
   width: 100%;
   min-height: 100%;
   display: none;
-  z-index: 9;
+  z-index: 9; 
+  overflow-y: auto;
+   -webkit-overflow-scrolling: touch;
 
   li {
     text-align: center;
@@ -290,4 +279,40 @@ body {
     text-decoration: none;
     font-weight: bold;
   }
+}
+
+.rakuten_ranking{
+  font-family: "soft";
+  width: 400px;
+  height: 440px;
+  background-color:rgba(243, 235, 240, 0.932);
+  margin: 5px;
+  padding: 15px;
+  text-align: center;
+}
+
+.favo-ranking{
+  font-family: "soft";
+  width: 320px;
+  height: 400px;
+  background-color:rgba(243, 235, 240, 0.932);
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 20px;
+  text-align: center;
+}
+
+.favo_image {
+  
+  text-align: center;
+}
+.choco_price{
+  font-size: 1.3em;
+}
+
+.chocobox-logo{
+  text-align: center;
+  margin-left: 60px;
 }

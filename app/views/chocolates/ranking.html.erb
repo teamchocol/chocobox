@@ -1,54 +1,40 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-9">
-			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px">商品一覧</h3>
-			<div class="row">
-			
-				<% @last_chocolates.each do |chocolate| %>
-			
-					<table>
-						<tr>
-							<th>
-								<%= image_tag(chocolate.medium_image_urls[0], style: "width: 230px;height: 200px;display: inline-block;") %>
-							</th>
-						</tr>
-						<tr>
-							<th><%= chocolate.name %></th>
-						</tr>
-						<tr>
-							<th>¥<%= chocolate.price %></th>
-						</tr>
-						<tr>
-							<th>				
-              <% if chocolate.params["itemCode"].present? %>
-                <%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate.params["itemCode"]), class: '' %>
-                <% else %>
-                <%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: '' %>
-              <% end %>
-						</tr>
-            <tr>
-						  	<th id="<%= "like-link-#{chocolate.params["itemCode"].delete(":")}" %>">
-								<%= render 'favorites/index', chocolate: chocolate %>								
-							</th>
-						</tr>
-						<tr>
-							<th>
-              いいねの数
-							 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>個
-							</th>
-						</tr>
-
-					</table>
-				
-				<% end %>
-        <%= form_tag(ranking_chocolates_path,method:"get") do %>
-					<%= select_tag 'range', options_for_select([["売れ筋ランキング 1~30位","1"], ["売れ筋ランキング 31~60位","2"], ["売れ筋ランキング 61~90位","3"], ["売れ筋ランキング 91~120位","4"]],:selected=>"1") %>
-					<%= submit_tag "検索" %>
-				<% end %>	
+	<h3>商品一覧</h3>
+	<div class="row">	
+	<% @last_chocolates.each do |chocolate| %>
+		<div class="rakuten_ranking  col-xs-3 col-md-3">
+			<div>
+				<%= image_tag(chocolate.medium_image_urls[0], style: "width: 230px;height: 200px;display: inline-block;") %>
 			</div>
-			<div class="yubi">
-        <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
-      </div>
-		</div>
+			<div><%= chocolate.name %></div>
+			<div class="choco_price">¥<%= chocolate.price %></div>
+			<div>
+				<% if chocolate["itemCode"].present? %>
+				<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate["itemCode"]), class: "btn btn-default" %>
+				<% else %>
+				<%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: "btn btn-default" %>
+				<% end %>
+			</div>
+			
+			<div id="<%= "like-link-#{chocolate["itemCode"].delete(":")}" %>">
+					<%= render 'favorites/index', chocolate: chocolate %>
+			</div>
+			<div>
+				いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>個
+			</div>
+		</div>	
+		<% end %>
+	</div>
+
+	<div>
+		<%= form_tag(ranking_chocolates_path,method:"get") do %>
+		<%= select_tag 'range', options_for_select([["売れ筋ランキング 1~30位","1"], ["売れ筋ランキング 31~60位","2"], ["売れ筋ランキング 61~90位","3"], ["売れ筋ランキング 91~120位","4"]],:selected=>"1") %>
+		<%= submit_tag "検索" %>
+		<% end %>
+	</div>
+
+	<div class="yubi">
+		<div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
 	</div>
 </div>
+

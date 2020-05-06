@@ -1,59 +1,49 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-9">
-			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px">商品一覧</h3>
-			<div class="row">
-			
-				<% @items.each do |chocolate| %>
-			
-					<table>
-						<tr>
-							<th>
-                 <% if chocolate["Items"].blank? %>
-                  <%= image_tag("/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
-                 <% else %>
-								  <%= image_tag(chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
-                 <% end %>
-							</th>
-						</tr>
-						<tr>
-							<th><%= chocolate["Items"][0]["Item"]["itemName"] %></th>
-						</tr>
-						<tr>
-             <% if chocolate["Items"][0]["Item"]["itemPrice"].present? %>
-							<th>価格<%= chocolate["Items"][0]["Item"]["itemPrice"]%>円</th>
-             <% else %>
-              価格データなし
-             <% end %>
-						</tr>
-						<tr>
-							<th>
-         
-					    <% if chocolate["Items"][0]["Item"]["itemCode"].present? %>
-							  <%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate["Items"][0]["Item"]["itemCode"]), class: '' %>
-							<% else %>
-							  <%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: '' %>
-							<% end %>
-							</th>
-						</tr>
-						<tr>
-            <th>
-              いいねの数
-							 <%= Favorite.where(item_code: chocolate["Items"][0]["Item"]["itemCode"]).count %>個
-						</th>
-						</tr>
-					</table>
-				
+	<h3>いいね数　ランキング</h3>
+	<div class="row favo_row">
+		<% @items.each do |chocolate| %>
+		<div class="favo-ranking col-xs-10 col-md-9">
+			<div class="favo_image">
+				<% if chocolate["Items"].blank? %>
+			  	<%= image_tag("/assets/no_image.jpg", style: "width: 280px;height: 240px;display: inline-block;") %>
+				<% else %>
+			  	<%= image_tag(chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "width: 280px;height: 240px;display: inline-block;") %>
 				<% end %>
-          	
-        <%= form_tag(ranking_chocolates_path,method:"get") do %>
-					<%= select_tag 'range', options_for_select([["売れ筋ランキング 1~30位","1"], ["売れ筋ランキング 31~60位","2"], ["売れ筋ランキング 61~90位","3"], ["売れ筋ランキング 91~120位","4"]],:selected=>"1") %>
-					<%= submit_tag "検索" %>
-				<% end %>			
 			</div>
-		</div>
-    <div class="yubi">
-        <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
-    </div>
+			<div class="favo_name">
+				<%= chocolate["Items"][0]["Item"]["itemName"] %></th>
+			</div>
+			<div class="choco_price">
+				<% if chocolate["Items"][0]["Item"]["itemPrice"].present? %>
+				¥<%= chocolate["Items"][0]["Item"]["itemPrice"]%>円</th>
+				<% else %>
+				価格データなし
+				<% end %>
+			</div>
+			<div>
+				<% if chocolate["Items"][0]["Item"]["itemCode"].present? %>
+				<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate["Items"][0]["Item"]["itemCode"]), class: 'btn btn-default' %>
+				<% else %>
+				<%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: 'btn btn-default' %>
+				<% end %>
+			</div>
+			<div>
+				いいねの数
+				<%= Favorite.where(item_code: chocolate["Items"][0]["Item"]["itemCode"]).count %>個
+			</div>
+		</div>	
+		<% end %>
 	</div>
+
+	<div>
+		<%= form_tag(ranking_chocolates_path,method:"get") do %>
+		<%= select_tag 'range', options_for_select([["売れ筋ランキング 1~30位","1"], ["売れ筋ランキング 31~60位","2"], ["売れ筋ランキング 61~90位","3"], ["売れ筋ランキング 91~120位","4"]],:selected=>"1") %>
+		<%= submit_tag "検索" %>
+		<% end %>
+	</div>
+
+	<div class="yubi">
+		<div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
+	</div>
+</div>
 </div>

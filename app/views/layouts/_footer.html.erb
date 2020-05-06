@@ -1,0 +1,33 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class= "col-md-3.col-sm-4">  
+      <ul>
+        <li><%=  link_to 'トップページ', root_path %></li>
+        <li><%=  link_to '利用基準', privacypolicy_path %></li>
+        <li><%=  link_to 'お問い合わせ', contacts_path %></li>
+      </ul>
+      </div>
+      <div class= "col-md-3.col-sm-4.col-md-push-3",.text-light>  
+      <div class="text-white bg-dark">
+      <ul>  
+        <li><%=  link_to 'チョコレートを探す', search_chocolates_path %></li>
+        <li><%=  link_to 'チョコレート一覧を見る', chocolates_path %></li>
+        <li><%=  link_to 'いいね数ランキングを見る', favorite_ranking_chocolates_path %></li>
+      </ul>
+      </div>    
+      </div> 
+      <div class= "col-md-3.col-sm-4.col-md-push-3">  
+      <ul>  
+        <li><%=  link_to 'ユーザー一覧を見る', users_path %></li>
+      </ul>    
+      </div> 
+      <div class= "col-md-3.col-sm-4.col-md-push-3">  
+        <%=  link_to 'ChoCo BoX', root_path %>    
+        <p>© 2020. All Rights Reserved.</p>
+        <%#= link_to "Share on Twitter", "http://twitter.com/share?url=https://supplebox.jp" %> 
+        <%#= link_to "Share on Facebook", "https://www.facebook.com/sharer/sharer.php?u=https://supplebox.jp" %>
+    </div> 
+  </div>
+</footer>
+
