@@ -2,10 +2,12 @@
 <div class='content'>
   <div id="search-box">
     <%= form_tag('search', method: :get) do %>
-        <%= text_field_tag :chocolate, "",  id: "chocolate_id", name: "keyword", placeholder: "好きなチョコレートを入力してください", style: "width: 200px;"%><button title="検索" type="submit">検索</button>
+        <%= text_field_tag :chocolate, "",  id: "chocolate_id", name: "keyword", placeholder: "好きなチョコレートを入力してください", style: "width: 200px;"%>
+        <button class="btn btn-warning">検索</button>
+       
+        
     <% end %>
   </div>
-   <h2>検索結果</h2>
   <div id='chocolate_list'>
     <% if @items.present? %>
       <% @items.each do |good| %>

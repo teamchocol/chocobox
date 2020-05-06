@@ -18,16 +18,19 @@ end
 def comments
   Comment.where(item_code: @item_code)
 end
+
 def total_taste
   (comments.sum(&:taste) / comments.count).round(1)
   rescue ZeroDivisionError
     "-"
 end
+
 def total_healthy
   (comments.sum(&:healthy) / comments.count).round(1)
   rescue ZeroDivisionError
     "-"
 end
+
 def total_cost_performance
   (comments.sum(&:cost_performance) / comments.count).round(1)
   rescue ZeroDivisionError

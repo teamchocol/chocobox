@@ -1,7 +1,7 @@
 <section class="slice slice-lg sct-color-1">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-xs-12 col-sm-6 col-md-4">
                 <%= flash[:error] %>
                 <div class="form-user style-1 rounded has-shadow-1">
                     <div class="form-header text-center">
@@ -28,7 +28,9 @@
                         <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
                         <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
                         </div>
-                        <%= f.submit "サインイン", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+                        <div id="login-button" >
+                        <%= f.submit "ログイン", class:"btn btn-lg btn-block btn-base-1 mt-20"%>
+                        </div>
                     <% end %> 
 
                     </div>
@@ -36,4 +38,5 @@
             </div>
         </div>
     </div>
+    
 </section>

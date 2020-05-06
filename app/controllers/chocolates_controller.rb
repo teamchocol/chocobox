@@ -52,8 +52,7 @@ class ChocolatesController < ApplicationController
     end
   end
 
-  def favorite_ranking
-    
+  def favorite_ranking 
     @items = []
     ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
     ranking_list.each do |a|
@@ -63,7 +62,47 @@ class ChocolatesController < ApplicationController
       end 
     end
   end
-  
+
+  def taste_ranking 
+    @items = []
+    group = Comment.where("item_code<>'' and taste<>''").reorder("average_taste desc").group(:item_code).average("taste")
+
+    group.each do |k, v|
+    item = Rakuten.get_item(k)
+    
+      if item["Items"].present? 
+        @items.push(item)        
+      end 
+    end 
+    @chocolate = Chocolate.new
+  end
+
+  def healthy_ranking 
+    @items = []
+    group = Comment.where("item_code<>'' and healthy<>''").reorder("average_healthy desc").group(:item_code).average("healthy")
+
+    group.each do |k, v|
+    item = Rakuten.get_item(k)    
+      if item["Items"].present? 
+        @items.push(item)        
+      end 
+    end 
+    @chocolate = Chocolate.new
+  end
+
+  def cost_performance_ranking 
+    @items = []
+    group = Comment.where("item_code<>'' and cost_performance<>''").reorder("average_cost_performance desc").group(:item_code).average("cost_performance")
+
+    group.each do |k, v|
+    item = Rakuten.get_item(k)
+      if item["Items"].present? 
+        @items.push(item)        
+      end 
+    end 
+    @chocolate = Chocolate.new
+  end
+
  private
   def chocolate_params
     params.permit(:name, :medium_image_url, :price, :item_code)

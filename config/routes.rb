@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-
   get 'home/about', 'home#about'
   root  'home#top' 
   get 'home/sorry', 'home#sorry'
+  get 'policy', to: 'toppages#policy'
+  get 'privacypolicy', to: 'toppages#privacypolicy'
+  get 'contacts', to: 'contacts#new'
+  post 'contacts', to: 'contacts#create'
+  
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -32,22 +36,23 @@ Rails.application.routes.draw do
       put "/users/:id/hide" => "users#hide", as: 'users_hide'
     end 
   end
-      get 'users/:id/follows' => 'users#follows', as:'follows_users'
-      get 'users/:id/followers' => 'users#followers', as:'followers_users'
-      post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-      post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す 
+  get 'users/:id/follows' => 'users#follows', as:'follows_users'
+  get 'users/:id/followers' => 'users#followers', as:'followers_users'
+  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す 
   
-  resources :brands
+  # resources :brands
   resources :chocolates do 
     collection do
     get 'search'
     get 'ranking' 
     get 'favorite_ranking'
+    get 'taste_ranking'
+    get 'cost_performance_ranking'
+    get 'healthy_ranking'
     end 
    resource :favorites, only: [:create, :destroy]
   end
-  
- 
    
   resources :comments, only: [:create, :destroy, :index]
   
@@ -58,6 +63,7 @@ Rails.application.routes.draw do
     resources :chocolates
     resources :brands
   end
+
   get 'search' => 'searches#search'
   get 'search/user' => 'searches#user_search'
   get 'search/comment' => 'searches#comment_search'
