@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/about', 'home#about'
   root  'home#top' 
   get 'home/sorry', 'home#sorry'
+  get 'home/health', 'home#health'
   get 'policy', to: 'toppages#policy'
   get 'privacypolicy', to: 'toppages#privacypolicy'
   get 'contacts', to: 'contacts#new'

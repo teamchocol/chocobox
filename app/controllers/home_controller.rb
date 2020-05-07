@@ -7,4 +7,7 @@ class HomeController < ApplicationController
   
   def sorry
   end
+  
+  def health
+  end
 end

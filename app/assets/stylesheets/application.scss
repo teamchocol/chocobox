@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";  
+ 
 @import "bootstrap";   
 
 @font-face {
@@ -131,12 +131,23 @@ header {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+/* フッターを下部へ押しやるための、コンテンツのラッパー */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* フッターの高さ分だけ、ネガティブインデントを指定 */
+  margin: 0 auto -60px;
+  /* フッターの高さ分だけ、パディングを指定 */
+  padding: 0 0 60px;
+}
 
 .footer {
   background-color: #333;
   color: #fff;
   padding-bottom:0 ;
+  bottom: 0;
   margin-top: 20px ;
+  height: 100px;
 }
 
 /* TOPに戻る矢印 */
@@ -284,7 +295,7 @@ header {
 .rakuten_ranking{
   font-family: "soft";
   width: 400px;
-  height: 440px;
+  height: 600px;
   background-color:rgba(243, 235, 240, 0.932);
   margin: 5px;
   padding: 15px;
@@ -305,9 +316,9 @@ header {
 }
 
 .favo_image {
-  
   text-align: center;
 }
+
 .choco_price{
   font-size: 1.3em;
 }
@@ -315,4 +326,82 @@ header {
 .chocobox-logo{
   text-align: center;
   margin-left: 60px;
+}
+
+.card-comment{
+  height: 850px;
+  margin-bottom: 100px;
+  
+}
+
+.comment-item-name{
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 60px;
+  height: 80px;
+ 
+}
+
+.comment-image{
+  margin-bottom: 30px;
+}
+
+.comment-areas{
+  margin-bottom: 30px;
+  padding: auto auto;
+  height: 130px;
+}
+
+.card-comment{
+  margin-bottom: 40px;
+}
+
+.comment-author{
+  text-align: center;
+  margin: auto auto;
+}
+.kutikominaiyou{
+  margin-left: 50px;
+  
+}
+.avatar{
+  margin-left: 50px;
+}
+.comment-date{
+  margin: 10px auto;
+
+}
+
+.comment-delete{
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.kutikomi-ranking{
+  font-family: "soft";
+  text-align: center;
+  height: 600px;
+  margin-bottom: 60px;
+}
+.kutikomi-ranking{
+  margin-bottom: 30px;
+}
+.oisiichoco-name{
+  margin: 20px auto;
+}
+
+canvas{
+  width: 350px;
+  height: 350px;
+  padding-left: 100px;
+
+}
+
+.kutikomitoukou{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.favo{
+  margin-top: 40px;
 }
