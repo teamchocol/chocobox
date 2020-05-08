@@ -1,60 +1,38 @@
-<div class="col-xs-9">
-	<h2>Users</h2>
-	<!--users一覧 -->
-	<table class="table">
-		<thead>
-			<th>
-			<%= render 'users/search', user: @user %>	
-			</th>
-			<tr>
-				<th>プロフィール画像</th>
-				<th>ニックネーム</th>
-				<th colspan="3"></th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<% @users.each do |user| %>
-			<tr>
-				<td><%= attachment_image_tag user, :profile_image,  size: "100x100", format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size: "100x100" %></td>
-				<td><%= user.nickname %></td>
-				
-				<td>	<% user ||= current_user %>
-				<div class="stats">
-				
-						<strong id="following" class="stat">
-						フォロー数
-            <%= user.following.count %>人
-						</strong>
-						
-					
-				</td>
-				<td>	
-					
-						<strong id="followers" class="stat">
-						フォロワー数
-            <%= user.followers.count %>人
-						</strong>
-						
-					
-				</div>
-				</td>	
-				<td>
-			  <% unless current_user.id == user.id %>
-					<div id="follow_form">
+<h3>ユーザー 一覧</h3><%= render 'users/search', user: @user %>
+<div class="container">
+	<div class="row">
+		<% @users.each do |user| %>
+		<div class="users  col-xs-4 col-md-4">
+			<div>
+				<%= attachment_image_tag user, :profile_image,  size: "100x100", format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size: "100x100"  %>
+			</div>
+			<div><%= user.nickname %></div>
+			<div><% user ||= current_user %></div>
+			<div>
+				<p id="followers" class="stat">
+					フォロワー数
+					<%= user.followers.count %>人
+				</p>
+			</div>
+			<div class="stats">
+				<p id="following" class="stat">
+					フォロー数
+					<%= user.following.count %>人
+				</p>
+			</div>
+			<div>
+				<% unless current_user.id == user.id %>
+				<div id="follow_form">
 					<% if current_user.following?(user) %>
-					
-					 <%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-block btn-default", method: :post %> 
-				
-					<% else %>	
-					
-					 <%= link_to "フォローする", follow_path(user.id), class: "btn btn-block btn-default" ,method: :post %> 
-					<% end %>	
-					</div>
+					<%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-success", method: :post %>
+					<% else %>
+					<%= link_to "フォローする", follow_path(user.id), class: "btn btn-success" ,method: :post %>
+					<% end %>
+				</div>
 				<% end %>
-				</td>
-			  <td><%= link_to "プロフィールを見る", user, class: "user_#{user.id}" %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+			</div>
+			<div><%= link_to "プロフィールを見る", user, class: "user_#{user.id}" %></div>
+		</div>
+		<% end %>
+	</div>
+</div>

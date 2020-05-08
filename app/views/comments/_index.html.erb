@@ -1,116 +1,147 @@
-	<table class="col-xs-12">	
-		<tbody>
-			<th>
-				<h3>おいしさ平均値<%= chocolate.total_taste %></h3>
-			</th>
-			<th>
-				<h3>健康度平均値<%= chocolate.total_healthy %></h3>
-			</th>
-			<th>
-				<h3>コスパ平均値<%= chocolate.total_cost_performance %></h3>
-			</th>	
-			<th>
-				<canvas id="myChart"></canvas>
-			</th>
-		<% chocolate.comments.each do |comment| %>
-		
-			<tr class="comment">
-				<td>
-					<div class="comment-body bb">
-							<div class="comment-avatar">
-							<div class="avatar">
-							<%= attachment_image_tag(comment.user, :profile_image,size:'100x100', format: 'jpeg', fallback: "no_image.jpg", size:'100x100') %>
-							</div>
+<div class="container ranking">
+	<div class="row">
+		<div class="kutikomi-ranking col-xs-12 col-md-12 col-sm-12">
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3">
+					<div>
+						<h5>おいしさ平均値</h5>
 					</div>
-				</td>
-				<td>
-					<div class="comment-text">
-						<div class="comment-author">
-							<a href="#" class="link-author">
-							<%= comment.user.name %></a>
-						</div>
-				</td>		
-				<td>					
-					<span class="comment-meta">
-						<span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
-					</span>
+					<div>
+						<h5>健康度平均値</h5>
 					</div>
-				</td>
-					<!--総合平均星評価-->
-				<td>
-				<canvas id="myChart-<%= comment.id %>"></canvas>
-				</td>
-				<td>
-				<div class="col-md-6 mb-3">
+					<div>
+						<h5>コスパ平均値</h5>
+					</div>
+				</div>
+
+				<div class="col-xs-3 col-sm-3 col-md-3">
+					<div>
+						<h5><%= chocolate.total_taste %></h5>
+					</div>
+					<div>
+						<h5><%= chocolate.total_healthy %></h5>
+					</div>
+					<div>
+						<h5><%= chocolate.total_cost_performance %></h5>
+					</div>
+				</div>
+
+				<div class="col-xs-7 col-sm-7 col-md-7">
 					<div class=" posts-content">
-						<h4 class="mb-3">総合評価：<%= ((comment.taste + comment.healthy + comment.cost_performance)/3).round(1) %>点 | <%= comment.title %></h4>
-				<td>	
-					<div class="comment-entry"><%= comment.content %></div>
-				</td>
-				<% unless current_user != comment.user %>
-				<td><%= link_to comments_path(comment.id), method: :delete, remote: true  do %> <button class="btn btn-danger">コメントを削除</button><% end %></td>
-				<% end %>
-			</tr> 
-			
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-			<script>
-				var ctx = document.getElementById("myChart-<%= comment.id %>");
-				var Chart = new Chart(ctx, {
-					type: 'radar',
-					data: {
-						labels: ["おいしさ", "健康", "コストパフォーマンス"],
-						datasets: [{
-							label: '項目別評価',
-							backgroundColor: "rgba(0,255,0,0.4)",
-							borderColor: "rgba(0,255,0,1)",
-							data: [<%= comment.taste %>, <%= comment.cost_performance %>, <%= comment.healthy %>]
-						}]
-					},
-					options: {
-					responsive: true,
-						scale: {
-							ticks: {
-								max: 5,
-								min: 0
-							}
-						}
-					}
-				});
-			</script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-			<script>
-					var ctx = document.getElementById("myChart");
-					var myChart = new Chart(ctx, {
-						type: 'radar',
-						data: {
-							labels: ["おいしさ", "健康", "コストパフォーマンス"],
-							datasets: [{
-								label: '項目別評価',
-								backgroundColor: "rgba(0,255,0,0.4)",
-								borderColor: "rgba(0,255,0,1)",
-								data: [<%= chocolate.total_taste %>, <%= chocolate.total_cost_performance %>, <%= chocolate.total_healthy %>]
-							}]
-						},
-						options: {
-						responsive: true,
-							scale: {
-								ticks: {
-									max: 5,
-									min: 0
-								}
-							}
-						}
-					});
-			</script>           
-			<% end %>
-		</div>
-		</tbody>
-	</table>
-	<div class="comment-list bt style-2" id="comments">
-			<div class="float-wrapper">
-					<a class="comment-count"><%= chocolate.comments.count %>件コメント</a>
+						<h4 class="mb-3">総合評価：<%= ((comment.taste + comment.healthy + comment.cost_performance)/3).round(1) %>点
+						</h4>
+						<div>
+							<div>
+								<canvas id="myChart"></canvas>
+							</div>
+							<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+							<script>
+								var ctx = document.getElementById("myChart");
+								var myChart = new Chart(ctx, {
+									type: 'radar',
+									data: {
+										labels: ["おいしさ", "健康", "コストパフォーマンス"],
+										datasets: [{
+											label: '項目別評価',
+											backgroundColor: "rgba(0,255,0,0.4)",
+											borderColor: "rgba(0,255,0,1)",
+											data: [ < %= chocolate.total_taste % > , < %= chocolate.total_cost_performance % > , < %=
+												chocolate
+												.total_healthy % >
+											]
+										}]
+									},
+									options: {
+										responsive: true,
+										scale: {
+											ticks: {
+												max: 5,
+												min: 0
+											}
+										}
+									}
+								});
+							</script>
+						</div>
+					</div>
+				</div>
 			</div>
-	</div>  
-			 
-      
-		
+		</div>
+	</div>
+</div>
+<div class="container ranking">
+	<div class="row">
+		<% chocolate.comments.each do |comment| %>
+		<div class="kutikomi-ranking col-xs-12 col-md-12 col-sm-12">
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3">
+					<div class="comment-avatar">
+						<%= attachment_image_tag(comment.user, :profile_image,size:'100x100', format: 'jpeg', fallback: "no_image.jpg", size:'100x100') %>
+					</div>
+					<div class="comment-author">
+						<%= link_to(comment.user) do %>
+						<a><%= comment.user.name %></a>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-sm-4 col-md-4">
+					<div>
+						<span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+					</div>
+					<div>
+						<%= comment.title %>
+					</div>
+					<div class="comment-entry">
+						<%= comment.content %>
+					</div>
+				</div>
+				<div class="col-xs-7 col-sm-7 col-md-7">
+					<div>
+						<canvas id="myChart-<%= comment.id %>"></canvas>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+						<script>
+							var ctx = document.getElementById("myChart-<%= comment.id %>");
+							var Chart = new Chart(ctx, {
+								type: 'radar',
+								data: {
+									labels: ["おいしさ", "健康", "コストパフォーマンス"],
+									datasets: [{
+										label: '項目別評価',
+										backgroundColor: "rgba(0,255,0,0.4)",
+										borderColor: "rgba(0,255,0,1)",
+										data: [ < %= comment.taste % > , < %= comment.cost_performance % > , < %= comment.healthy % > ]
+									}]
+								},
+								options: {
+									responsive: true,
+									scale: {
+										ticks: {
+											max: 5,
+											min: 0
+										}
+									}
+								}
+							});
+						</script>
+					</div>
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1">
+					<% unless current_user != comment.user %>
+					<div><%= link_to comments_path(comment.id), method: :delete, remote: true  do %> <button
+							class="btn btn-danger">コメントを削除</button>
+					  	 <% end %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="float-wrapper">
+	<a class="comment-count"><%= chocolate.comments.count %>件コメント</a>
+</div>

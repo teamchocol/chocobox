@@ -101,12 +101,15 @@ $(function(){
     });
   });
 
+  // ハンバーガーメニュー出した時にロゴ消えるように
   $(document).on('turbolinks:load', function() {
  
     $('.menu-trigger').on('click', function() {
       $(this).toggleClass('active');
       $('#sp-menu').fadeToggle();
       $('#chocobox-logo').fadeToggle();
+      $('#chocobox-text').fadeToggle();
+
       return false;
     });
    
