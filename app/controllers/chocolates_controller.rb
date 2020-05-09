@@ -69,8 +69,9 @@ class ChocolatesController < ApplicationController
 
     group.each do |k, v|
     item = Rakuten.get_item(k)
-    
+ 
       if item["Items"].present? 
+        
         @items.push(item)        
       end 
     end 

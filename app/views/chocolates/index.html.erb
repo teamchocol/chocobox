@@ -1,18 +1,18 @@
-<div class="container">
+<div class="container rakuten-index">
 	<h3>商品一覧</h3>
 	<div class="row">	
 	<% @chocolates.each do |chocolate| %>
-		<div class="rakuten_ranking  col-xs-3 col-md-3">
+		<div class="rakuten_ranking  col-xs-4 col-sm-4 col-md-4">
 			<div>
-				<%= image_tag(chocolate.medium_image_urls[0], style: "width: 230px;height: 200px;display: inline-block;") %>
+				<%= image_tag(chocolate.medium_image_urls[0], style: "max-width: 100%;height: auto;display: inline-block;") %>
 			</div>
 			<div><%= chocolate.name %></div>
 			<div class="choco_price">¥<%= chocolate.price %></div>
 			<div>
 				<% if chocolate["itemCode"].present? %>
-				<%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate["itemCode"]), class: "btn btn-default" %>
+				<%= link_to '口コミを投稿する', chocolate_path(chocolate["itemCode"]), class: "btn btn-default" %>
 				<% else %>
-				<%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: "btn btn-default" %>
+				<%= link_to '口コミを投稿する', home_sorry_path, class: "btn btn-default" %>
 				<% end %>
 			</div>
 			
@@ -25,7 +25,7 @@
 		</div>	
 		<% end %>
 	</div>
-
+</div>
 	<div>
 		<%= form_tag(ranking_chocolates_path,method:"get") do %>
 		<%= select_tag 'range', options_for_select([["売れ筋ランキング 1~30位","1"], ["売れ筋ランキング 31~60位","2"], ["売れ筋ランキング 61~90位","3"], ["売れ筋ランキング 91~120位","4"]],:selected=>"1") %>

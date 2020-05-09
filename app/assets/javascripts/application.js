@@ -12,12 +12,14 @@
 //
 //= require rails-ujs
 //= require activestorage
+
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require bootstrap-sprockets
 //= require turbolinks
-//= require jquery
 //= require jquery_ujs
 //= require Chart.min
-//= require bootstrap-sprockets
-//= require_tree ../../../app/assets/javascripts/.
 //= require_tree .
 
 $(function(){
@@ -85,28 +87,20 @@ $(function(){
     });
   });
 
-  $(function() {
- 
-    //マウスを乗せたら発動
-    $('#back').hover('turbolinks:load',function() {
-   
-     
-      $(this).css('opacity', '0.5');
-      
-    }, function() {
- 
-   
-      $(this).css('opacity', '1.0');
-   
-    });
-  });
-
   $(document).on('turbolinks:load', function() {
- 
+     //マウスを乗せたら発動
+     $('#back').mouseover(function() {
+      $(this).css('opacity', '0.5');
+    }).mouseout(function() {
+      $(this).css('opacity', '1.0'); 
+    });
+    // ハンバーガーメニュー出した時にロゴ消えるように
     $('.menu-trigger').on('click', function() {
       $(this).toggleClass('active');
       $('#sp-menu').fadeToggle();
       $('#chocobox-logo').fadeToggle();
+      $('#chocobox-text').fadeToggle();
+
       return false;
     });
    

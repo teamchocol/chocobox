@@ -1,42 +1,39 @@
-<section class="slice slice-lg sct-color-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <%= flash[:error] %>
-                <div class="form-user style-1 rounded has-shadow-1">
-                    <div class="form-header text-center">
-                        <h2 class="form-header-title">ユーザーログイン</h2>
-                    </div>
-                    <div class="form-body">
+ <div class="container sign_in">
+     <div class="main-visual">
+         <div class="row">
+             <div class=" col-xs-12 col-sm-12 col-md-12">
+                 <%= flash[:error] %>
+                 <div class="form-user style-1 rounded has-shadow-1">
+                     <div class="form-body">
 
-                      <div class="row">
-                          <div class="col-xs-offset-1 col-xs-10">
-                              <div class="text-center">
-                                  <h4>メールアドレスと<br>パスワードを入力してください。</h4>
-                              </div>
-                          </div>
-                      </div>
+                         <div class="row">
+                             <div class="col-xs-12 col-sm-12">
+                                 <div class="text-center">
+                                     <h4>メールアドレスと<br>パスワードを入力してください。</h4>
+                                 </div>
+                             </div>
+                         </div>
 
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                        <div class="form-group has-icon">
-                        <label class="control-label sr-only" for="inputEmail">Email</label>
-                        <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
-                        <span class="fa fa-envelope form-control-icon" aria-hidden="true"></span>
-                        </div>
-                        <div class="form-group has-icon">
-                        <label class="control-label sr-only" for="inputPassword">Password</label>
-                        <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
-                        <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
-                        </div>
-                        <div id="login-button" >
-                        <%= f.submit "ログイン", class:"btn btn-lg btn-block btn-base-1 mt-20"%>
-                        </div>
-                    <% end %> 
+                         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                         <div class="form-group has-icon">
+                             <label class="control-label sr-only" for="inputEmail">Email</label>
+                             <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
+                             <span class="fa fa-envelope form-control-icon" aria-hidden="true"></span>
+                         </div>
+                         <div class="form-group has-icon">
+                             <label class="control-label sr-only" for="inputPassword">Password</label>
+                             <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
+                             <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
+                         </div>
+                         <div id="login-button">
+                             <%= f.submit "ログイン", class:"btn btn-primary btn-block btn-base-1 mt-20"%>
+                         </div>
+                         <% end %>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</section>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+ </div>

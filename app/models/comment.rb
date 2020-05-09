@@ -1,5 +1,4 @@
 class Comment < ApplicationRecord
-  default_scope -> { order(created_at: :desc) }
   # ユーザーとの関連付け
   belongs_to :user
   attachment :image, destroy: false

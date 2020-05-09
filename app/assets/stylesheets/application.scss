@@ -13,9 +13,12 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";  
-@import "bootstrap";   
+ 
+@import "bootstrap"; 
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
+// フォント
 @font-face {
   font-family: "名前";
   src: url('font.ttf') format("truetype");
@@ -46,12 +49,19 @@
   box-sizing: border-box;
 }
 
+// ヘッダー
 header {
   color: white;
-  padding-top: 10px;
-  padding-bottom: 40px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 100px;
   }
+.chocobox-logo{
+  text-align: center;
+  margin-left: 60px;
+}
 
+// TOPページ
 .single-blog {
   transition: all 300ms linear 0s;
   position: relative; }
@@ -118,6 +128,7 @@ header {
     }
 
 
+
 .menu-trigger {
   font-family: "soft";
   position: fixed;
@@ -132,12 +143,7 @@ header {
   border-radius: 4px;
 }
 
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding-bottom:0 ;
-  margin-top: 20px ;
-}
+
 
 /* TOPに戻る矢印 */
 
@@ -158,14 +164,19 @@ header {
 
 #hm-icon {
   position: relative;
-  right: 20px;
-  top: 20px;
+  right: 0px;
+  top: 10px;
   z-index: 10;
 }
 #chocobox-logo {
   position: relative;
-  left: 60px;
-  top: 15px;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+}
+#chocobox-text {
+  position: relative;
+  top: 10px;
   z-index: 10;
 }
 
@@ -280,17 +291,95 @@ header {
     font-weight: bold;
   }
 }
+// ログイン画面
+.main-visual {
+  
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  background-image: url('background-choco.jpg');
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
 
-.rakuten_ranking{
+.form-body{
   font-family: "soft";
-  width: 400px;
-  height: 440px;
-  background-color:rgba(243, 235, 240, 0.932);
-  margin: 5px;
-  padding: 15px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  padding: 20px 20px ;
+  
+}
+
+// フッター
+ul{
+  list-style: none;
+}
+
+.footer .container a{
+  color: white;
+}
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding-top: 15px;
+  padding-bottom:0 ;
+  bottom: 0;
+  margin-top: 20px ;
+  height: 150px;
+}
+// サインアップ 画面
+.sign_up-visual {
+  font-family: "soft";
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  background-image: url('sign_up-choco.jpg');
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.sign_up-body{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  padding: 20px 20px ;
+}
+.actions{
+  margin: 20px;
   text-align: center;
 }
 
+// ユーザー一覧
+.users{
+  text-align: center;
+}
+
+// ユーザ詳細画面
+.follow-button{
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.table{
+  font-family: "soft";
+  margin: 10px 50px;
+  text-align: center;
+}
+
+// 楽天市場ランキング商品一覧
+
+.rakuten_ranking{
+  font-family: "soft";
+  height: auto;
+  background-color:rgba(243, 235, 240, 0.932);
+  border: #fff 5px solid;
+  padding: 10px;
+  text-align: center;
+}
+// いいねランキング
 .favo-ranking{
   font-family: "soft";
   width: 320px;
@@ -303,16 +392,155 @@ header {
   padding: 20px;
   text-align: center;
 }
+.container{
+  font-family: "soft";
+}
 
 .favo_image {
-  
   text-align: center;
 }
+
 .choco_price{
   font-size: 1.3em;
 }
 
-.chocobox-logo{
+
+// コメント一覧
+.card-comment{
+  height: 900px;
+  margin-bottom: 100px;
+  
+}
+
+.comment-item-name{
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 60px;
+  height: 190px;
+ 
+}
+
+.comment-image{
+  margin-bottom: 30px;
+}
+
+.comment-areas{
+  margin-bottom: 30px;
+  padding: auto auto;
+  height: 130px;
+}
+
+.card-comment{
+  margin-bottom: 40px;
+}
+
+.comment-author{
   text-align: center;
-  margin-left: 60px;
+  margin: auto auto;
+}
+.kutikominaiyou{
+  margin-left: 50px;
+  
+}
+.avatar{
+  margin-left: 50px;
+}
+.comment-date{
+  margin: 10px auto;
+
+}
+
+.comment-delete{
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.kutikomi-ranking{
+  font-family: "soft";
+  text-align: center;
+  height: 600px;
+  margin-bottom: 60px;
+}
+.kutikomi-ranking{
+  margin-bottom: 30px;
+}
+.oisiichoco-name{
+  margin: 20px auto;
+}
+
+// おいしさ健康コスパチャート
+.chart-ranking{
+  width: 350px;
+  height: 350px;
+  padding-left: 100px;
+
+}
+// 商品詳細ページ
+.kutikomitoukou{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.favo{
+  margin-top: 40px;
+}
+
+.heikin{
+  text-align: center;
+  margin: auto 0;
+  
+  .average{
+    padding-bottom: 5px;
+  }
+  .ave{
+    margin-right: 0;
+  }
+  .value{
+   padding-left: 0;
+  }
+}
+
+.comment-date{
+  margin: 10px auto;
+  text-align: center;
+}
+
+.comment-user{
+  text-align: center;
+}
+
+.title{
+  font-size: 18px;
+}
+
+.comment{
+  font-size: 15px;
+}
+
+.comment-avatar{
+  padding-left: 30px;
+}
+
+.date{
+  padding-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.hyouka{
+  margin: 10px auto;
+}
+
+.text{
+  font-size: 10px;
+  font-weight: lighter
+}
+
+.comment-delete{
+  position: relative;
+
+  .delete{
+    position: absolute;
+    bottom: 0;
+  }
 }

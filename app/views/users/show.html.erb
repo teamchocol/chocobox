@@ -1,75 +1,59 @@
  <table class="table">
-		<tr>
-		<td>
-		<%= attachment_image_tag @user, :profile_image,  size:'200x200', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'200x200' %>
-		</td>
-	  </tr>
+ 	<tr>
+ 		<td>
+ 			<%= attachment_image_tag @user, :profile_image,  size:'200x200', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'200x200' %>
+ 		</td>
+ 	</tr>
+ 	<tr>
+ 		<td>ニックネーム</td>
+ 		<td><%= current_user.nickname %></td>
+ 	</tr>
+ 	<tr>
+ 		<td>性別</td>
+ 		<td><%= current_user.gender %></td>
+ 	</tr>
+ 	<tr>
+ 		<td>年齢</td>
+ 		<td><%= current_user.age %></td>
+ 	</tr>
+ 	<tr>
+ 		<td>自己紹介</td>
+ 		<td><%= current_user.comment %></td>
+ 	</tr>
+ </table>
 
+ <table class="table">
+ 	<tbody>		
+ 		<tr>
+ 			<td>
+ 				<% @user ||= current_user %>
+ 				<div class="stats">
+ 					<strong id="following" class="stat">
+ 						フォロー数
+ 						<%= link_to current_user.following.count, follows_users_path(current_user.id) %>
+ 						人
+ 					</strong>
+ 			</td>
+ 		</tr>
+ 		<tr>
+ 			<td>
+ 				<strong id="followers" class="stat">
+ 					フォロワー数
+ 					<%= link_to current_user.followers.count, followers_user_path(current_user.id) %>
+ 					人
+ 				</strong>
+ 			</td>
+ 		</tr>
 		<tr>
-			<td>ニックネーム</td>
-			<td><%= current_user.nickname %></td>
-		</tr>
-	
-		<tr>
-			<td>性別</td>
-			<td><%= current_user.gender %></td>
-		</tr>
-
-		<tr>
-			<td>年齢</td>
-			<td><%= current_user.age %></td>
-		</tr>
-    
-		<tr>
-			<td>自己紹介</td>
-			<td><%= current_user.comment %></td>
-		</tr>
-		
-  </table>
-			 <% if @user == current_user && @user.email != "test@example.com" %>
-				
-				
-				<p><%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
-					
-				<% elsif current_user.following?(@user) %>
-
-					<%= link_to "unfollow", unfollow_path(@user.id), class: "btn btn-block btn-default", method: :post %> 
-
-				<% else %>	
-
-					<%= link_to "follow", follow_path(@user.id), class: "btn btn-block btn-default" ,method: :post %> 
-				
-			
+ 			<td>
+ 			<% if @user == current_user && @user.email != "test@example.com" %>
+					<p><%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
+			<% elsif current_user.following?(@user) %>
+					<%= link_to "フォローを外す", unfollow_path(@user.id), class: "btn btn-success", method: :post %>
+			<% else %>
+					<%= link_to "フォローする", follow_path(@user.id), class: "btn btn-success" ,method: :post %>
 			<% end %>
-
-		<table class="table">
-		<tbody>
-			<tr>
-			<td>
-					<% @user ||= current_user %>
-						<div class="stats">
-						
-								<strong id="following" class="stat">
-								フォロー数
-									<%= link_to current_user.following.count, follows_users_path(current_user.id) %>
-									人
-								</strong>
-								
-			</td>
-			</tr>
-
-
-
-			<tr>
-			<td>
-					<strong id="followers" class="stat">
-					フォロワー数
-					<%= link_to current_user.followers.count, followers_user_path(current_user.id) %>
-					人
-					</strong>
-					
-			</td>
-			</tr>
-		</tbody>
-		</table>
-
+ 			</td>
+ 		</tr>
+ 	</tbody>
+ </table>
