@@ -70,6 +70,7 @@ gem 'kaminari'
 
 
 gem 'bootstrap', '~> 4.1.1'
+gem 'font-awesome-sass'
 gem 'jquery-rails'
 
 gem 'pry-byebug'

@@ -49,7 +49,7 @@
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="mychart-ranking">
-              <canvas id="myChart-<%= chocolate["Items"][0]["Item"]["itemCode"] %>"></canvas>
+              <canvas id="myChart-<%= chocolate["Items"][0]["Item"]["itemCode"] %>" class="chart-ranking"></canvas>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
               <script>
                 <% @chocolate.set_item_code(chocolate["Items"][0]["Item"]["itemCode"]) %>

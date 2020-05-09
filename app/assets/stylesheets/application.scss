@@ -15,7 +15,8 @@
  */
  
 @import "bootstrap"; 
-
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 // フォント
 @font-face {
@@ -55,7 +56,12 @@ header {
   padding-bottom: 0px;
   height: 100px;
   }
+.chocobox-logo{
+  text-align: center;
+  margin-left: 60px;
+}
 
+// TOPページ
 .single-blog {
   transition: all 300ms linear 0s;
   position: relative; }
@@ -373,7 +379,7 @@ ul{
   padding: 10px;
   text-align: center;
 }
-
+// いいねランキング
 .favo-ranking{
   font-family: "soft";
   width: 320px;
@@ -398,13 +404,10 @@ ul{
   font-size: 1.3em;
 }
 
-.chocobox-logo{
-  text-align: center;
-  margin-left: 60px;
-}
 
+// コメント一覧
 .card-comment{
-  height: 850px;
+  height: 900px;
   margin-bottom: 100px;
   
 }
@@ -413,7 +416,7 @@ ul{
   padding-left: 40px;
   padding-right: 40px;
   margin-bottom: 60px;
-  height: 80px;
+  height: 190px;
  
 }
 
@@ -465,13 +468,14 @@ ul{
   margin: 20px auto;
 }
 
-canvas{
+// おいしさ健康コスパチャート
+.chart-ranking{
   width: 350px;
   height: 350px;
   padding-left: 100px;
 
 }
-
+// 商品詳細ページ
 .kutikomitoukou{
   margin-bottom: 30px;
   margin-top: 30px;
@@ -479,4 +483,64 @@ canvas{
 
 .favo{
   margin-top: 40px;
+}
+
+.heikin{
+  text-align: center;
+  margin: auto 0;
+  
+  .average{
+    padding-bottom: 5px;
+  }
+  .ave{
+    margin-right: 0;
+  }
+  .value{
+   padding-left: 0;
+  }
+}
+
+.comment-date{
+  margin: 10px auto;
+  text-align: center;
+}
+
+.comment-user{
+  text-align: center;
+}
+
+.title{
+  font-size: 18px;
+}
+
+.comment{
+  font-size: 15px;
+}
+
+.comment-avatar{
+  padding-left: 30px;
+}
+
+.date{
+  padding-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.hyouka{
+  margin: 10px auto;
+}
+
+.text{
+  font-size: 10px;
+  font-weight: lighter
+}
+
+.comment-delete{
+  position: relative;
+
+  .delete{
+    position: absolute;
+    bottom: 0;
+  }
 }
