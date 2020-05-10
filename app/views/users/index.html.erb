@@ -1,28 +1,34 @@
 <h3>ユーザー 一覧</h3><%= render 'users/search', user: @user %>
 <div class="container">
-	<div class="row">
+	<div class="row users">
 		<% @users.each do |user| %>
-		<div class="users  col-xs-4 col-md-4">
-			<div>
+		<div class="users-profile  col-xs-4 col-md-4">
+			<div class="user-image">
 				<%= attachment_image_tag user, :profile_image,  size: "100x100", format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size: "100x100"  %>
 			</div>
-			<div><%= user.nickname %></div>
+			<div class="user-nickname">
+			   <% if user.nickname.nil? %>
+				   <a>ニックネームがありません </a>
+				 <% else %>
+				   <%= user.nickname %>   
+				 <% end %>
+			</div>
 			<div><% user ||= current_user %></div>
 			<div>
 				<p id="followers" class="stat">
-					フォロワー数
-					<%= user.followers.count %>人
+					フォロワー
+					<span class="badge badge-pill badge-secondary"><%= user.followers.count %></span>
 				</p>
 			</div>
 			<div class="stats">
 				<p id="following" class="stat">
-					フォロー数
-					<%= user.following.count %>人
+					フォロー
+					<span class="badge badge-pill badge-secondary"><%= user.following.count %></span>
 				</p>
 			</div>
 			<div>
 				<% unless current_user.id == user.id %>
-				<div id="follow_form">
+				<div class="follow"  id="follow_form">
 					<% if current_user.following?(user) %>
 					<%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-success", method: :post %>
 					<% else %>
@@ -31,8 +37,9 @@
 				</div>
 				<% end %>
 			</div>
-			<div><%= link_to "プロフィールを見る", user, class: "user_#{user.id}" %></div>
+			<div class="profile"><%= link_to "プロフィールを見る", user, class: "user_#{user.id}" %></div>
 		</div>
 		<% end %>
 	</div>
 </div>
+<%= paginate @users %>

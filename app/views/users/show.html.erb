@@ -1,7 +1,7 @@
  <table class="table">
  	<tr>
  		<td>
- 			<%= attachment_image_tag @user, :profile_image,  size:'200x200', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'200x200' %>
+ 			<%= attachment_image_tag @user, :profile_image,  size:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'150x150' %>
  		</td>
  	</tr>
  	<tr>
@@ -28,19 +28,20 @@
  			<td>
  				<% @user ||= current_user %>
  				<div class="stats">
- 					<strong id="following" class="stat">
- 						フォロー数
- 						<%= link_to current_user.following.count, follows_users_path(current_user.id) %>
- 						人
+ 					<strong id="following" class="stat">	
+ 						<%= link_to follows_users_path(current_user.id) do %>フォロー
+ 						<p class="badge badge-pill badge-secondary"><%= current_user.following.count %></p>
+						<% end %>
  					</strong>
  			</td>
  		</tr>
  		<tr>
  			<td>
  				<strong id="followers" class="stat">
- 					フォロワー数
- 					<%= link_to current_user.followers.count, followers_user_path(current_user.id) %>
- 					人
+ 					<%= link_to followers_user_path(current_user.id) do %>
+ 					フォロワー
+					 <p class="badge badge-pill badge-secondary"><%= current_user.followers.count %></p>
+					 <% end %>
  				</strong>
  			</td>
  		</tr>

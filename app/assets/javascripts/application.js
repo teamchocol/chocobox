@@ -81,10 +81,16 @@ $(function(){
             back.fadeOut();
        }
     });
-    back.click(function () {
-       $('body, html').animate({ scrollTop: 0 }, 500);
-       return false;
-    });
+    $('#back').on('click',function(){
+      $('body, html').animate({
+        scrollTop:0
+      }, 800);
+        return false;
+    });  
+    // back.click(function () {
+    //    $('body').animate({ scrollTop: 0 }, 500);
+    //    return false;
+    // });
   });
 
   $(document).on('turbolinks:load', function() {

@@ -4,14 +4,11 @@
     <%= form_tag('search', method: :get) do %>
         <%= text_field_tag :chocolate, "",  id: "chocolate_id", name: "keyword", placeholder: "好きなチョコレートを入力してください", style: "width: 200px;"%>
         <button class="btn btn-warning">検索</button>
-       
-        
     <% end %>
   </div>
   <div id='chocolate_list'>
     <% if @items.present? %>
       <% @items.each do |good| %>
-     
         <div class="list">
         <% if good.medium_image_urls[0] %>
           <%= link_to (image_tag(good.medium_image_urls[0], style: "width: 120px;height: 100px;display: inline-block;")) %>

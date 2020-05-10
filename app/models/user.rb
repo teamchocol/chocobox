@@ -37,7 +37,7 @@ end
   
 
   # ページネーションの表示件数追加
-  # paginates_per 9
+  paginates_per 6
 
   # フォローフォロワー関係
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得

@@ -1,2 +1,6 @@
-$("<%= @id_name %>").html('<%= escape_javascript(render('favorites/index',  chocolate: @chocolate)) %>');
+<% if @id_name.nil? %>
+  $("#error").append("商品がありません”)
+<% else %>
+  $("<%= @id_name %>").html('<%= escape_javascript(render('favorites/index',  chocolate: @chocolate)) %>');
 
+<% end %>

@@ -383,7 +383,6 @@ ul{
 .favo-ranking{
   font-family: "soft";
   width: 320px;
-  height: 400px;
   background-color:rgba(243, 235, 240, 0.932);
   margin-right: auto;
   margin-left: auto;
@@ -480,7 +479,7 @@ ul{
   margin-bottom: 30px;
   margin-top: 30px;
 }
-
+// お気に入りランキング
 .favo{
   margin-top: 40px;
 }
@@ -499,7 +498,7 @@ ul{
    padding-left: 0;
   }
 }
-
+// コメント一覧
 .comment-date{
   margin: 10px auto;
   text-align: center;
@@ -543,4 +542,28 @@ ul{
     position: absolute;
     bottom: 0;
   }
+}
+
+// ユーザー一覧
+
+.users{
+  margin: 20px 0 ;
+  
+ 
+  
+}
+
+.users-profile {
+  margin: 10px 0;
+
+  border-bottom: solid 1px #0f0d0f;
+}
+
+.user-nickname{
+  margin: 30px 0;
+  font-size: large;
+}
+
+.profile{
+  margin-top: 25px;
 }

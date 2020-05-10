@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_083829) do
+ActiveRecord::Schema.define(version: 2020_05_10_062311) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,12 +26,11 @@ ActiveRecord::Schema.define(version: 2020_04_28_083829) do
   end
 
   create_table "brands", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name"
     t.text "content"
-    t.string "status"
     t.string "brand_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "chocolates", force: :cascade do |t|
@@ -39,68 +38,60 @@ ActiveRecord::Schema.define(version: 2020_04_28_083829) do
     t.text "url"
     t.string "asin"
     t.integer "price"
-    t.text "official_url"
     t.string "brand_id"
     t.integer "taste"
     t.integer "healthy"
     t.integer "cost_performance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "content"
     t.string "chocolate_image_id"
     t.string "rakuten_chocolate_name_url"
     t.string "medium_image_url"
     t.integer "user_id"
-    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "title"
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "image_id"
+    t.bigint "chocolate_id"
     t.float "rate"
     t.float "taste"
     t.float "healthy"
     t.float "cost_performance"
     t.string "item_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "title"
     t.text "content"
     t.bigint "user_id"
     t.string "name"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "chocolate_id"
+    t.string "item_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.string "item_code"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "followed_id"
     t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
-    t.string "nickname"
-    t.string "gender"
-    t.string "comment"
-    t.string "job"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -110,11 +101,19 @@ ActiveRecord::Schema.define(version: 2020_04_28_083829) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "profile_image_id"
+    t.string "name"
+    t.string "email_address"
+    t.string "password_digest"
+    t.string "nickname"
     t.string "age"
-    t.string "uid"
-    t.string "provider"
+    t.string "gender"
+    t.string "comment"
+    t.string "job"
+    t.boolean "admin"
+    t.string "profile_image_id"
     t.string "item_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
