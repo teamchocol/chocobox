@@ -1,7 +1,6 @@
 <div class="container rakuten-index">
 	<h3>商品一覧</h3>
 	<div class="row ">
-		<div id="error"></div>
 		<% @chocolates.each do |chocolate| %>
 			<div class="rakuten_ranking  col-xs-4 col-sm-4 col-md-4">
 				<div>
@@ -24,9 +23,7 @@
 						<%= render 'favorites/index', chocolate: chocolate %>
 					</div>					 
 				<% end %>
-				<div>
-					いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>個
-				</div>
+			
 			</div>
 		<% end %>
 	</div>

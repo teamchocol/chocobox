@@ -16,10 +16,6 @@
                  <%= render 'favorites/show', chocolate: @chocolate %>
              </div>
                 
-             <div>
-                いいねの数
-                <%= Favorite.where(item_code: @chocolate["Items"][0]["Item"]["itemCode"]).count %>個
-             </div>
          </div>
       </div>
    </div>

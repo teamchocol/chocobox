@@ -20,6 +20,7 @@
 //= require turbolinks
 //= require jquery_ujs
 //= require Chart.min
+//= require toastr
 //= require_tree .
 
 $(function(){

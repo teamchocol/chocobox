@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  /*
+ *= require toastr
  *= require_tree .
  *= require_self
  */
@@ -48,6 +49,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+
 
 // ヘッダー
 header {
@@ -566,4 +570,32 @@ ul{
 
 .profile{
   margin-top: 25px;
+}
+
+// チョコサーチ
+.chocosearch{
+  text-align: center;
+  margin: 15px auto;
+}
+
+.search{
+  text-align: center;
+  margin: 15px auto;
+}
+
+.search-box{
+  text-align: center;
+}
+
+.search{
+  margin: 10px 0;
+
+}
+
+.searches{
+  margin: 10px 0;
+}
+
+.choco-image{
+  text-align: center;
 }

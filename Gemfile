@@ -89,6 +89,8 @@ gem "debase"
 
 gem "active_model_serializers"
 
+gem 'toastr-rails'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
