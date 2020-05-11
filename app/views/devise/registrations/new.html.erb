@@ -22,6 +22,16 @@
          </div>
 
          <div class="field">
+            <%= f.label :性別 %><br />
+            <%= f.select 'gender', [["女性","1"], ["男性","2"], ["不明","3"], ["秘密","4"]],:selected=>"1" %>
+         </div>
+
+         <div class="field">
+           <%= f.label :年齢 %><br />
+           <%= f.select 'age', [["10代","1"], ["20代前半","2"], ["20代後半","3"], ["30代前半","4"],["30代後半","1"], ["40代前半","2"], ["40代後半","3"], ["50代前半","4"],["50代後半","1"], ["60代前半","2"], ["60代後半","3"], ["70代以上","4"]],:selected=>"1" %>
+         </div>
+
+         <div class="field">
            <%= f.label :パスワード %>
            <% if @minimum_password_length %>
            (<%= @minimum_password_length %> 文字以上)
@@ -38,9 +48,9 @@
            <%= f.submit "新規登録" ,class: "btn btn-primary" %>
          </div>
          <% end %>
-
-         <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-danger" %>
-
+         <div class="guest">
+           <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-danger" %>
+         </div>
        </div>
      </div>
    </div>

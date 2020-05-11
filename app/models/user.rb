@@ -10,6 +10,7 @@ def self.guest
     # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
   end
 end
+
 def self.find_for_oauth(auth)
   user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -24,16 +25,6 @@ def self.find_for_oauth(auth)
   user
 end
 
-  # ユーザー登録用
-  # before_save { email.downcase! }
-  # validates :name, presence: true, length: {maximum: 50}
-  # validates :nickname, presence: true, length: {maximum: 50}
-  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
-  # validates :email, presence: true, length: {maximum: 255},
-  #                   format: {with: VALID_EMAIL_REGEX},
-  #                   uniqueness: {case_sensitive: false}
-  # validates :password, length: {minimum: 6}, allow_nil: true
-  # validates :comment, length: {maximum: 100}
   
 
   # ページネーションの表示件数追加
@@ -54,7 +45,7 @@ end
   # お問い合わせとの関連付け
   has_many :contacts, dependent: :destroy
 
-  # お気に入り機能関連付け
+  # いいね機能関連付け
   has_many :favorites, dependent: :destroy
 
   # 画像投稿
@@ -65,7 +56,7 @@ end
     favorites.find_by(item_code: item_code)
   end
    # ユーザーをフォローする関数
-   def follow(user_id)
+  def follow(user_id)
     follower.create(followed_id: user_id)
   end
   # ユーザーをフォロー解除する関数
@@ -92,55 +83,70 @@ end
 		end
   end
  
-#  Facebookでのログイン
- def self.without_sns_data(auth)
-  user = User.where(email: auth.info.email).first
-
-    if user.present?
-      sns = SnsCredential.create(
-        uid: auth.uid,
-        provider: auth.provider,
-        user_id: user.id
-      )
-    else
-      user = User.new(
-        nickname: auth.info.name,
-        email: auth.info.email,
-      )
-      sns = SnsCredential.new(
-        uid: auth.uid,
-        provider: auth.provider
-      )
-    end
-    return { user: user ,sns: sns}
-  end
-
-  def self.with_sns_data(auth, snscredential)
-  user = User.where(id: snscredential.user_id).first
-  unless user.present?
-    user = User.new(
-      nickname: auth.info.name,
-      email: auth.info.email,
-    )
-  end
-  return {user: user}
-  end
-
-  def self.find_oauth(auth)
-  uid = auth.uid
-  provider = auth.provider
-  snscredential = SnsCredential.where(uid: uid, provider: provider).first
-  if snscredential.present?
-    user = with_sns_data(auth, snscredential)[:user]
-    sns = snscredential
-  else
-    user = without_sns_data(auth)[:user]
-    sns = without_sns_data(auth)[:sns]
-  end
-  return { user: user ,sns: sns}
-  end
-end
+# 
 # 退会済みユーザーを弾く
 def active_for_authentication?
   super && (self.is_deleted == false)
 end
+
+# ユーザー登録用
+  before_save { email.downcase! }
+  validates :name, presence: true, length: {maximum: 20, minimum: 2}
+  validates :nickname, presence: true, length: {maximum: 20, minimum: 2}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  validates :email, presence: true, length: {maximum: 255},
+                    format: {with: VALID_EMAIL_REGEX},
+                    uniqueness: {case_sensitive: false}
+  validates :password, length: {minimum: 6}, allow_nil: true
+  validates :introduction, length: {maximum: 100}
+  
+end
+
+
+#  Facebookでのログイン
+#  def self.without_sns_data(auth)
+#   user = User.where(email: auth.info.email).first
+
+#     if user.present?
+#       sns = SnsCredential.create(
+#         uid: auth.uid,
+#         provider: auth.provider,
+#         user_id: user.id
+#       )
+#     else
+#       user = User.new(
+#         nickname: auth.info.name,
+#         email: auth.info.email,
+#       )
+#       sns = SnsCredential.new(
+#         uid: auth.uid,
+#         provider: auth.provider
+#       )
+#     end
+#     return { user: user ,sns: sns}
+#   end
+
+#   def self.with_sns_data(auth, snscredential)
+#   user = User.where(id: snscredential.user_id).first
+#   unless user.present?
+#     user = User.new(
+#       nickname: auth.info.name,
+#       email: auth.info.email,
+#     )
+#   end
+#   return {user: user}
+#   end
+
+#   def self.find_oauth(auth)
+#   uid = auth.uid
+#   provider = auth.provider
+#   snscredential = SnsCredential.where(uid: uid, provider: provider).first
+#   if snscredential.present?
+#     user = with_sns_data(auth, snscredential)[:user]
+#     sns = snscredential
+#   else
+#     user = without_sns_data(auth)[:user]
+#     sns = without_sns_data(auth)[:sns]
+#   end
+#   return { user: user ,sns: sns}
+#   end
