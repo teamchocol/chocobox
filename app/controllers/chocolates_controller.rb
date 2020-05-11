@@ -31,7 +31,7 @@ class ChocolatesController < ApplicationController
         end
       end
       if @items_full.present?
-       @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(20)
+       @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(15)
       end
     end
   end
