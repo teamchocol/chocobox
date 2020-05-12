@@ -1,4 +1,4 @@
-<h2>User info</h2>
+<h2>ユーザー情報編集画面</h2>
 
 <%= form_for(@user) do |f| %>
 
@@ -13,33 +13,52 @@
 <% end %>
 <!-- エラーメッセージ表示-->
 
-<div class="field">
-	<%= f.label :ニックネーム %>
-	<%= f.text_field :nickname, class: "name" %>
-</div>
-
-<div class="field">
-	<%= f.label :画像 %>
-	<%= f.attachment_field :profile_image, class: "user_image" %>
-</div>
-
-<div class="field">
-	<%= f.label :紹介文 %>
-	<%= f.text_area :comment, class: "comment" %>
-</div>
-
-<div class="field">
-	<%= f.label :性別 %>
-	<%= f.select :gender, ['男性', '女性','秘密', 'ジェンダーレス' ,'その他'] %>
-</div>
-
-<div class="field">
-	<%= f.label :年齢 %>
-	<%= f.select :age, [['10代前半'], ['10代後半'],['20代前半'], ['20代後半'],['30代前半'], ['30代後半'],['40代前半'], ['40代後半'],['50代前半'], ['50代後半'],['60代'], ['70代'],['80代'], ['90代']], { id: "age", class: "age" } %>
-</div>
-
-<div class="actions">
-	<%= f.submit '保存', :class => "ml-3 btn btn-info"%>
-</div>
-
+<table class="table edit">
+ 	<tr>
+ 		<td class="field">
+			<%= f.label :ニックネーム %>
+			<%= f.text_field :nickname, class: "name" %>
+		</td>
+ 	</tr>
+ 	<tr>
+ 		<td class="field">
+      <%= f.label :画像 %>
+	    <%= f.attachment_field :profile_image, class: "user_image" %>
+		</td>
+ 	</tr>
+ 	<tr>
+ 		<td class="field introduction-edit-field">
+			<%= f.label :紹介文%>
+			<%= f.text_area :introduction, class: "introduction-edit" %>
+		</td>
+ 	</tr>
+ 	<tr>
+		<td class="field">
+			<%= f.label :性別 %>
+			<%= f.select :gender, ['男性', '女性','秘密', 'ジェンダーレス' ,'その他'] %>
+		</td>
+ 	</tr>
+ 	<tr>
+		<td class="field">
+			<%= f.label :年齢 %>
+			<%= f.select :age, [['10代前半'], ['10代後半'],['20代前半'], ['20代後半'],['30代前半'], ['30代後半'],['40代前半'], ['40代後半'],['50代前半'], ['50代後半'],['60代'], ['70代'],['80代'], ['90代']], { id: "age", class: "age" } %>
+		</td>
+ 	</tr>
+	<tr>
+    <td class="actions">
+			<%= f.submit '保存', :class => "ml-3 btn btn-info"%>
+		</td>
+	</tr>
+ </table>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
