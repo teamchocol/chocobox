@@ -2,32 +2,26 @@
      <div class="row">
          <div class="col-md-12 col-xs-12 ">
              <h2>商品 詳細画面</h2>
-             <div>
+             <div class="item-image">
                  <%= image_tag(@chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? @chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
              </div>
-             <div>
+             <div class="item-name">
                  <%= @chocolate["Items"][0]["Item"]["itemName"] %>
              </div>
-             <div>
+             <div class="item-price">
                  ¥<%= @chocolate["Items"][0]["Item"]["itemPrice"]%>
              </div>
 
              <div id="<%= "like-link-#{@chocolate["Items"][0]["Item"]["itemCode"].delete(":")}" %>">
                  <%= render 'favorites/show', chocolate: @chocolate %>
              </div>
-                
-             <div>
-                いいねの数
-                <%= Favorite.where(item_code: @chocolate["Items"][0]["Item"]["itemCode"]).count %>個
-             </div>
          </div>
       </div>
    </div>
 <div>         
-    <div id='comment_area'>
+    <div class="comment-area" id='comment_area'>
         <%= render 'comments/index', chocolates: @chocolates, chocolate: @choco %>
     </div>
-
 
     <div id="comment_form">
         <%= render 'comments/newform', chocolates: @chocolates,  chocolate: @choco, comment: @comment, taste: @taste %>

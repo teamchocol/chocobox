@@ -451,14 +451,43 @@ ul{
 .card-comment{
   margin-bottom: 40px;
 }
-
+// 口コミ一覧 詳細ページへの部分テンプレート
 .comment-author{
   text-align: center;
   margin: auto auto;
 }
 .kutikominaiyou{
-  margin-left: 50px;
-  
+  margin-left: 50px; 
+}
+.arrow_box {
+	position: relative;
+	background: #d5b38d;
+  border: 4px solid #e7f5e6;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(213, 179, 141, 0);
+	border-bottom-color: #bba285;
+	border-width: 12px;
+	margin-left: -70px;
+}
+.arrow_box:before {
+	border-color: rgba(231, 245, 230, 0);
+	border-bottom-color: #e7f5e6;
+	border-width: 18px;
+	margin-left: -76px;
 }
 .avatar{
   margin-left: 50px;
@@ -472,20 +501,35 @@ ul{
   margin-bottom: 0;
   margin-right: 0;
 }
+.comment-count{
+  margin-left: 30px;
+  margin-bottom: 50px;
+}
+
+#taste{
+  margin-top: 10px;
+}
+
+.new-comment-button{
+  margin: 15px auto 15px 50px;
+}
 
 .kutikomi-ranking{
   font-family: "soft";
   text-align: center;
-  height: 600px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+  border : solid 1px #333 ; 
 }
 .kutikomi-ranking{
   margin-bottom: 30px;
+
 }
 .oisiichoco-name{
   margin: 20px auto;
 }
-
+.blank{
+  height: 0;
+}
 // おいしさ健康コスパチャート
 .chart-ranking{
   width: 350px;
@@ -497,6 +541,40 @@ ul{
 .kutikomitoukou{
   margin-bottom: 30px;
   margin-top: 30px;
+}
+.item-name{
+  text-align: center;
+  width: 60%;
+  margin: 15px auto;
+}
+.item-image{
+  text-align: center;
+  margin: 10px auto;
+}
+.item-price{
+  text-align: center;
+  font-size: large;
+  margin: 20px auto;
+}
+.comment-area{
+  margin: 30px auto;
+  height: auto;
+}
+.comment-avatar{
+  margin-top: 30px;
+}
+
+// いいねアイコン
+.iine{
+  font-size: 30px;
+}
+.like{
+  text-align: center;
+}
+// いいねの数
+.iine-count{
+  text-align: center;
+  margin: 10px auto;
 }
 // お気に入りランキング
 .favo{
@@ -545,6 +623,10 @@ ul{
   margin-bottom: 10px;
 }
 
+.sougou{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
 .hyouka{
   margin: 10px auto;
 }
