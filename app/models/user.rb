@@ -7,7 +7,8 @@ def self.guest
   find_or_create_by!(email: 'guest@example.com') do |user|
     user.password = SecureRandom.urlsafe_base64
     user.user = current_user
-    # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    user.confirmed_at = Time.now  
+    # Confirmable を使用している場合は必要
   end
 end
 
@@ -85,9 +86,9 @@ end
  
 # 
 # 退会済みユーザーを弾く
-def active_for_authentication?
-  super && (self.is_deleted == false)
-end
+# def active_for_authentication?
+#   super && (self.is_deleted == false)
+# end
 
 # ユーザー登録用
   before_save { email.downcase! }
