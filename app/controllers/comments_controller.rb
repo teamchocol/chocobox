@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+  before_action :authenticate_user!
   def create
     @comment = current_user.comments.new(comment_params)
     
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   def index
     @users = User.all
-    @comments = Comment.page(params[:page]).per(10)
+    @comments = Comment.page(params[:page]).per(6)
     @name = {}
     @image = {}
     @comments.each do |comment|
@@ -46,6 +46,6 @@ class CommentsController < ApplicationController
  
   private
   def comment_params
-      params.require(:comment).permit(:title, :content, :image, :taste, :healthy, :cost_performance, :item_code)
+      params.require(:comment).permit(:title, :content, :image_id, :taste, :healthy, :cost_performance, :item_code)
   end
 end

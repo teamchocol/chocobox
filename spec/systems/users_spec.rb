@@ -62,26 +62,7 @@ describe 'ユーザーのテスト' do
     fill_in 'user[password]', with: user.password
     click_button 'Log in'
   end
-  describe 'サイドバーのテスト' do
-    context '表示の確認' do
-      it 'User infoと表示される' do
-        expect(page).to have_content('User info')
-      end
-      it '画像が表示される' do
-        expect(page).to have_css('img.profile_image')
-      end
-      it '名前が表示される' do
-        expect(page).to have_content(user.name)
-      end
-      it '自己紹介が表示される' do
-        expect(page).to have_content(user.introduction)
-      end
-      it '編集リンクが表示される' do
-        visit user_path(user)
-        expect(page).to have_link '', href: edit_user_path(user)
-      end
-    end
-  end
+  
 
   describe '編集のテスト' do
     context '自分の編集画面への遷移' do

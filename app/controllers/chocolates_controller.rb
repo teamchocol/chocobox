@@ -1,4 +1,5 @@
 class ChocolatesController < ApplicationController
+  before_action :authenticate_user!
   def index 
       @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking.page(1)
   end
