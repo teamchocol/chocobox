@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 	
   private
   def user_params
-  	params.require(:user).permit(:name, :comment, :profile_image, :nickname, :age, :gender)
+  	params.require(:user).permit(:name, :introduction, :profile_image, :nickname, :age, :gender)
   end
 	#url直接防止　メソッドを自己定義してbefore_actionで発動。
 	
