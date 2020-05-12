@@ -1,11 +1,5 @@
 <%= form_for [comment],remote: true do |f| %>
-    <% if comment.errors.any? %>
-			<h3><%= comment.errors.count %>error occurrence</h3>
-			<ul>
-				<% comment.errors.full_messages.each do |message| %>
-				<li><%= message %></li><% end %>
-		  </ul>
-		<% end %>
+  <%= render 'layouts/error_messages', model: f.object %>
 	<div class="container">
    <div class="row">
 			<div class="col-sm-10 col-xs-10 col-md-10">

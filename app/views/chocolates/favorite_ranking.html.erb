@@ -1,5 +1,5 @@
 <div class="container">
-	<h3>いいね数　ランキング</h3>
+	<h3>いいね数  ランキング</h3>
 	<div class="row favo_row">
 		<% @items.each do |chocolate| %>
 		<div class="favo-ranking col-xs-10 col-md-9">
@@ -29,10 +29,16 @@
 			</div>
 			<div class="favo">
 				<a>いいねの数
-				<%= Favorite.where(item_code: chocolate["Items"][0]["Item"]["itemCode"]).count %>個</a>
+				<%= Favorite.where(item_code: chocolate["Items"][0]["Item"]["itemCode"]).count %></a>
 			</div>
 		</div>	
 		<% end %>
+	</div>
+
+	<div class="page">
+		<% if @items.present? %>
+		<%= paginate @items, class: "paginate" %>
+		<% end %> 
 	</div>
 
 	<div>

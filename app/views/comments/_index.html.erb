@@ -12,25 +12,25 @@
 			<div class="row">
 				<div class="heikin col-xs-3 col-sm-3 col-md-3">	  
 					<div>
-						<h6 class="average ave">おいしさ平均値</h6>
+						<h3 class="average ave">おいしさ平均値</h3>
 					</div>
 					<div>
-						<h6 class="average ave">健康度平均値</h6>
+						<h3 class="average ave">健康度平均値</h3>
 					</div>
 					<div>
-						<h6 class="average ave">コスパ平均値</h6>
+						<h3 class="average ave">コスパ平均値</h3>
 					</div>
 				</div>
 
 				<div class="heikin col-xs-2 col-sm-2 col-md-2">
 					<div class="average value">
-						<a><%= chocolate.total_taste %>点</a>
+						<h3><%= chocolate.total_taste %>点</h3>
 					</div>
 					<div class="average">
-						<a><%= chocolate.total_healthy %>点</a>
+						<h3><%= chocolate.total_healthy %>点</h3>
 					</div>
 					<div class="average">
-						<a><%= chocolate.total_cost_performance %>点</a>
+						<h3><%= chocolate.total_cost_performance %>点</h3>
 					</div>
 				</div>
 
@@ -108,8 +108,8 @@
 						<div class="comment">
 							<%= comment.content %>
 						</div>
-						<div class="">
-							<%= attachment_image_tag(comment.image, :image,size:'100x100', format: 'jpeg') %>
+						<div class="comment-image">
+							<%= attachment_image_tag comment, :image,size:'120x120', format: 'jpeg' %>
 						</div>
 					</div>
 				</div>
