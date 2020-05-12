@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   attachment :image, destroy: false
 
+
+
   def self.search(search,word)
    
 		if search == "forward_match"
@@ -24,31 +26,24 @@ class Comment < ApplicationRecord
   # paginates_per 10
 
 
-  # validates :title, presence: true, length: {maximum: 50}
+  validates :title, presence: true, length: {maximum: 50}
+  validates :taste, 
+  numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1
+  }  
+  validates :healthy, 
+  numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1
+  }  
+  validates :cost_performance, 
+  numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1
+  }  
   
-  # with_options presence: true do
-  #   validates :taste
-  #   validates :healthy
-  #   validates :cost_performance
-  
-  # with_options numericality: {
-  #   less_than_or_equal_to: 5,
-  #   greater_than_or_equal_to: 1
-  # }  do
-  #   validates :taste
-  #   validates :healthy
-  #   validates :cost_performance
-  
-  # validates :content, presence: true
-  # validates :content, length: {maximum: 300}
-  # validates :user_id, uniqueness: {scope: [:chocolate_id]}
-
-  # 画像サイズ
-  # validate :image_size
-
-  private
-  # アップロードされた画像のサイズをバリデーションする
-  # def picture_size
-  #   errors.add(:image, 'ファイルサイズを5MBより小さくしてください') if image.size > 5.megabytes
-  # end
+  validates :content, presence: true
+  validates :content, length: {maximum: 300}
+ 
 end

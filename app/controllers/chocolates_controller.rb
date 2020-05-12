@@ -31,9 +31,9 @@ class ChocolatesController < ApplicationController
          @items_full.push(item)        
         end
       end
-      if @items_full.present?
-       @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(15)
-      end
+        if @items_full.present?
+        @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(15)
+        end
     end
   end
 
@@ -54,14 +54,15 @@ class ChocolatesController < ApplicationController
   end
 
   def favorite_ranking 
-    @items = []
-    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
-    ranking_list.each do |a|
-    item = Rakuten.get_item(a.item_code)
-      if item["Items"].present? 
-        @items.push(item)        
-      end 
-    end
+    @items_full = []
+    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(15)
+      ranking_list.each do |a|
+      item = Rakuten.get_item(a.item_code)
+        if item["Items"].present? 
+          @items_full.push(item)        
+        end 
+      end
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(5)
   end
 
   def taste_ranking 
@@ -110,6 +111,6 @@ class ChocolatesController < ApplicationController
     params.permit(:name, :medium_image_url, :price, :item_code)
   end
   def comment_params
-    params.permit(:content, :title, :image_id, :item_code )
+    params.permit(:content, :title, :image, :item_code )
   end
 end
