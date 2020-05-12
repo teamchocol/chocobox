@@ -3,7 +3,7 @@
   <%= link_to  chocolate_favorites_path(chocolate_id: chocolate["itemCode"]), class: "fas fa-thumbs-up iine",method: :delete, remote: true do %><% end %>
 </div>
 <div class="iine-count">
-  いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>個
+  いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>
 </div>
 
 <% else %>
@@ -11,7 +11,7 @@
   <%= link_to chocolate_favorites_path(chocolate_id: chocolate["itemCode"]), class: "far fa-thumbs-up iine", method: :post, remote: true do %><% end %>
 </div>
 <div class="iine-count">
-  いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>個
+  いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>
 </div>
 
 <% end %>
