@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:item_code])
+    @comment = Comment.find(params[:id])
     if comment.user != current_user
       redirect_to request.referer
     end

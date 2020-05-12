@@ -20,9 +20,6 @@
 			<div id="<%= "like-link-#{chocolate["itemCode"].delete(":")}" %>">
 					<%= render 'favorites/index', chocolate: chocolate %>
 			</div>
-			<div>
-				いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>個
-			</div>
 		</div>	
 		<% end %>
 	</div>
