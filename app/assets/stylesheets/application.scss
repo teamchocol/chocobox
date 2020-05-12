@@ -20,8 +20,8 @@
 
 // フォント
 @font-face {
-  font-family: "名前";
-  src: url('font.ttf') format("truetype");
+  font-family: "English";
+  src: url('Allura-Regular.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -79,19 +79,25 @@ header {
     font-family: "soft";
     background: transparent;
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
+    width: 95%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
       }
+  .single-blog .short_details_choco {
+    top: 30%;
+    left: 45%;
+      }
   .single-blog .short_details_kutikomi {
-    top: 60%;
-    left: 40%;
+    top: 55%;
+    left: 50%;
       }
   .single-blog .short_details_ranking {
     top: 55%;
-    left: 50%;  
+    left: 50%; 
+
       }
   .single-blog .short_details_meigen {
     top: 60%;
@@ -124,7 +130,20 @@ header {
     
     }
   .title1 {
+    font-size: 40px;
+    }
+  .title2 {
     font-size: 25px;
+    }
+  .title3 {
+    font-size: 20px;
+    }
+  .web-title {
+    font-family: "English";
+    font-size: 75px;
+    }
+  .start-button {
+    font-family: "soft";
     }
 
 
@@ -567,3 +586,13 @@ ul{
 .profile{
   margin-top: 25px;
 }
+
+// ユーザー編集画面
+.introduction-edit{
+  height: 100px;
+  width: 250px;
+}
+
+label {
+  vertical-align: top;
+  }
