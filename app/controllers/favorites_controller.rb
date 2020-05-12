@@ -12,11 +12,7 @@ class FavoritesController < ApplicationController
 
   private
   def set_variables
-    @chocolate = Rakuten.get_item(params[:chocolate_id])
-    @id_name
-      if @chocolate.present?
-        @id_name = "#like-link-#{@chocolate['Items'][0]['Item']['itemCode'].delete(":")}"
-      end
-    @chocolate = {"itemCode" => @chocolate['Items'][0]['Item']['itemCode']}
+    @id_name = "#like-link-#{params[:chocolate_id].delete(":")}"
+    @chocolate = {"itemCode" => params[:chocolate_id]}
   end
 end
