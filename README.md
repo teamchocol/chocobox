@@ -7,19 +7,18 @@
 ## 機能
 
 - インフラ(AWS)
-- 単体・統合テスト(RSpec, factory_bot, capybara)　
+- 単体・統合テスト(RSpec, factory_bot, capybara)
 - データベース(MySQL)
 - 画像アップロード(mini_magick)
 - ページネーション(kaminari)
 - お問い合わせメール送信(ActionMailer)
 - アイテム情報取得(Rakuten API, rakuten-web-service)
 - 検索(ransack)
-- デザイン(Bootstrap)
+- デザイン(Bootstrap4)
 - 認証関連(ログイン, 管理者ユーザー)
 - ユーザー関連（フォロー・フォロワー）
-- アイテム関連（いいね登録（非同期）, いいねランキング表示, 楽天人気ランキング表示）
+- アイテム関連（いいね登録（非同期）, いいねランキング表示, 楽天市場人気ランキング表示, おいしさランキング, 健康ランキング, コスパランキング, コメント一覧ページ）
 - コメント・評価関連（星評価, レーダーチャート評価）
-
 
 
 chocobox機能一覧
@@ -35,8 +34,7 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
 - バックエンド
     - Ruby
     - Rails 
-- インフラ
-    - Docker   
+- インフラ  
     - AWS
     
 ## アプリ制作の背景（テーマ選定理由）
@@ -61,7 +59,7 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
 ・健康的
 この3点について５段階評価をして、口コミを投稿できます。
 
-ユーザーどおしのフォロー機能、商品に対するお気に入り機能、お気に入りの数が多いチョコレートをランキング形式で確認、チョコレートメーカー別の検索をすることができます。
+ユーザーどおしのフォロー機能、商品に対するいいね機能、いいねの数が多いチョコレートをランキング形式で確認、おいしさ、健康、コスパ別のランキングも見ることができます。
 
 また、気になる点や改善点などはお問い合わせから要望することができます。
 
