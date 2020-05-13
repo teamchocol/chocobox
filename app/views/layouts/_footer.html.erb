@@ -9,12 +9,13 @@
       </ul>
       </div>
       <div class= "col-md-6 col-sm-6 col-xs-6",.text-light>  
-      <div class="text-white bg-dark">
+      <div class="text-white">
       <ul>  
         <li><%=  link_to 'チョコレートを探す', search_chocolates_path %></li>
-        <li><%=  link_to 'チョコレート一覧を見る', chocolates_path %></li>
+        <li><%=  link_to '楽天市場人気チョコレートを見る', chocolates_path %></li>
         <li><%=  link_to 'いいね数ランキングを見る', favorite_ranking_chocolates_path %></li>
-        <li><%=  link_to 'ユーザー一覧を見る', users_path %></li>
+        <li><%=  link_to 'ユーザー 一覧を見る', users_path %></li>
+        <li><%= link_to '口コミ 一覧を見る', comments_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
       </ul>
       </div>    
       </div> 

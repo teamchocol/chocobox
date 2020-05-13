@@ -1,16 +1,7 @@
 class RelationshipsController < ApplicationController
   before_action :authenticate_user! 
-  def create
-    
+  def create 
     active_relationship = current_user.user.new(follower_id: current_user.id, followed_id: user.id)
-    
-    
-    
-    # user = User.find(params[:current_user_id])
-    # active_relationship = current_user.active_relationships.find_by(followed_id: @user.id)
-
-  #  (current_user.active_relationships.find_by(followed_id: @user.id)
-    # followed_id = (params[:followed_id]).to_i
      active_relationship.save
      redirect_to request.referrer || root_url
   end
