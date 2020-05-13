@@ -334,7 +334,7 @@ ul{
   color: white;
 }
 .footer {
-  background-color: #333;
+  background-color: #111;
   color: #fff;
   padding-top: 15px;
   padding-bottom:0 ;
@@ -377,7 +377,7 @@ ul{
 }
 .table{
   font-family: "soft";
-  margin: 10px 50px;
+  margin: 10px 10px;
   text-align: center;
 }
 
@@ -666,6 +666,12 @@ ul{
   margin-top: 25px;
 }
 
+// ユーザー詳細画面
+.user-show-image{
+   text-align: center;
+   margin: auto;
+}
+
 // ユーザー編集画面
 .introduction-edit{
   height: 100px;
@@ -675,6 +681,24 @@ ul{
 label {
   vertical-align: top;
   }
+
+.edit{
+  font-family: "soft";
+}
+.edit-title{
+  text-align: center;
+  margin-top: 15px;
+}
+
+// フォロー一覧画面
+.follow-title{
+  text-align: center;
+}
+
+// フォロワー一覧画面
+.follower-title{
+  text-align: center;
+}
 
 // チョコサーチ
 .chocosearch{
@@ -705,10 +729,7 @@ label {
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
-  
 }
-
-
 .search-box{
   text-align: center;
 }
@@ -724,3 +745,11 @@ label {
 .choco-image{
   text-align: center;
 } 
+.search-list{
+  font-family: "soft";
+  height: auto;
+  background-color:rgba(243, 235, 240, 0.932);
+  border: #fff 5px solid;
+  padding: 10px;
+  text-align: center;
+}

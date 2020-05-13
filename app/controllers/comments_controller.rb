@@ -3,12 +3,13 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     
-    if @comment.save 
+    # if 
+      @comment.save
       flash[:success] = "You have commented  successfully."
       redirect_to chocolate_path(@comment.item_code)
-    else 
-      render template:'chocolates/show'
-    end
+    # else 
+    #   render template:'chocolates/show'
+    # end
   end
 
   def destroy

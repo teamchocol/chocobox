@@ -33,7 +33,7 @@
     <h3>商品一覧</h3>
     <div class="row">
       <% @items.each do |good| %>
-        <div class="list col-xs-4 col-sm-4 col-md-4">
+        <div class="search-list col-xs-4 col-sm-4 col-md-4">
           <div class="choco-image">
             <% if good.medium_image_urls[0] %>
             <%= link_to (image_tag(good.medium_image_urls[0], style: "width: 120px;height: 100px;display: inline-block;")) %>
@@ -61,5 +61,5 @@
     </div>
   </div> 
     <div class="yubi">
-      <div id="back"><%= image_tag "arrow.jpg", size:'50x50' %></div>
+      <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
     </div>

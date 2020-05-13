@@ -1,6 +1,6 @@
- <table class="table">
+ <table class="table table-striped ç">
  	<tr>
- 		<td>
+ 		<td colspan="2" class="user-show-image">
  			<%= attachment_image_tag @user, :profile_image,  size:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'150x150' %>
  		</td>
  	</tr>
@@ -22,7 +22,7 @@
  	</tr>
  </table>
 
- <table class="table">
+ <table class="table  table-striped user-follow-table">
  	<tbody>		
  		<tr>
  			<td>
