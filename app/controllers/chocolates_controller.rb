@@ -55,7 +55,7 @@ class ChocolatesController < ApplicationController
 
   def favorite_ranking 
     @items_full = []
-    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(15)
+    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
       ranking_list.each do |a|
       item = Rakuten.get_item(a.item_code)
         if item["Items"].present? 
