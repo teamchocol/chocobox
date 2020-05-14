@@ -20,11 +20,11 @@
    </div>
 <div>         
     <div class="comment-area" id='comment_area'>
-        <%= render 'comments/index', chocolates: @chocolates, chocolate: @choco %>
+        <%= render 'comments/index', chocolate: @choco, new_comment: @new_comment %>
     </div>
-
+   
     <div id="comment_form">
-        <%= render 'comments/newform', chocolates: @chocolates,  chocolate: @choco, comment: @comment %>
+        <%= render 'comments/newform', chocolate: @choco, comment: @comment %>
     </div>
 
     <div class="yubi">
