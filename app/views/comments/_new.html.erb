@@ -36,7 +36,7 @@
         <div class="col-xs-5 col-sm-5 col-md-5">
           <div>
             <canvas width="50px" id="myChart-<%= comment.id %>" class="chart-child"></canvas>
-          
+            <script>
               var ctx = document.getElementById("myChart-<%= comment.id %>");
               var chart = new Chart(ctx, {
                 type: 'radar',
