@@ -3,7 +3,7 @@
    <div class="row">
 			<div class="col-sm-10 col-xs-10 col-md-10">
 			    <%= f.label :タイトル %>
-					<%= f.text_field :title, rows:'5', class: "form-control",placeholder: "タイトルをここに" %>
+					<%= f.text_field :title, rows:'5', class: "form-control",id: "form-control",placeholder: "タイトルをここに" %>
 			</div>
 			<!-- おいしさ評価 -->
 			<div class="form-group col-sm-10 col-xs-10 col-md-10" id="taste">
@@ -21,11 +21,11 @@
 				<%= f.hidden_field :cost_performance, id: :review_star %>
 			</div>	
       <div class="col-sm-10">
-					<%= f.text_area :content, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+					<%= f.text_area :content, rows:'5', class: "form-control", id: "form-area",placeholder: "コメントをここに" %>
 			</div>
 			<div class="col-sm-4 col-xs-4 col-md-3">
 				  <%= f.label :画像を投稿 %>
-					<%= f.attachment_field :image, class: "comment_image" %>
+					<%= f.attachment_field :image, class: "comment_image",id: "comment_image" %>
 			</div>	
 			<div class="form-group col-sm-3 col-xs-3 col-md-3">
 				<%= f.hidden_field :item_code, value: chocolate.get_item_code() %>
