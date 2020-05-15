@@ -499,7 +499,7 @@ ul{
   margin-right: 0;
 }
 .comment-count{
-  margin-left: 30px;
+  margin-left: 0px;
   margin-bottom: 50px;
 }
 
@@ -511,7 +511,9 @@ ul{
 }
 
 .new-comment-button{
-  margin: 15px auto 15px 50px;
+  margin-top: 20px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 .kutikomi-ranking{
@@ -530,6 +532,8 @@ ul{
 .blank{
   height: 0;
 }
+
+
 // おいしさ健康コスパチャート
 .chart-ranking{
   width: 350px;
