@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   def create
     @new_comment = current_user.comments.new(comment_params)
     @new_comment.save
+    session[:crop_x] = comment_params[:x]
+    session[:crop_y] = comment_params[:y]
+    session[:crop_width] = comment_params[:width]
+    session[:crop_height] = comment_params[:height]
     flash[:success] = "You have commented  successfully."
       # redirect_to chocolate_path(@comment.item_code)
     #  else 
@@ -45,6 +49,6 @@ class CommentsController < ApplicationController
  
   private
   def comment_params
-      params.require(:comment).permit(:title, :content, :image, :taste, :healthy, :cost_performance, :item_code)
+      params.require(:comment).permit(:title, :content, :image, :taste, :healthy, :cost_performance, :item_code, :x, :y, :width, :height)
   end
 end

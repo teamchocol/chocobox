@@ -112,6 +112,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    cropper-rails (2.3.2.1)
+      railties (>= 3.1.0)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.9)
@@ -369,6 +371,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chart-js-rails (~> 0.1.4)
   coffee-rails (~> 4.2)
+  cropper-rails
   debase
   devise
   dotenv-rails

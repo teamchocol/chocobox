@@ -23,13 +23,30 @@
 				<%= f.hidden_field :cost_performance, id: :review_star %>
 			</div>	
       <div class="col-sm-10">
-
 					<%= f.text_area :content, rows:'5', class: "form-control", id: "form-area",placeholder: "コメントをここに" %>
-
 			</div>
 			<div class="col-sm-4 col-xs-4 col-md-3">
+			 
 				  <%= f.label :画像を投稿 %>
-					<%= f.attachment_field :image, class: "comment_image",id: "comment_image" %>
+					<%= f.file_field :image, class: "comment_image",id: "comment_image" %>
+				  <%= f.hidden_field :x, id:"dataX"%>
+					<%= f.hidden_field :y, id:"dataY"%>
+					<%= f.hidden_field :width, id:"dataWidth"%>
+					<%= f.hidden_field :height, id:"dataHeight"%>
+					<div class="modal fade" id="cropModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-body">
+									<div class="img-container">
+										<img src="" id="imageModal" alt="picture">
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" id="btn-save" data-dismiss="modal">Save</button>
+								</div>
+							</div>
+						</div>
+					</div>
 			</div>	
 			<div class="form-group col-sm-3 col-xs-3 col-md-3">
 				<%= f.hidden_field :item_code, value: chocolate.get_item_code() %>
