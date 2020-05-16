@@ -17,6 +17,9 @@
 //= require popper
 //= require bootstrap
 //= require bootstrap-sprockets
+//= require cropper.min.js
+//= require jquery-cropper.min.js
+//= require activestorage
 //= require turbolinks
 //= require jquery_ujs
 //= require Chart.min
