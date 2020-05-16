@@ -1,8 +1,9 @@
 class Comment < ApplicationRecord
   # ユーザーとの関連付け
   belongs_to :user
-  attachment :image, destroy: false
-
+  attr_accessor :x, :y, :width, :height
+  has_one_attached :image
+  
 
 
   def self.search(search,word)
