@@ -29,7 +29,9 @@
               <%= comment.content %>
             </div>
             <div class="comment-image">
+            <% if comment.image.present? %>
               <%= image_tag comment.image.variant(crop: "#{session[:crop_width]}x#{session[:crop_height]}+#{session[:crop_x]}+#{session[:crop_y]}"),size:'200x200', format: 'jpeg'  %>
+            <% end %>
               <%#= attachment_image_tag comment, :image%>
             </div>
           </div>
