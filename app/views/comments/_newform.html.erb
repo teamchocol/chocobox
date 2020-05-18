@@ -26,7 +26,11 @@
 					<%= f.text_area :content, rows:'5', class: "form-control", id: "form-area",placeholder: "コメントをここに" %>
 			</div>
 			<div class="col-sm-4 col-xs-4 col-md-3">
-			 
+			    <div class="preview" style='overflow:hidden'>
+							<div id="beforeUpload">
+							</div>
+							<img src="" id="croppedImage">
+					</div>
 				  <%= f.label :画像を投稿 %>
 					<%= f.file_field :image, class: "comment_image",id: "comment_image" %>
 				  <%= f.hidden_field :x, id:"dataX"%>

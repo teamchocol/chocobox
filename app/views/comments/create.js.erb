@@ -2,8 +2,7 @@ $('#div1').append("<%= escape_javascript(render('comments/new', chocolate: @choc
 
 
 
-$('#form-control').val("");
-$('#form-area').val("");
+$('#comment_form').html("<%= escape_javascript(render('comments/newform', comment: @comment, chocolate: @chocolate) ) %>"); 
 
 
 
