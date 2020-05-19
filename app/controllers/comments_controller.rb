@@ -19,12 +19,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @choco = Chocolate.new
     @comment = Comment.find(params[:id])
-    if comment.user != current_user
-      redirect_to request.referer
+    @choco.set_item_code(@comment.item_code)
+    if @comment.user != current_user
     end
     @comment.destroy
-    redirect_to request.referer
     flash[:success] = "successfully delete comment!"
   end
 

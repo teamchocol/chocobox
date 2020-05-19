@@ -1,1 +1,2 @@
-$('#comment_area').html('<%= escape_javascript(render ('comments/index', chocolates: @chocolates,  chocolate: @chocolate) ) %>');
+$('#comment_area').html("<%= escape_javascript(render('comments/index', chocolates: @chocolates,  chocolate: @choco,  comment: @comment) ) %>");
+
