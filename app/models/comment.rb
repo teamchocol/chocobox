@@ -2,8 +2,8 @@ class Comment < ApplicationRecord
   # ユーザーとの関連付け
   belongs_to :user
   attr_accessor :x, :y, :width, :height
-  attachment :image
- 
+  has_one_attached :image
+  
 
 
   def self.search(search,word)
@@ -44,7 +44,6 @@ class Comment < ApplicationRecord
     greater_than_or_equal_to: 1
   }  
   
-  validates :content, presence: true
   validates :content, length: {maximum: 300}
  
 end

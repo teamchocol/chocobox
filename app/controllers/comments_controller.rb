@@ -12,10 +12,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @chocolate = Chocolate.new
     @chocolate.set_item_code(@new_comment.item_code)
-      # redirect_to chocolate_path(@comment.item_code)
-    #  else 
-    #    render template:'chocolates/show'
-    #  end
   end
 
   def destroy
@@ -23,9 +19,12 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @choco.set_item_code(@comment.item_code)
     if @comment.user != current_user
+      @comment.destroy
+      flash[:success] = "コメントを削除しました!"
+    else
+      flash[:alert] = "削除できませんでした"
+      redirect_to request.referer 
     end
-    @comment.destroy
-    flash[:success] = "successfully delete comment!"
   end
 
   def index

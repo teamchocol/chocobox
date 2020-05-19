@@ -19,14 +19,14 @@
       </div>
    </div>
 <div>         
+    <div id="comment_form">
+        <%= render 'comments/newform', chocolate: @choco, comment: @comment %>
+    </div>
+    
     <div class="comment-area" id='comment_area'>
         <%= render 'comments/index', chocolate: @choco, new_comment: @new_comment %>
     </div>
    
-    <div id="comment_form">
-        <%= render 'comments/newform', chocolate: @choco, comment: @comment %>
-    </div>
-
     <div class="yubi">
         <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
     </div>

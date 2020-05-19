@@ -1,4 +1,4 @@
-<div class="kutikomi col-xs-12 col-md-12 col-sm-12">
+<div class="kutikomi col-xs-12 col-md-12 col-sm-12" id="comment<%= comment.id %>">
       <div class="row comment-avatar">
         <div class="comment-user col-xs-3 col-sm-3 col-md-3">
           <div class="">
@@ -29,7 +29,7 @@
               <%= comment.content %>
             </div>
             <div class="comment-image">
-            <% if comment.image.present? %>
+            <% if comment.image.attached? %>
               <%= image_tag comment.image.variant(crop: "#{session[:crop_width]}x#{session[:crop_height]}+#{session[:crop_x]}+#{session[:crop_y]}"),size:'200x200', format: 'jpeg'  %>
             <% end %>
               <%#= attachment_image_tag comment, :image%>
@@ -41,7 +41,7 @@
             <canvas width="50px" id="myChart-<%= comment.id %>" class="chart-child"></canvas>
             <script>
               var ctx = document.getElementById("myChart-<%= comment.id %>");
-              var Chart = new Chart(ctx, {
+              var chart = new Chart(ctx, {
                 type: 'radar',
                 data: {
                   labels: ["おいしさ", "コストパフォーマンス", "健康"],
