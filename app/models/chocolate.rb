@@ -18,7 +18,7 @@ end
 # コメントテーブルからitem_code取得
 # オブジェクト作成
 def comments
-  Comment.where(item_code: @item_code)
+  Comment.where(item_code: @item_code).order(created_at: "desc")
 end
 
 # item_codeに紐づいたおいしさ評価の平均値

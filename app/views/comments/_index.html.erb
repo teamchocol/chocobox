@@ -68,18 +68,19 @@
 		</div>
 		</div>
     <div class="comment-count">
-      <a class="comment-count"><%= chocolate.comments.count %>件コメント</a>
+      <a class="comment-count"><span id="comment_count"> <%= chocolate.comments.count %></span>件コメント</a>
     </div>	
 	</div>
 	<% end %>
 </div>
 
-<div , class="container kutikomi">
+<div class="container kutikomi">
+  <%= render 'layouts/flash_messages' %>
+  <%= render 'layouts/error_messages' %>
   <div id="div1" class="row comment-field">
-
   <% if chocolate.comments.nil? %>
     <div class="blank"></div>>
-  <% else %>
+  <% else %> 
     <% chocolate.comments.each do |comment| %>
     <div class="kutikomi col-xs-12 col-md-12 col-sm-12">
       <div class="row comment-avatar">
@@ -112,7 +113,7 @@
               <%= comment.content %>
             </div>
             <div class="comment-image">
-              <% if comment.image.present? %>
+              <% if comment.image.attached? %>
                <%= image_tag comment.image.variant(crop: "#{session[:crop_width]}x#{session[:crop_height]}+#{session[:crop_x]}+#{session[:crop_y]}"),size:'200x200' %>
               <% end %>
               <%#= attachment_image_tag comment, :image,size:'120x120', format: 'jpeg' %>
@@ -152,15 +153,20 @@
         </div>
         <div class=" comment-delete col-xs-1 col-sm-1 col-md-1">
           <% unless current_user != comment.user %>
-          <div class="delete"><%= link_to comment_path(comment.id), method: :delete, remote: true  do %> <button
+          <div class="delete"><%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true  do %> <button
               class="btn btn-danger">コメントを削除</button>
             <% end %>
-          </div>
+          </div>       
           <% end %>
         </div>
       </div>
     </div>
     <% end %>
+    <%# <div class="page">
+      <% if chocolate.comments.present? %>
+      <%#= paginate chocolate.comments, class: "paginate" %>
+      <%#end %> 
+    <%# </div> %>
   </div>
   <% end %>
 </div>

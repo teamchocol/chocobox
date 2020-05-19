@@ -2,9 +2,9 @@
 	<div class="container">
    <div class="row">
 			<div class="col-sm-10 col-xs-10 col-md-10">
-			    <%= f.label :タイトル %>
+			    <%= f.label :口コミタイトル %>
 
-					<%= f.text_field :title, rows:'5', class: "form-control",id: "form-control",placeholder: "タイトルをここに" %>
+					<%= f.text_field :title, rows:'5', class: "form-control",id: "form-control",placeholder: "最も伝えたいポイントをここにお書きください" %>
 
 			</div>
 			<!-- おいしさ評価 -->
@@ -23,7 +23,7 @@
 				<%= f.hidden_field :cost_performance, id: :review_star %>
 			</div>	
       <div class="col-sm-10">
-					<%= f.text_area :content, rows:'5', class: "form-control", id: "form-area",placeholder: "コメントをここに" %>
+					<%= f.text_area :content, rows:'5', class: "form-control", id: "form-area",placeholder: "気に入ったこと、気に入らなかったことは何ですか？" %>
 			</div>
 			<div class="col-sm-4 col-xs-4 col-md-3">
 			    <div class="preview" style='overflow:hidden'>
