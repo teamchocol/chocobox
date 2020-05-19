@@ -5,7 +5,7 @@ class ChocolatesController < ApplicationController
   end
  
   def show
-    @comments = Comment.where(item_code: params[:id])
+    @comments = Comment.where(item_code: params[:id]).page(params[:page]).per(5)
     @chocolate = Rakuten.get_item(params[:id])
     if @chocolate["Items"] == []
      return redirect_to home_sorry_path
