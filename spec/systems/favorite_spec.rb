@@ -24,25 +24,20 @@ describe 'アイテムお気に入り登録機能' do
       click_on 'お気に入り登録'
     end
 
-    it 'お気に入りしたアイテムがランキングに表示されている' do
-      visit rankings_like_path
-      expect(page).to have_content product.title
-    end
-
     it 'お気に入りしたアイテムがトップページに表示されている' do
       visit root_path
       expect(page).to have_content product.title
     end
 
     it 'お気に入りしたアイテムがユーザープロフィールに表示されている' do
-      visit like_products_user_path(user)
-      expect(page).to have_content product.title
+      visit favorite_chocolates_user_path(user)
+      expect(page).to have_content chocolate["Items"][0]["Item"]["itemName"] 
     end
 
     it 'お気に入り登録を解除できる' do
       expect do
         click_on 'お気に入り登録中'
-      end .to change { Like.count }.by(-1)
+      end .to change { Favorite.count }.by(-1)
       expect(page).to have_content 'お気に入り登録を解除しました。'
     end
   end

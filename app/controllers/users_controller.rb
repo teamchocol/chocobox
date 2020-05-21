@@ -38,6 +38,19 @@ class UsersController < ApplicationController
 		@users = User.search(params[:search])
 	end
 	
+	def favorite_chocolates
+		@user = User.find(params[:id])
+		@items_full = []
+		favorite = Favorite.where(user_id: @user.id)	
+			favorite.each do |favo|
+				item = Rakuten.get_item(favo.item_code)
+				if item["Items"].present? 
+					@items_full.push(item)        
+				end 
+			end	
+		@items = Kaminari.paginate_array(@items_full).page(params[:page]).per(6)
+	end
+	
 	# def hide
 	# 	@user = User.find(params[:id])
 	# 	#is_deletedカラムにフラグを立てる(defaultはfalse)

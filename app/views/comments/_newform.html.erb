@@ -3,24 +3,22 @@
    <div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12">
 			    <%= f.label :口コミタイトル %>
-
 					<%= f.text_field :title, rows:'5', class: "form-control",id: "form-control",placeholder: "最も伝えたいポイントをここにお書きください" %>
-
 			</div>
 			<!-- おいしさ評価 -->
 			<div class="form-group col-sm-10 col-xs-10 col-md-10" id="taste">
 				<%= f.label :taste,'おいしさ ', class:'col-md-4 col-form-label' %>
-				<%= f.hidden_field :taste, id: :review_star %>
+				<%= f.hidden_field :taste, id: :taste_review_star %>
 			</div>
 			<!-- 健康評価 -->
 			<div class="form-group col-sm-10 col-xs-10 col-md-10" id="healthy">
 				<%= f.label :healthy,'健康評価', class:'col-md-4 col-form-label' %>
-				<%= f.hidden_field :healthy, id: :review_star %>
+				<%= f.hidden_field :healthy, id: :healthy_review_star %>
 			</div>	  
 			<!-- コスパ評価 -->
 			<div class="form-group col-sm-10 col-xs-10 col-md-10" id="cost_performance">
 				<%= f.label :cost_performance,'コストパフォーマンス', class:'col-md-4 col-form-label' %>
-				<%= f.hidden_field :cost_performance, id: :review_star %>
+				<%= f.hidden_field :cost_performance, id: :cost_performance_review_star %>
 			</div>	
       <div class="col-sm-12">
 					<%= f.text_area :content, rows:'5', class: "form-control", id: "form-area",placeholder: "気に入ったこと、気に入らなかったことは何ですか？" %>

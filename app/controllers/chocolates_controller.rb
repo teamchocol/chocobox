@@ -5,7 +5,6 @@ class ChocolatesController < ApplicationController
   end
  
   def show
-   
     @chocolate = Rakuten.get_item(params[:id])
     if @chocolate["Items"] == []
      return redirect_to home_sorry_path
