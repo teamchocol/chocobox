@@ -16,13 +16,6 @@ class ChocolatesController < ApplicationController
     @comment = Comment.new
   end
 
-  def create
-    @chocolate = Comment.new(chocolate_params)
-    @chocolate.user = current_user
-    @chocolate.save!
-    redirect_to chocolate_path(@chocolate)
-  end
-
   def search
     if params[:keyword]  
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
