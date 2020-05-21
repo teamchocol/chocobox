@@ -15,9 +15,9 @@ describe '口コミ投稿機能', type: :system do
       sign_in_as user
       expect do
         fill_in 'タイトル', with: 'テストタイトル'
-        find('#review_star', visible: false).set(5.0)
-        find('#review_star', visible: false).set(5.0)
-        find('#review_star', visible: false).set(5.0)
+        find('#taste_review_star', visible: false).set(5.0)
+        find('#healthy_review_star', visible: false).set(5.0)
+        find('#cost_performance_review_star', visible: false).set(5.0)
         fill_in '口コミ内容', with: 'テストコンテント'
         attach_file '口コミ画像', 'spec/images/test_normal_image.jpg'
         click_on '投稿する'
@@ -32,7 +32,7 @@ describe '口コミ投稿機能', type: :system do
     end
 
     it '一覧表示に表示されること' do
-      click_on '口コミを探す'
+      click_on '「口コミ」一覧'
       expect(page).to have_content 'テストタイトル' # トップページの口コミ
     end
 
@@ -54,13 +54,13 @@ describe '口コミ投稿機能', type: :system do
         fill_in 'q_title_or_content_or_product_title_cont', with: comment.content
         click_on '口コミを検索'
         expect(page).to have_content comment.content
-        expect(page).to_not have_content other_post.content
+        expect(page).to_not have_content other_comment.content
       end
     end
 
     context '一致する口コミが存在しない場合' do
       it '口コミが表示されないこと' do
-        visit posts_path
+        visit comments_path
         fill_in 'q_title_or_content_or_product_title_cont', with: '架空の口コミ'
         click_on '口コミを検索'
         expect(page).to_not have_content comment.content
@@ -73,7 +73,7 @@ describe '口コミ投稿機能', type: :system do
     it '口コミを削除できること' do
       sign_in_as user
       visit user_path(user)
-      expect { click_on '口コミを削除' }.to change { comment.count }. by(-1)
+      expect { click_on 'コメントを削除' }.to change { comment.count }. by(-1)
       expect(page).to have_content '口コミを削除しました'
     end
   end
@@ -89,11 +89,5 @@ describe '口コミ投稿機能', type: :system do
       expect(page).to have_content 'アップデートタイトル'
     end
 
-    it '他のユーザーの口コミを編集できないこと' do
-      sign_in_as other_user
-      visit edit_post_path(comment)
-      expect(page).to_not have_content '口コミ編集フォーム'
-      expect(page).to have_content '最新の口コミ'
-    end
   end
 end

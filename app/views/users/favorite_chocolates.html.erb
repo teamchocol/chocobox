@@ -1,0 +1,17 @@
+<div class="container rakuten-index">
+	<h3>お気に入り一覧</h3>
+	<div class="row ">
+		<% @items.each do |chocolate| %>
+			<div class="rakuten_ranking  col-xs-4 col-sm-4 col-md-4">
+				<div>
+          <%= image_tag(chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "max-width: 100%;height: auto;display: inline-block;" ) %>
+				</div>
+				
+				<div><%= chocolate["Items"][0]["Item"]["itemName"] %></div>
+				
+				<div class="choco_price">¥<%= chocolate["Items"][0]["Item"]["itemPrice"]%></div>
+        
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -23,7 +23,7 @@ describe 'セッション管理機能', type: :system do
 
   it '登録済みでないユーザーがログインできないこと' do
     visit login_path
-    fill_in 'メールアドレス', with: 'test@supplebox.jp'
+    fill_in 'メールアドレス', with: 'test@chocobox.jp'
     fill_in 'パスワード', with: 'dummy_password'
     within '.login' do
       click_on 'ログイン'

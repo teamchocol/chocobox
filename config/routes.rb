@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit,:show,:create,:update,:destroy,:index] do
     member do
       get :following, :followers 
+      get :favorite_chocolates
     end
     collection do
       get 'search'  

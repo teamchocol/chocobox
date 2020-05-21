@@ -82,9 +82,6 @@ describe 'ユーザーのテスト' do
       before do
         visit edit_user_path(user)
       end
-      it 'User infoと表示される' do
-        expect(page).to have_content('User info')
-      end
       it '名前編集フォームに自分の名前が表示される' do
         expect(page).to have_field 'user[name]', with: user.name
       end
@@ -116,9 +113,6 @@ describe 'ユーザーのテスト' do
     context '表示の確認' do
       it 'Usersと表示される' do
         expect(page).to have_content('Users')
-      end
-      it '自分と他の人の画像が表示される' do
-        expect(all('img').size).to eq(3)
       end
       it '自分と他の人の名前が表示される' do
         expect(page).to have_content user.name

@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @choco = Chocolate.new
     @comment = Comment.find(params[:id])
     @choco.set_item_code(@comment.item_code)
-    if @comment.user != current_user
+    if @comment.user == current_user
       @comment.destroy
       flash[:success] = "コメントを削除しました!"
     else

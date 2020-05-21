@@ -18,10 +18,10 @@
 				<tr>
 					<td><%= user.id %></td>
 
-					<td><%= link_to user.last_name+user.first_name, admin_user_path(user) %></td>
+					<td><%= link_to user.name, admin_user_path(user) %></td>
 
 					<td><%= user.email %></td>
-					<td><%= user.user_status %></td>
+					<td></td>
 				</tr>
 				<% end %>
 			</tbody>

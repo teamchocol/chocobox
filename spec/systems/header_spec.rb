@@ -8,24 +8,24 @@ describe 'ヘッダーのテスト' do
     context 'ヘッダーの表示を確認' do
       subject { page }
       it 'タイトルが表示される' do
-        is_expected.to have_content 'Bookers'
+        is_expected.to have_content 'Chocobox'
       end
       it 'Homeリンクが表示される' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(/home/i)
         #is_expected.to have_content 'Home'
       end
-      it 'Aboutリンクが表示される' do
+      it 'ユーザーリンクが表示される' do
         about_link = find_all('a')[1].native.inner_text
-        expect(about_link).to match(/about/i)
+        expect(about_link).to match(/users/i)
         #is_expected.to have_content 'About'
       end
-      it 'Sign upリンクが表示される' do
+      it '新規登録リンクが表示される' do
         signup_link = find_all('a')[2].native.inner_text
         expect(signup_link).to match(/sign up/i)
         #is_expected.to have_content 'Sign up'
       end
-      it 'loginリンクが表示される' do
+      it 'ログインリンクが表示される' do
         login_link = find_all('a')[3].native.inner_text
         expect(login_link).to match(/login/i)
         #is_expected.to have_content 'login'
@@ -82,9 +82,9 @@ describe 'ヘッダーのテスト' do
         users_link = find_all('a')[1].native.inner_text
         expect(users_link).to match(/users/i)
       end
-      it 'Booksリンクが表示される' do
+      it '楽天人気ランキングリンクが表示される' do
         books_link = find_all('a')[2].native.inner_text
-        expect(books_link).to match(/books/i)
+        expect(chocolates_link).to match(/books/i)
       end
       it 'logoutリンクが表示される' do
         logout_link = find_all('a')[3].native.inner_text
