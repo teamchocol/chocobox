@@ -13,7 +13,7 @@ describe '問い合わせ機能', type: :system do
     perform_enqueued_jobs do
       expect{
         fill_in 'お名前', with: 'テストユーザー'
-        fill_in 'メールアドレス', with: 'test@supplebox.jp'
+        fill_in 'メールアドレス', with: 'test@chocobox.jp'
         fill_in 'タイトル', with: 'テストタイトル'
         fill_in 'お問い合わせ内容', with: 'テストコンテント'
         click_on '送信する'
@@ -24,7 +24,7 @@ describe '問い合わせ機能', type: :system do
 
     mail = ActionMailer::Base.deliveries.last
 
-    expect(mail.to).to eq ['test@supplebox.jp']
+    expect(mail.to).to eq ['test@chocobox.jp']
     expect(mail.body).to include 'テストタイトル'
   end
 

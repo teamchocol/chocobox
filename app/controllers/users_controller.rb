@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 		favorite = Favorite.where(user_id: @user.id)	
 			favorite.each do |favo|
 				item = Rakuten.get_item(favo.item_code)
-				if item["Items"].present? 
+				if item["Items"] != [] 
 					@items_full.push(item)        
 				end 
 			end	

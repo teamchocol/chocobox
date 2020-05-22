@@ -14,9 +14,9 @@
 				
 				<div>
 					<% if chocolate["itemCode"].present? %>
-					  <%= link_to '口コミを投稿する', chocolate_path(chocolate["itemCode"]), class: "btn btn-default" %>
+					  <%= link_to '口コミを投稿する', chocolate_path(chocolate["itemCode"]), class: "btn .btn-primary" %>
 					<% else %>
-					  <%= link_to '口コミを投稿する', home_sorry_path, class: "btn btn-default" %>
+					  <%= link_to '口コミを投稿する', home_sorry_path, class: "btn .btn-primary" %>
 					<% end %>
 				</div>
         <% if chocolate["itemCode"].present? %> 

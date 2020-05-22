@@ -63,6 +63,7 @@ header {
 }
 
 // TOPページ
+
 .single-blog {
   transition: all 300ms linear 0s;
   position: relative; }
@@ -134,10 +135,14 @@ header {
     }
   .web-title {
     font-family: "English";
-    font-size: 75px;
+    font-size: 85px;
+    text-align: center;
     }
   .start-button {
     font-family: "soft";
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
     }
 
 
@@ -156,6 +161,23 @@ header {
   border-radius: 4px;
 }
 
+/* Slider */
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* Arrows */
+
+.slick-prev,
+.slick-next {
+    line-height: 0px;
+    font-size: 0px;
+}
 
 
 /* TOPに戻る矢印 */
@@ -340,8 +362,11 @@ ul{
   padding-top: 15px;
   padding-bottom:0 ;
   bottom: 0;
-  margin-top: 20px ;
+  margin-top: auto;
+  margin-bottom: 0;
   height: 150px;
+  position: relative;    
+  width: 100%;  
 }
 // サインアップ 画面
 .sign_up-visual {
@@ -568,6 +593,10 @@ ul{
 .comment-avatar{
   margin-top: 30px;
 }
+.rakuten-button{
+  text-align: center;
+  margin: 40px auto;
+}
 
 // いいねアイコン
 .iine{
@@ -602,8 +631,8 @@ ul{
 }
 // コメント一覧
 .comment-date{
-  margin: 10px auto;
-  text-align: center;
+  margin: 10px auto 10px 10px;
+  
 }
 
 .comment-user{
@@ -617,13 +646,21 @@ ul{
 .comment{
   font-size: 15px;
 }
+.comment-areas{
+  margin-bottom: 0;
+}
+
+.kutikomi-button{
+
+  margin-top:5px;
+}
 
 .comment-avatar{
   padding-left: 30px;
 }
 
 .date{
-  padding-left: 5px;
+  padding-left: 10px;
   margin-top: 15px;
   margin-bottom: 10px;
 }
@@ -640,15 +677,11 @@ ul{
   font-size: 10px;
   font-weight: lighter
 }
-
 .comment-delete{
-  position: relative;
-
-  .delete{
-    position: absolute;
-    bottom: 0;
-  }
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
+
 
 // ユーザー一覧
 
