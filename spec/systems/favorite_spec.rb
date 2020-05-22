@@ -9,10 +9,10 @@ describe 'アイテムお気に入り登録機能' do
   context 'お気に入り登録していない場合' do
     it 'お気に入り登録できる' do
       sign_in_as user
-      visit product_path(product)
+      visit chocolates_path
       expect do
-        click_on 'お気に入り登録'
-      end .to change { Like.count }.by(+1)
+        find('#settings-link').click
+      end .to change { Favorite.count }.by(+1)
       expect(page).to have_content 'お気に入り登録をしました。'
     end
   end

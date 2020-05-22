@@ -7,10 +7,19 @@
           <%= image_tag(chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "max-width: 100%;height: auto;display: inline-block;" ) %>
 				</div>
 				
-				<div><%= chocolate["Items"][0]["Item"]["itemName"] %></div>
+				<div> 
+          <%= chocolate["Items"][0]["Item"]["itemName"] %>
+        </div>
 				
 				<div class="choco_price">¥<%= chocolate["Items"][0]["Item"]["itemPrice"]%></div>
-        
+
+        <div class="rakuten-button">
+          <% if chocolate["shopUrl"].present? %>  
+            <%= link_to '楽天市場で見る','chocolate["Items"][0]["Item"]["shopUrl"]', class: "btn btn-danger" %>    
+          <% else %>
+            <%= link_to '楽天市場で見る', home_sorry_path, class: "btn btn-danger" %> 
+          <% end %>
+        </div>	
 			</div>
 		<% end %>
 	</div>

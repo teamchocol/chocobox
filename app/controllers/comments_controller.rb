@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @chocolate = Chocolate.new
     @chocolate.set_item_code(@new_comment.item_code)
+
   end
 
   def destroy
@@ -28,8 +29,9 @@ class CommentsController < ApplicationController
   end
 
   def index
+
     @users = User.all
-    @comments = Comment.page(params[:page]).without_count.per(6)
+    @comments = Comment.page(params[:page]).without_count.per(4).order(created_at: :desc)
     @name = {}
     @image = {}
     @comments.each do |comment|

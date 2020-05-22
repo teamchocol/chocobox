@@ -5,18 +5,18 @@
 
 		<p class="lead text-muted">口コミはあくまで感想!</br> 自分の舌で確かめることが大事です!!</p>
 		<p>
-			  <%= link_to "楽天市場人気ランキングはこちら", chocolates_path ,class: "btn btn-primary my-2"%>
-       <%= link_to "チョコレート検索はこちら", search_chocolates_path ,class: "btn btn-secondary my-2"%>
+			  <%= link_to "楽天市場人気ランキングを見る", chocolates_path ,class: "btn btn-warning my-2"%>
+       <%= link_to "好きなチョコレートを検索する", search_chocolates_path ,class: "btn btn-success my-2"%>
 		</p>
 	</div>
 </section>
 
 <div class="comments-all" id="infiniteScrollingContainer">
 
-	<div class="container">
+	<div class="container" >
 		<div class="row">
 			<% @comments.each do |comment| %>
-			<div class="col-md-6 ">
+			<div class="col-md-6 " id="comment-all-<%=comment.id %>">
 				<div class="card-comment mb-4 shadow-sm">
 					<div class="row">
 						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
@@ -26,9 +26,13 @@
 						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
 					</div>
 					<div class="comment-item-name col-xs-12 ">
-						<%= @name[comment.item_code].present? ? @name[comment.item_code] : "商品名がありません" %>
+						<%= @name[comment.item_code].present? ? @name[comment.item_code] : "在庫がないため表示できません" %>
 					</div>
 					<div class="row">
+					  <a class="kutikominaiyou">口コミタイトル</a>
+						<div class="comment-field mx-auto border col-md-10">
+							<%= comment.title %>
+						</div> 
 						<a class="kutikominaiyou">口コミ内容</a>
 						<div class="comment-areas mx-auto border col-md-10">
 							<%= comment.content %>
@@ -64,16 +68,18 @@
 							<div class="row">
 								<div class="new-comment col-md-8 col-sm-8 col-xs-8">
 									<% if comment.item_code.present? %>
-									<%= link_to "口コミを投稿する",chocolate_path(:id => comment.item_code), class: "btn btn-outline-dark" %>
+									<%= link_to "この商品に口コミ投稿",chocolate_path(:id => comment.item_code), class: "btn btn-primary kutikomi-button my-auto" %>
 									<% else %>
 									<%= link_to '在庫切れ', home_sorry_path, class: "btn btn-outline-dark"%>
 									<% end %>
 								</div>
-								<div class="comment-destroy col-md-4 col-sm-4 col-xs-4">
+					      
+        			  <div class=" comment-delete col-xs-3 col-sm-3 col-md-3">
 									<% unless current_user != comment.user %>
-									<%= link_to comments_path(comment.id), method: :delete, remote: true  do %>
-									<button class="btn btn-danger btn-sm comment-delete">コメント削除</button>
-									<% end %>
+									<div class="delete"><%= link_to comment_path(comment.id), method: :delete, remote: true  do %>      <button
+											 class="btn btn-danger" id="delete-<%= comment.id %>">コメントを削除</button>
+										<% end %>
+									</div>       
 									<% end %>
 								</div>
 							</div>
@@ -91,3 +97,4 @@
 <div class="yubi">
 	<div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
 </div>
+

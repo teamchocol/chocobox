@@ -64,9 +64,7 @@ class ChocolatesController < ApplicationController
 
     group.each do |k, v|
     item = Rakuten.get_item(k)
- 
-      if item["Items"].present? 
-        
+      if item["Items"].present?   
         @items.push(item)        
       end 
     end 
@@ -99,11 +97,12 @@ class ChocolatesController < ApplicationController
     @chocolate = Chocolate.new
   end
 
- private
-  def chocolate_params
-    params.permit(:name, :medium_image_url, :price, :item_code)
-  end
+ private 
   def comment_params
     params.permit(:content, :title, :image, :item_code )
   end
+  # def chocolate_params
+  #   params.permit(:name, :medium_image_url, :price, :item_code)
+  # end 
+  # チョコレートテーブルに保存するように設定した時に使用
 end

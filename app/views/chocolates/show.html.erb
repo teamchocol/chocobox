@@ -15,6 +15,14 @@
              <div id="<%= "like-link-#{@chocolate["Items"][0]["Item"]["itemCode"].delete(":")}" %>">
                  <%= render 'favorites/show', chocolate: @chocolate %>
              </div>
+
+             <div class="rakuten-button">
+                <% if @chocolate["shopUrl"].present? %>  
+                    <%= link_to '楽天市場で見る','@chocolate["Items"][0]["Item"]["shopUrl"]', class: "btn btn-danger" %>    
+                <% else %>
+                    <%= link_to '楽天市場で見る', home_sorry_path, class: "btn btn-danger" %> 
+                <% end %>
+             </div>	
          </div>
       </div>
    </div>
