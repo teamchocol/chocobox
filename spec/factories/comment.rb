@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :commnet do
+  factory :comment do
     title { 'テストタイトル' }
     taste  { '3' }
     healthy  { '3' }

@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = if logged_in?
+    @contact = if user_signed_in?
                  current_user.contacts.build(contact_params)
                else
                  Contact.new(contact_params)

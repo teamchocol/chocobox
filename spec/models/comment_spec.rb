@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Commentモデルのテスト', type: :model do
-  describe 'バリデーションのテスト' do
+    describe 'バリデーションのテスト' do
       let(:user) { create(:user) }
       let!(:comment) { build(:comment, user_id: user.id) }
   
@@ -132,5 +132,5 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
         end
       end
     end
-  end
+  
 end
