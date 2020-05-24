@@ -2,7 +2,7 @@
 	<h3>商品一覧</h3>
 	<div class="row ">
 		<div id="error"></div>
-		<% @chocolates.each do |chocolate| %>
+		<% @chocolates.each_with_index do |chocolate, index| %>
 			<div class="rakuten_ranking  col-xs-4 col-sm-4 col-md-4">
 				<div>
 					<%= image_tag(chocolate.medium_image_urls[0], style: "max-width: 100%;height: auto;display: inline-block;") %>
@@ -21,7 +21,7 @@
 				</div>
         <% if chocolate["itemCode"].present? %> 
 					<div id="<%= "like-link-#{chocolate["itemCode"].delete(":")}" %>">
-						<%= render 'favorites/index', chocolate: chocolate %>
+						<%= render 'favorites/index', chocolate: chocolate, index: index  %>
 					</div>					 
 				<% end %>
 			</div>

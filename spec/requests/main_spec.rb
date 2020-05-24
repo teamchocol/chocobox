@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-describe 'ユーザー権限のテスト'  do
+describe 'ユーザー権限のテスト' do
   let!(:user) { build(:user) }
+
   describe 'ログインしていない場合' do
     context '投稿関連のURLにアクセス' do
       it 'いいねランキング画面に遷移できない' do

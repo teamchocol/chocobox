@@ -1,3 +1,10 @@
+ <% if flash[:error].present? %>
+    <ul class="errors">
+      <% flash[:error].each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ul>
+  <% end %>
  <div class="container item-show">
      <div class="row">
          <div class="col-md-12 col-xs-12 ">
@@ -32,6 +39,7 @@
     </div>
     
     <div class="comment-area" id='comment_area'>
+
         <%= render 'comments/index', chocolate: @choco, new_comment: @new_comment %>
     </div>
    

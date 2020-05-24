@@ -1,8 +1,8 @@
-<%= form_for [comment], remote: true do |f| %>
-
+<%= form_for (comment), remote: true do |f| %>
 	<div class="container">
    <div class="row">
-	 <%= render 'layouts/error_messages', model: f.object %>
+	 <% %>
+<%= render 'layouts/error_messages', model: f.object %>
 			<div class="col-sm-12 col-xs-12 col-md-12">
 			    <%= f.label :口コミタイトル %>
 					<%= f.text_field :title, rows:'5', class: "form-control",id: "form-control",placeholder: "最も伝えたいポイントをここにお書きください" %>

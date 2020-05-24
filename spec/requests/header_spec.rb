@@ -5,6 +5,7 @@ describe 'ヘッダーのテスト' do
     before do
       visit root_path
     end
+
     within 'header' do
       expect(page).to have_link(' ホーム画面', href: '/home')
       expect(page).to have_link('このサイトについて', href: '/about')
@@ -16,9 +17,11 @@ describe 'ヘッダーのテスト' do
 
   describe 'ログインしている場合' do
     let(:user) { create(:user) }
+
     before do
       login_as(user, :scope => :user)
     end
+
     within 'header' do
       expect(page).to have_link('チョコレート登録', href: '/chocolates/search')
       expect(page).to have_link('マイページ', href: '/users/')

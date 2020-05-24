@@ -1,7 +1,5 @@
 $('#div1').prepend("<%= escape_javascript(render('comments/new', chocolate: @choco, comment: @new_comment) ) %>"); 
 
-
-
 $('#comment_form').html("<%= escape_javascript(render('comments/newform', comment: @comment, chocolate: @chocolate) ) %>"); 
 
 location.hash="comment<%= @new_comment.id %>";
