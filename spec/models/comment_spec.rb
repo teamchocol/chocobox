@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Commentモデルのテスト', type: :model do
+    let!(:user) { create(:user) }
+    let!(:comment) { create(:comment, user_id: user.id) }
+
     describe 'バリデーションのテスト' do
-      let(:user) { create(:user) }
-      let!(:comment) { build(:comment, user_id: user.id) }
-  
       context 'titleカラム' do
         it '空欄でないこと' do
           comment.title = ''
@@ -20,7 +20,7 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
       context 'contentカラム' do
         it '空欄でないこと' do
           comment.content = ''
-          expect(content.valid?).to eq false;
+          expect(comment.valid?).to eq false;
         end
         it '200文字以下であること' do
           comment.content = Faker::Lorem.characters(number:201)
@@ -128,7 +128,7 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
     describe 'アソシエーションのテスト' do
       context 'Userモデルとの関係' do
         it 'N:1となっている' do
-          expect(comment.reflect_on_association(:user).macro).to eq :belongs_to
+          expect(Comment.reflect_on_association(:user).macro).to eq :belongs_to
         end
       end
     end

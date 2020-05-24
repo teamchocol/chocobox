@@ -45,7 +45,7 @@ RSpec.describe Contact, type: :model do
     it 'メールアドレスが保存される前に小文字に変換されること' do
       user = FactoryBot.build(:contact, email: 'TESTADD@chocobox.jp')
       user.save
-      expect(user.email).to eq 'testtest@chocobox.jp'
+      expect(user.email).to eq 'testadd@chocobox.jp'
     end
   end
 end

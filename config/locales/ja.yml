@@ -1,0 +1,17 @@
+ja:
+    activerecord:
+          errors:
+            messages:
+              record_invalid: 'バリデーションに失敗しました: %{errors}'
+              restrict_dependent_destroy:
+                has_one: "%{record}が存在しているので削除できません"
+                has_many: "%{record}が存在しているので削除できません"
+          models:
+            user: ユーザー
+            comment: 口コミ
+            chocolate: チョコレート
+            contact: お問い合わせ
+          attributes:
+            comment: #モデル名
+              title: タイトル #変換後の日本語を記入
+              content:  コメント内容 #変換後の日本語を記入

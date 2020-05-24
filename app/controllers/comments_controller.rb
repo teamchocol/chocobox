@@ -2,13 +2,15 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   def create
     @new_comment = current_user.comments.new(comment_params)
-    @new_comment.save  
-    session[:crop_x] = comment_params[:x]
-    session[:crop_y] = comment_params[:y]
-    session[:crop_width] = comment_params[:width]
-    session[:crop_height] = comment_params[:height]
-    flash[:success] = "You have commented  successfully."
-    
+    if @new_comment.save  
+      session[:crop_x] = comment_params[:x]
+      session[:crop_y] = comment_params[:y]
+      session[:crop_width] = comment_params[:width]
+      session[:crop_height] = comment_params[:height]
+      flash[:success] = "You have commented  successfully."
+    else 
+      redirect_to request.referer 
+    end
     @comment = Comment.new
     @chocolate = Chocolate.new
     @chocolate.set_item_code(@new_comment.item_code)

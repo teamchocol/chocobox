@@ -2,16 +2,16 @@
 
 require 'rails_helper'
 
-describe 'セッション管理機能', type: :system do
+describe 'セッション管理機能', type: :request do
   let!(:user) do
     create(:user,
-           email: 'test@supplebox.jp',
+           email: 'test@chocobox.jp',
            password: 'password')
   end
 
   it '登録済みユーザーがログインとログアウトできること' do
     visit login_path
-    fill_in 'メールアドレス', with: 'test@supplebox.jp'
+    fill_in 'メールアドレス', with: 'test@chocobox.jp'
     fill_in 'パスワード', with: 'password'
     within '.login' do
       click_on 'ログイン'

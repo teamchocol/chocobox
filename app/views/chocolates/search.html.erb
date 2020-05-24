@@ -5,8 +5,9 @@
       <div class='search col-xs-12 col-sm-12 col-md-12'>
         <div id="search-box">
           <%= form_tag('search', method: :get) do %>
-          <%= text_field_tag :chocolate, "",  id: "chocolate_id", name: "keyword", placeholder: "好きなチョコレートを入力してください", class: "search-holder", style: "width: 300px;"%>
-          <button class="btn btn-warning">検索</button>
+          
+          <%= text_field_tag :chocolate, "",  id: "keyword", name: "keyword", placeholder: "好きなチョコレートを入力してください", class: "search-holder", style: "width: 300px;"%>
+          <button class="btn btn-warning" type="submit" name="commit" value="Save">検索</button>
           <% end %>
         </div>
       </div>

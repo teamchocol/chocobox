@@ -29,7 +29,9 @@
                              <%= f.submit "ログイン", class:"btn btn-primary btn-block btn-base-1 mt-20"%>
                          </div>
                          <% end %>
-
+                         <div class="guest">
+                            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-danger" %>
+                        </div>
                      </div>
                  </div>
              </div>
