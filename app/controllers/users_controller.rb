@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-
+	before_action :authenticate_user!
+	
   def followers
     @followers  = User.find(params[:id])
   end
@@ -65,8 +65,7 @@ class UsersController < ApplicationController
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image, :nickname, :age, :gender)
   end
-	#url直接防止　メソッドを自己定義してbefore_actionで発動。
-	
+	#url直接防止 メソッドを自己定義してbefore_actionで発動。
 	def correct_user
 		@user = User.find(id: params[:id])
 			unless @user

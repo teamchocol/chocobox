@@ -16,7 +16,6 @@ class Rakuten
     http.use_ssl = true
     req = Net::HTTP::Get.new(uri)
     res = http.request(req)   
-    res_data = JSON.parse(res.body)
-     
+    res_data = JSON.parse(res.body)  
   end
 end

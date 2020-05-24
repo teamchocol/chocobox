@@ -124,23 +124,4 @@ describe 'ユーザーのテスト' do
       end
     end
   end
-  describe '詳細画面のテスト' do
-    before do
-      visit user_path(user)
-    end
-    context '表示の確認' do
-      it 'Booksと表示される' do
-        expect(page).to have_content('Books')
-      end
-      it '投稿一覧のユーザーの画像のリンク先が正しい' do
-        expect(page).to have_link '', href: user_path(user)
-      end
-      it '投稿一覧のtitleのリンク先が正しい' do
-        expect(page).to have_link book.title, href: book_path(book)
-      end
-      it '投稿一覧にopinionが表示される' do
-        expect(page).to have_content(book.body)
-      end
-    end
-  end
 end

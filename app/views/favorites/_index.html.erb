@@ -1,6 +1,6 @@
 <% if current_user.favorited_by?(chocolate['itemCode']) %>
 <div class="like">
-  <%= link_to  chocolate_favorites_path(chocolate_id: chocolate["itemCode"]), class: "fas fa-thumbs-up iine",method: :delete, remote: true do %><% end %>
+  <%= link_to  chocolate_favorites_path(chocolate_id: chocolate["itemCode"]), class: "fas fa-thumbs-up iine", id: "fas", method: :delete, remote: true do %><% end %>
 </div>
 <div class="iine-count">
   いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>
@@ -8,7 +8,7 @@
 
 <% else %>
 <div class="like">
-  <%= link_to chocolate_favorites_path(chocolate_id: chocolate["itemCode"]), class: "far fa-thumbs-up iine", method: :post, remote: true do %><% end %>
+  <%= link_to chocolate_favorites_path(chocolate_id: chocolate["itemCode"]), class: "far fa-thumbs-up iine", id: "far", method: :post, remote: true do %><% end %>
 </div>
 <div class="iine-count">
   いいねの数 <%= Favorite.where(item_code: chocolate["itemCode"]).count %>
