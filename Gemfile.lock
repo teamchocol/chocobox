@@ -61,6 +61,7 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
+    ast (2.4.0)
     autoprefixer-rails (9.7.6)
       execjs
     bcrypt (3.1.13)
@@ -102,6 +103,7 @@ GEM
       activesupport
     chart-js-rails (0.1.7)
       railties (> 3.1)
+    childprocess (3.0.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -152,6 +154,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.3.5)
@@ -221,6 +224,9 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
+    parallel (1.19.1)
+    parser (2.7.1.2)
+      ast (~> 2.4.0)
     popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -262,6 +268,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    rainbow (3.0.0)
     rake (13.0.1)
     rakuten_web_service (1.12.0)
     rb-fsevent (0.10.3)
@@ -295,11 +302,34 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
+    rspec-retry (0.6.2)
+      rspec-core (> 3.3)
     rspec-support (3.9.2)
+    rubocop (0.76.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.6)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-airbnb (3.0.2)
+      rubocop (~> 0.76.0)
+      rubocop-performance (~> 1.5.0)
+      rubocop-rails (~> 2.3.2)
+      rubocop-rspec (~> 1.30.0)
+    rubocop-performance (1.5.2)
+      rubocop (>= 0.71.0)
+    rubocop-rails (2.3.2)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
+    rubocop-rspec (1.30.1)
+      rubocop (>= 0.60.0)
     ruby-debug-ide (0.7.2)
       rake (>= 0.8.1)
+    ruby-progressbar (1.10.1)
     ruby2_keywords (0.0.2)
     ruby_dep (1.5.0)
+    rubyzip (2.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -313,6 +343,9 @@ GEM
       tilt (>= 1.1, < 3)
     sassc (2.3.0)
       ffi (~> 1.9)
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -346,6 +379,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unicode-display_width (1.6.1)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -396,8 +430,11 @@ DEPENDENCIES
   refile!
   refile-mini_magick
   rspec-rails
+  rspec-retry
+  rubocop-airbnb
   ruby-debug-ide
   sass-rails (~> 5.0)
+  selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

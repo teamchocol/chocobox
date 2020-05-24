@@ -19,7 +19,7 @@ describe '口コミ投稿機能', type: :request do
         fill_in 'comment[content]', with: 'テストコンテント'
         attach_file 'comment[image]', 'spec/images/test_normal_image.jpg'
         click_on '投稿する'
-      end.to change { comment.count }.by(+1)
+      end.to change(comment, :count).by(+1)
       expect(page).to have_content '口コミを投稿しました'
     end
   end

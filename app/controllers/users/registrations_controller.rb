@@ -3,8 +3,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :check_guest, only: %i[update destroy]
-  
+  before_action :check_guest, only: %i(update destroy)
+
   def check_guest
     if resource.email == 'kantan@example.com'
       redirect_to root_path, alert: 'ゲストユーザーの変更・削除できません。'
@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # 
+  #
   # def create
   #   build_resource(sign_up_params)
 
@@ -84,12 +84,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-   def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(resource)
     user_path(resource)
-   end
+  end
 
   # The path used after sign up for inactive accounts.
-   def after_inactive_sign_up_path_for(resource)
-    user_path(resource) 
-   end
+  def after_inactive_sign_up_path_for(resource)
+    user_path(resource)
+  end
 end

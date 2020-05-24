@@ -1,9 +1,9 @@
 class RelationshipsController < ApplicationController
-  before_action :authenticate_user! 
-  def create 
+  before_action :authenticate_user!
+  def create
     active_relationship = current_user.user.new(follower_id: current_user.id, followed_id: user.id)
-     active_relationship.save
-     redirect_to request.referrer || root_url
+    active_relationship.save
+    redirect_to request.referrer || root_url
   end
 
   def destroy
@@ -12,12 +12,12 @@ class RelationshipsController < ApplicationController
     following.destroy
     redirect_to request.referrer || root_url
   end
-  
+
   def follow
     current_user.follow(params[:id])
     redirect_to request.referrer || root_url
   end
-  
+
   def unfollow
     current_user.unfollow(params[:id])
     redirect_to request.referrer || root_url
@@ -28,6 +28,7 @@ class RelationshipsController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:relationship][:follow_id])
   end

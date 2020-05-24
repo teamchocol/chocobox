@@ -60,6 +60,8 @@ group :test do
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker'
+  gem 'rspec-retry'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,7 +74,6 @@ gem "refile-mini_magick"
 
 gem 'kaminari'
 
-
 gem 'bootstrap', '~> 4.1.1'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
@@ -80,7 +81,7 @@ gem 'jquery-rails'
 gem 'pry-byebug'
 
 gem 'chart-js-rails', '~> 0.1.4'
-	
+
 gem 'rakuten_web_service'
 
 gem 'omniauth'
@@ -96,6 +97,8 @@ gem 'cropper-rails'
 gem "active_model_serializers"
 
 gem 'rails-i18n'
+
+gem 'rubocop-airbnb'
 
 gem 'dotenv-rails'
 group :production do

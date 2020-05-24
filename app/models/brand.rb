@@ -7,7 +7,4 @@ class Brand < ApplicationRecord
 
   # 検証
   # validates :name, presence: true, length: {maximum: 50}
- 
-
-  
 end

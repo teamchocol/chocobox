@@ -1,0 +1,23 @@
+=> [32m#<ActiveModel::Errors:0x000056211ab86780[0m
+ @base[32m=[0m
+  [32m#<Comment:0x000056211d6207c0[0m
+   id: [1;36mnil[0m,
+   title: [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+   content: [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+   user_id: [1;34m3[0m,
+   image_id: [1;36mnil[0m,
+   chocolate_id: [1;36mnil[0m,
+   rate: [1;36mnil[0m,
+   taste: [1;36mnil[0m,
+   healthy: [1;36mnil[0m,
+   cost_performance: [1;36mnil[0m,
+   item_code: [31m[1;31m"[0m[31mmonoproduction:10000025[1;31m"[0m[31m[0m,
+   created_at: [1;36mnil[0m,
+   updated_at: [1;36mnil[0m[32m>[0m,
+ @details[32m=[0m
+  {[33m:title[0m=>[{[33m:error[0m=>[33m:blank[0m}],
+   [33m:taste[0m=>[{[33m:error[0m=>[33m:not_a_number[0m, [33m:value[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m}],
+   [33m:healthy[0m=>[{[33m:error[0m=>[33m:not_a_number[0m, [33m:value[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m}],
+   [33m:cost_performance[0m=>[{[33m:error[0m=>[33m:not_a_number[0m, [33m:value[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m}]},
+ @messages[32m=[0m
+  {[33m:title[0m=>[[31m[1;31m"[0m[31mを入力してください[1;31m"[0m[31m[0m], [33m:taste[0m=>[[31m[1;31m"[0m[31mは数値で入力してください[1;31m"[0m[31m[0m], [33m:healthy[0m=>[[31m[1;31m"[0m[31mは数値で入力してください[1;31m"[0m[31m[0m], [33m:cost_performance[0m=>[[31m[1;31m"[0m[31mは数値で入力してください[1;31m"[0m[31m[0m]}[32m>[0m
