@@ -9,7 +9,8 @@ describe '口コミ投稿機能', type: :request do
   describe '新規作成機能' do
     it '口コミ投稿できる場合' do
       login_as(user, :scope => :user)
-      visit chocolates_path
+      visit ranking_chocolates_path(range: 4)
+      # ランキング上位の商品は在庫切れになりやすく商品詳細情報がとって来れない可能性があるためランキング下位の商品ページに設定している
       click_link '商品に口コミ投稿をする'
       expect do
         fill_in 'comment[title]', with: 'テストタイトル'

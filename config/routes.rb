@@ -35,7 +35,6 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
-      put "/users/:id/hide" => "users#hide", as: 'users_hide'
     end
   end
   get 'users/:id/follows' => 'users#follows', as: 'follows_users'

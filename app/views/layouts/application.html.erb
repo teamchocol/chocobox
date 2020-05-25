@@ -24,7 +24,7 @@
             </div>  
             <div class= "col-xs-1 col-sm-1 col-md-1">
               <div id="hm-icon"> 
-                <div class="menu-trigger">
+                <div class="menu-trigger" id="menu-trigger">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -72,6 +72,9 @@
           </div>
         </div>
    </header>
+   <% flash.each do |message_type, message| %>
+    <%= content_tag :div, message, class: message_type %>
+   <% end %>
    <%= yield %>
    <div class="footer">
    <%= render 'layouts/footer' %>
