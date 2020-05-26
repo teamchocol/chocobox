@@ -12,18 +12,19 @@ describe 'ユーザー認証のテスト' do
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
-        click_button 'Sign up'
+        click_button '新規登録'
 
-        expect(page).to have_content 'successfully'
+        expect(page).to have_content 'アカウント登録が完了しました'
       end
       it '新規登録に失敗する' do
         fill_in 'user[name]', with: ''
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         fill_in 'user[password_confirmation]', with: ''
-        click_button 'Sign up'
+        click_button '新規登録'
 
-        expect(page).to have_content 'error'
+        expect(page).to have_content 'エラー'
+        expect(page).to have_content '保存されません'
       end
     end
   end
@@ -39,17 +40,18 @@ describe 'ユーザー認証のテスト' do
       let(:test_user) { user }
 
       it 'ログインに成功する' do
-        fill_in 'user[name]', with: test_user.name
+        visit new_user_session_path
+        fill_in 'user[email]', with: test_user.email
         fill_in 'user[password]', with: test_user.password
-        click_button 'Log in'
+        click_on 'ログイン'
 
-        expect(page).to have_content 'successfully'
+        expect(page).to have_content 'ログインしました'
       end
 
       it 'ログインに失敗する' do
-        fill_in 'user[name]', with: ''
+        fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
-        click_button 'Log in'
+        click_button 'ログイン'
 
         expect(current_path).to eq(new_user_session_path)
       end
@@ -60,13 +62,12 @@ end
 describe 'ユーザーのテスト' do
   let(:user) { create(:user) }
   let!(:test_user2) { create(:user) }
-  let!(:book) { create(:book, user: user) }
 
   before do
     visit new_user_session_path
-    fill_in 'user[name]', with: user.name
+    fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
 
   describe '編集のテスト' do
@@ -92,22 +93,30 @@ describe 'ユーザーのテスト' do
       it '名前編集フォームに自分の名前が表示される' do
         expect(page).to have_field 'user[name]', with: user.name
       end
+      it '名前編集フォームに自分のニックネームが表示される' do
+        expect(page).to have_field 'user[nickname]', with: user.nickname
+      end
       it '画像編集フォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
       end
       it '自己紹介編集フォームに自分の自己紹介が表示される' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
+      it '自己紹介編集フォームに自分の性別が表示される' do
+        expect(page).to have_field 'user[gender]', with: user.gender
+      end
+      it '自己紹介編集フォームに自分の年齢が表示される' do
+        expect(page).to have_field 'user[age]', with: user.age
+      end
       it '編集に成功する' do
-        click_button 'Update User'
+        click_button '保存'
         expect(page).to have_content 'successfully'
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
       it '編集に失敗する' do
         fill_in 'user[name]', with: ''
-        click_button 'Update User'
-        expect(page).to have_content 'error'
-        # もう少し詳細にエラー文出したい
+        click_button '保存'
+        expect(page).to have_content 'エラー'
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
     end
@@ -119,16 +128,16 @@ describe 'ユーザーのテスト' do
     end
 
     context '表示の確認' do
-      it 'Usersと表示される' do
-        expect(page).to have_content('Users')
+      it 'ユーザーと表示される' do
+        expect(page).to have_content('ユーザー一覧')
       end
       it '自分と他の人の名前が表示される' do
-        expect(page).to have_content user.name
-        expect(page).to have_content test_user2.name
+        expect(page).to have_content user.nickname
+        expect(page).to have_content test_user2.nickname
       end
       it 'showリンクが表示される' do
-        expect(page).to have_link 'Show', href: user_path(user)
-        expect(page).to have_link 'Show', href: user_path(test_user2)
+        expect(page).to have_link 'プロフィールを見る', href: user_path(user)
+        expect(page).to have_link 'プロフィールを見る', href: user_path(test_user2)
       end
     end
   end

@@ -16,7 +16,7 @@ describe 'セッション管理機能', type: :request do
     within ('#login-button') do
       click_on 'ログイン'
     end
-    expect(page).to have_content 'ログインに成功しました。'
+    expect(page).to have_content 'ログインしました。'
     click_on 'ログアウト'
     expect(page).to have_content 'ログアウトしました。'
   end
@@ -28,6 +28,6 @@ describe 'セッション管理機能', type: :request do
     within ('#login-button') do
       click_on 'ログイン'
     end
-    expect(page).to have_content 'ログインに失敗しました。'
+    expect(page).to have_content 'Eメールまたはパスワードが違います。'
   end
 end

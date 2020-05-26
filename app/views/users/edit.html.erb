@@ -4,7 +4,7 @@
 
 <!-- エラーメッセージ表示-->
 <% if @user.errors.any? %>
-	<h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
+	<h3><%= @user.errors.count %>つのエラーがあります</h3><!--エラーメッセ-->
 	<ul>
 		<% @user.errors.full_messages.each do |message| %>
 		<li><%= message %></li>
@@ -14,10 +14,16 @@
 <!-- エラーメッセージ表示-->
 
 <table class="table edit">
+  <tr>
+ 		<td class="field">
+			<%= f.label :名前 %>
+			<%= f.text_field :name, class: "name" %>
+		</td>
+ 	</tr>
  	<tr>
  		<td class="field">
 			<%= f.label :ニックネーム %>
-			<%= f.text_field :nickname, class: "name" %>
+			<%= f.text_field :nickname, class: "nickname" %>
 		</td>
  	</tr>
  	<tr>

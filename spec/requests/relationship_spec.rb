@@ -28,20 +28,22 @@ describe 'ユーザーフォロー機能', type: :request do
       expect(page).to have_content (other_user.nickname)
     end
     it 'ユーザーのフォロー状況が表示されていること' do
-      login_as(user, :scope => :user)
+      login_as(other_user, :scope => :user)
       Relationship.create(followed_id: other_user.id, follower_id: user.id)
       Relationship.create(followed_id: user.id, follower_id: other_user.id)
-      visit followers_users_path(other_user)
+      visit follows_users_path(other_user)
       expect(page).to have_content (user.nickname)
     end
     
     it 'フォロー解除できること' do
       login_as(user, :scope => :user)
-      visit user_path(other_user)
+      Relationship.create(followed_id: other_user.id, follower_id: user.id)
+      Relationship.create(followed_id: user.id, follower_id: other_user.id)
+      visit follows_users_path(user)
       expect do
         click_on 'フォローを外す'
       end.to change(Relationship, :count).by(-1)
-      expect(page).to have_content 'フォローする'
+      expect(page).to have_no_content 'フォローする'
     end   
   end
 end
