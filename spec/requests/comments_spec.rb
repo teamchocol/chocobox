@@ -11,7 +11,7 @@ describe '口コミ投稿機能', type: :request do
       login_as(user, :scope => :user)
       visit ranking_chocolates_path(range: 4)
       # ランキング上位の商品は在庫切れになりやすく商品詳細情報がとって来れない可能性があるためランキング下位の商品ページに設定している
-      click_link '商品に口コミ投稿をする'
+      click_link '口コミを投稿する', match: :first
       expect do
         fill_in 'comment[title]', with: 'テストタイトル'
         find('#taste_review_star', visible: false).set(5.0)
@@ -19,8 +19,9 @@ describe '口コミ投稿機能', type: :request do
         find('#cost_performance_review_star', visible: false).set(5.0)
         fill_in 'comment[content]', with: 'テストコンテント'
         attach_file 'comment[image]', 'spec/images/test_normal_image.jpg'
-        click_on '投稿する'
-      end.to change(comment, :count).by(+1)
+       
+        click_button '投稿する'
+      end.to change(Comment, :count).by(+1)
       expect(page).to have_content '口コミを投稿しました'
     end
   end

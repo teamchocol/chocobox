@@ -28,6 +28,6 @@ describe 'セッション管理機能', type: :request do
     within ('#login-button') do
       click_on 'ログイン'
     end
-    expect(page).to have_content 'Eメールまたはパスワードが違います。'
+    expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
   end
 end

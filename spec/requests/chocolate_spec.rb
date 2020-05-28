@@ -19,7 +19,7 @@ describe '商品口コミ登録機能', type: :request do
       visit ranking_chocolates_path(range: 4)
       # ランキング上位の商品は在庫切れになりやすく商品詳細情報がとって来れない可能性があるためランキング下位の商品ページに設定している
       click_on '口コミを投稿する', match: :first
-      expect(page).to have_content '商品 詳細画面'
+      expect(page).to have_content '商品'
     end
   end
 end

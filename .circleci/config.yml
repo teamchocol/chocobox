@@ -1,0 +1,5 @@
+version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: circleci/ruby:2.5.7-node-browsers

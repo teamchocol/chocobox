@@ -68,7 +68,7 @@
 							<div class="row">
 								<div class="new-comment col-md-8 col-sm-8 col-xs-8">
 									<% if comment.item_code.present? %>
-									<%= link_to "この商品に口コミ投稿",chocolate_path(:id => comment.item_code), class: "btn btn-primary kutikomi-button my-auto" %>
+									<%= link_to "口コミを投稿する",chocolate_path(:id => comment.item_code), class: "btn btn-primary kutikomi-button my-auto" %>
 									<% else %>
 									<%= link_to '在庫切れ', home_sorry_path, class: "btn btn-outline-dark"%>
 									<% end %>
@@ -77,7 +77,7 @@
         			  <div class=" comment-delete col-xs-3 col-sm-3 col-md-3">
 									<% unless current_user != comment.user %>
 									<div class="delete"><%= link_to comment_path(comment.id), method: :delete, remote: true  do %>      <button
-											 class="btn btn-danger" id="delete-<%= comment.id %>">コメントを削除</button>
+											 class="btn btn-danger" id="delete-<%= comment.id %>">削除</button>
 										<% end %>
 									</div>       
 									<% end %>

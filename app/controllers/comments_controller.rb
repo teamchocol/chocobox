@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
       session[:crop_y] = comment_params[:y]
       session[:crop_width] = comment_params[:width]
       session[:crop_height] = comment_params[:height]
-      flash[:success] = "You have commented  successfully."
     else
       redirect_to chocolate_path(@new_comment.item_code), flash: { error: @new_comment.errors.full_messages }   
     end

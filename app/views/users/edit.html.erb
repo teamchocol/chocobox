@@ -33,19 +33,19 @@
 		</td>
  	</tr>
  	<tr>
- 		<td class="field introduction-edit-field">
+ 		<td class="field introduction-edit-field" >
 			<%= f.label :紹介文%>
 			<%= f.text_area :introduction, class: "introduction-edit" %>
 		</td>
  	</tr>
  	<tr>
-		<td class="field">
+		<td class="field" id="user-gender">
 			<%= f.label :性別 %><br />
 			<%= f.select :gender, [["女性"], ["男性"], ["不明"], ["秘密"]] %>
 		</td>
  	</tr>
  	<tr>
-		<td class="field">
+		<td class="field" id="user-age">
 			<%= f.label :年齢 %>
 	 		<%= f.select :age, [["10代"], ["20代前半"], ["20代後半"], ["30代前半"],["30代後半"], ["40代前半"], ["40代後半"], ["50代前半"],["50代後半"], ["60代前半"], ["60代後半"], ["70代以上"]] %>
 		</td>

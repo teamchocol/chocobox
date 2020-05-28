@@ -16,24 +16,13 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
         expect(comment.errors[:title]).to include('は50文字以内で入力してください')
       end
     end
-
-    context 'contentカラム' do
-      it '空欄でないこと' do
-        comment.content = ''
-        expect(comment.valid?).to eq false
-      end
-      it '200文字以下であること' do
-        comment.content = Faker::Lorem.characters(number: 201)
-        expect(comment.valid?).to eq false
-      end
-    end
   end
 
   describe 'おいしさ評価を検証する場合' do
     it 'おいしさ評価がないと無効な状態であること' do
       comment.taste = nil
       comment.valid?
-      expect(comment.errors[:taste]).to include('を入力してください')
+      expect(comment.errors[:taste]).to include('は数値で入力してください')
     end
 
     it 'おいしさ評価が1未満だと無効な状態であること' do
@@ -65,7 +54,7 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
     it '健康評価がないと無効な状態であること' do
       comment.healthy = nil
       comment.valid?
-      expect(comment.errors[:healthy]).to include('を入力してください')
+      expect(comment.errors[:healthy]).to include('は数値で入力してください')
     end
 
     it '健康評価が1未満だと無効な状態であること' do
@@ -97,7 +86,7 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
     it 'コスパ評価がないと無効な状態であること' do
       comment.cost_performance = nil
       comment.valid?
-      expect(comment.errors[:cost_performance]).to include('を入力してください')
+      expect(comment.errors[:cost_performance]).to include('は数値で入力してください')
     end
 
     it 'コスパ評価が1未満だと無効な状態であること' do

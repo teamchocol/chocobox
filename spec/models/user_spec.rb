@@ -90,10 +90,11 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   end
 
   describe '自己紹介を検証する場合' do
+    let(:test_user) { user }
     it '100文字超だと無効な状態であること' do
-      user.comment = 'a' * 101
-      user.valid?
-      expect(user.errors[:comment]).to include('は100文字以内で入力してください')
+      test_user.introduction = Faker::Lorem.characters(number: 101)
+      test_user.valid?
+      expect(user.errors[:introduction]).to include('は100文字以内で入力してください')
     end
   end
 
