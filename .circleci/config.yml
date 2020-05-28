@@ -3,70 +3,37 @@ executors:
   my-executor:
     docker:
       - image: circleci/ruby:2.5.7-node-browsers
-        environment:
-          - BUNDLER_VERSION: 2.0.2
-          - RAILS_ENV: 'test'
       - image: circleci/mysql:5.7
-        environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_ROOT_HOST: '127.0.0.1'
-
-      working_directory: ~/chocobox
-      
-      steps:
+    environment:
+          - BUNDLER_VERSION: 2.0.2
+          - RAILS_ENV: ‘test’
+          - MYSQL_ALLOW_EMPTY_PASSWORD: ‘true’
+          - MYSQL_ROOT_HOST: ‘127.0.0.1’
+    working_directory: ~/chocobox
+    steps:
         - checkout
         - restore_cache:
             keys:
-              - v1-dependencies-{{ checksum "Gemfile.lock" }}
+              - v1-dependencies-{{ checksum “Gemfile.lock” }}
               - v1-dependencies-
         - run: gem install bundler:2.0.2
         - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
         - save_cache:
-            paths:
-              - ./vendor/bundle
-            key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum “Gemfile.lock” }}
         - run: bundle exec rails db:create RAILS_ENV=test
         - run: bundle exec rails db:schema:load RAILS_ENV=test
         - run:
-            name: RSpec
-            command: bundle exec rspec
-
-    # rubocop:
-    #   docker:
-    #     - image: circleci/ruby:2.5.7-node-browsers
-    #       environment:
-    #         RAILS_ENV: test
-    #         POSTGRES_HOST: 127.0.0.1
-    #     - image: circleci/postgres:9.4
-    #       environment:
-    #         POSTGRES_HOST_AUTH_METHOD: trust
-
-    #   working_directory: ~/chocobox
-
-    #   steps:
-    #     - checkout
-    #     - restore_cache:
-    #         keys:
-    #           - v1-dependencies-{{ checksum "Gemfile.lock" }}
-    #           - v1-dependencies-
-    #     - run: gem install bundler:2.0.2
-    #     - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-    #     - save_cache:
-    #         paths:
-    #           - ./vendor/bundle
-    #         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-    #     - run:
-    #         name: RuboCop
-    #         command: bundle exec rubocop
+          name: RSpec
+          command: bundle exec rspec
 
   workflows:
     version: 2.1
     rspec_and_rubocop:
       jobs:
-        filters:
-          branches:
-            only:
-              - master
-              - develop
-        - rspec
-        # - rubocop
+      - rspec
+      filters:
+            branches:
+              only: master
+      
