@@ -28,12 +28,12 @@ jobs:
           name: RSpec
           command: bundle exec rspec
 
-  workflows:
-    version: 2.1
-    rspec_and_rubocop:
-      jobs:
-      - rspec
-      filters:
-            branches:
-              only: master
+  # workflows:
+  #   version: 2.1
+  #   rspec_and_rubocop:
+  #     jobs:
+  #     - rspec
+  #     filters:
+  #           branches:
+  #             only: master
       
