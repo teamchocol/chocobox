@@ -1,6 +1,6 @@
 version: 2.1
-executors:
-  my-executor:
+jobs:
+  build:
     docker:
       - image: circleci/ruby:2.5.7-node-browsers
       - image: circleci/mysql:5.7
