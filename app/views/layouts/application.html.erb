@@ -72,6 +72,15 @@
           </div>
         </div>
    </header>
+   <% flash.each do |message_type, message| %>
+    <% if message.instance_of?(String) %>
+      <%= content_tag :div, message, class: message_type %>
+    <% else %>
+      <% message.each do |a| %>
+        <%= content_tag :div, a, class: message_type %>
+      <% end %>     
+    <% end %> 
+   <% end %>
    <%= yield %>
    <div class="footer">
    <%= render 'layouts/footer' %>

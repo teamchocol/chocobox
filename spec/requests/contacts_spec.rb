@@ -23,10 +23,10 @@ describe '問い合わせ機能', type: :request do
   #   expect(mail.body).to include 'テストタイトル'
   # end
 
-  it 'お問い合わせが失敗すること' do
-    login_as(user, :scope => :user)
-    visit contacts_path
-    expect { click_on '送信する' }.to change(Contact, :count).by(0)
-    expect(page).to have_content 'お問い合わせの送信に失敗しました'
-  end
+  # it 'お問い合わせが失敗すること' do
+  #   login_as(user, :scope => :user)
+  #   visit contacts_path
+  #   expect { click_on '送信する' }.to change(Contact, :count).by(0)
+  #   expect(page).to have_content 'お問い合わせの送信に失敗しました'
+  # end
 end
