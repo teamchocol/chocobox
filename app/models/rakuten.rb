@@ -5,7 +5,7 @@ class Rakuten
   # TODO: 今後はDBにデータを保存できるようにして、APIの呼び出しを減らしたい！
   def self.get_item(item_code)
     data = {
-      "applicationId": "1066887408306301186",
+      "applicationId": ENV['applicationId'],
       "itemCode": item_code,
     }
 
