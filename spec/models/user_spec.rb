@@ -23,15 +23,15 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         test_user.name = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
       end
-      it '空欄でないこと' do
+      it '空欄でない' do
         test_user.nickname = ''
         is_expected.to eq false
       end
-      it '1文字以上であること' do
+      it 'ニックネーム1文字以上' do
         test_user.nickname = Faker::Lorem.characters(number: 1)
         is_expected.to eq false
       end
-      it '20文字以下であること' do
+      it 'ニックネーム20文字以下' do
         test_user.nickname = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
       end
@@ -82,7 +82,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     context 'introductionカラム' do
       let(:test_user) { user }
 
-      it '100文字以下であること' do
+      it '100文字以下' do
         test_user.introduction = Faker::Lorem.characters(number: 101)
         is_expected.to eq false
       end
@@ -91,7 +91,8 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
   describe '自己紹介を検証する場合' do
     let(:test_user) { user }
-    it '100文字超だと無効な状態であること' do
+
+    it '100文字超だと無効' do
       test_user.introduction = Faker::Lorem.characters(number: 101)
       test_user.valid?
       expect(user.errors[:introduction]).to include('は100文字以内で入力してください')

@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       session[:crop_width] = comment_params[:width]
       session[:crop_height] = comment_params[:height]
     else
-      redirect_to chocolate_path(@new_comment.item_code), flash: { error: @new_comment.errors.full_messages }   
+      redirect_to chocolate_path(@new_comment.item_code), flash: { error: @new_comment.errors.full_messages }
     end
     @comment = Comment.new
     @chocolate = Chocolate.new
@@ -39,13 +39,13 @@ class CommentsController < ApplicationController
         chocolate = Rakuten.get_item(item_code)
         puts chocolate
         next if chocolate["Items"].blank?
-        imageUrl = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"]
-        itemName = chocolate["Items"][0]["Item"]["itemName"]
-        if imageUrl.present?
-          @image[item_code] = imageUrl
+        image_url = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"]
+        item_name = chocolate["Items"][0]["Item"]["itemName"]
+        if image_url.present?
+          @image[item_code] = image_url
         end
-        if itemName.present?
-          @name[item_code] = itemName
+        if item_name.present?
+          @name[item_code] = item_name
         end
       end
     end
@@ -54,6 +54,18 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:title, :content, :image, :taste, :healthy, :cost_performance, :item_code, :x, :y, :width, :height)
+    params.require(:comment).permit(
+      :title,
+      :content,
+      :image,
+      :taste,
+      :healthy,
+      :cost_performance,
+      :item_code,
+      :x,
+      :y,
+      :width,
+      :height
+    )
   end
 end

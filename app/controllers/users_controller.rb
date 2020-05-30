@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       render "edit"
-   end
+    end
   end
 
   def search
@@ -42,16 +42,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items_full = []
     favorite = Favorite.where(user_id: @user.id)
-      favorite.each do |favo|
-        item = Rakuten.get_item(favo.item_code)
-        if item["Items"] != []
-          @items_full.push(item)
-        end
+    favorite.each do |favo|
+      item = Rakuten.get_item(favo.item_code)
+      if item["Items"] != []
+        @items_full.push(item)
       end
+    end
     @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(6)
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :nickname, :age, :gender)
   end
@@ -61,6 +62,6 @@ class UsersController < ApplicationController
     @user = User.find(id: params[:id])
     unless @user
       redirect_to new_user_session
-     end
+    end
   end
 end

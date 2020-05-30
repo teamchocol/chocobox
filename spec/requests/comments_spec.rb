@@ -19,7 +19,7 @@ describe '口コミ投稿機能', type: :request do
   #       find('#cost_performance_review_star', visible: false).set(5.0)
   #       fill_in 'comment[content]', with: 'テストコンテント'
   #       attach_file 'comment[image]', 'spec/images/test_normal_image.jpg'
-       
+
   #       click_button '投稿する'
   #     end.to change(Comment, :count).by(+1)
   #     expect(page).to have_content '口コミを投稿しました'

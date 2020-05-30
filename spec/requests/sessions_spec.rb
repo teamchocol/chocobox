@@ -13,7 +13,7 @@ describe 'セッション管理機能', type: :request do
     visit new_user_session_path
     fill_in 'メールアドレス', with: 'test@chocobox.jp'
     fill_in 'パスワード', with: 'password'
-    within ('#login-button') do
+    within '#login-button' do
       click_on 'ログイン'
     end
     expect(page).to have_content 'ログインしました。'
@@ -25,7 +25,7 @@ describe 'セッション管理機能', type: :request do
     visit new_user_session_path
     fill_in 'メールアドレス', with: 'test@chocobox.jp'
     fill_in 'パスワード', with: 'dummy_password'
-    within ('#login-button') do
+    within '#login-button' do
       click_on 'ログイン'
     end
     expect(page).to have_content 'メールアドレスまたはパスワードが違います。'

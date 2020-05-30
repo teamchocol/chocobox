@@ -28,8 +28,8 @@ class User < ApplicationRecord
   paginates_per 6
 
   # フォローフォロワー関係
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy 
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy 
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :follower, source: :followed
   has_many :followers, through: :followed, source: :follower
 
@@ -68,13 +68,13 @@ class User < ApplicationRecord
   # 検索機能
   def self.search(search, word)
     if search == "forward_match"
-      @user = User.where("(name || nickname) LIKE?", "#{word}%")
+      @user = User.where("(name || nickname) LIKE?", word)
     elsif search == "backward_match"
-      @user = User.where("(name || nickname) LIKE?", "%#{word}")
+      @user = User.where("(name || nickname) LIKE?", word)
     elsif search == "perfect_match"
-      @user = User.where("#{word}")
+      @user = User.where("(name || nickname) LIKE?", word)
     elsif search == "partial_match"
-      @user = User.where("(name || nickname) LIKE?", "%#{word}%")
+      @user = User.where("(name || nickname) LIKE?", word)
     else
       @user = User.all
     end

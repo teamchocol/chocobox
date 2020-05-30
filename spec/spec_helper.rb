@@ -21,18 +21,18 @@ require 'rspec/retry'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-   # rspec-retryの設定
-   config.verbose_retry = true
-   config.display_try_failure_messages = true
-   config.around :each, :js do |ex|
-     ex.run_with_retry retry: 5
-   end
-   config.retry_callback = proc do |ex|
-     if ex.metadata[:js]
-       Capybara.reset!     
-     end
-   end
-   
+  # rspec-retryの設定
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 5
+  end
+  config.retry_callback = proc do |ex|
+    if ex.metadata[:js]
+      Capybara.reset!
+    end
+  end
+
   config.include Capybara::DSL
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

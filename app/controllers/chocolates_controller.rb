@@ -4,16 +4,14 @@ class ChocolatesController < ApplicationController
     @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking.page(1)
   end
 
-  def show 
-  
+  def show
     @chocolate = Rakuten.get_item(params[:id])
     if @chocolate["Items"] == []
       return redirect_to home_sorry_path
     end
     @choco = Chocolate.new
     @choco.set_item_code(params[:id])
-    @comment = Comment.new  
-     
+    @comment = Comment.new
   end
 
   def search
@@ -36,15 +34,13 @@ class ChocolatesController < ApplicationController
     @range = params[:range]
     if @range == '1'
       redirect_to chocolates_path
-    elsif
-     @range == '2'
+    elsif @range == '2'
       @last_chocolates = @chocolates.page(@range.to_i)
-    elsif
-     @range == '3'
+    elsif @range == '3'
       @last_chocolates = @chocolates.page(@range.to_i)
     else
       @last_chocolates = @chocolates.page(4)
-   end
+    end
   end
 
   def favorite_ranking
@@ -61,8 +57,8 @@ class ChocolatesController < ApplicationController
 
   def taste_ranking
     @items = []
-    group = Comment.where("item_code<>'' and taste<>''").reorder("average_taste desc").group(:item_code).average("taste")
-
+    group = Comment.where("item_code<>'' and taste<>''").
+      reorder("average_taste desc").group(:item_code).average("taste")
     group.each do |k, v|
       item = Rakuten.get_item(k)
       if item["Items"].present?
@@ -74,8 +70,8 @@ class ChocolatesController < ApplicationController
 
   def healthy_ranking
     @items = []
-    group = Comment.where("item_code<>'' and healthy<>''").reorder("average_healthy desc").group(:item_code).average("healthy")
-
+    group = Comment.where("item_code<>'' and healthy<>''").
+      reorder("average_healthy desc").group(:item_code).average("healthy")
     group.each do |k, v|
       item = Rakuten.get_item(k)
       if item["Items"].present?
@@ -87,8 +83,8 @@ class ChocolatesController < ApplicationController
 
   def cost_performance_ranking
     @items = []
-    group = Comment.where("item_code<>'' and cost_performance<>''").reorder("average_cost_performance desc").group(:item_code).average("cost_performance")
-
+    group = Comment.where("item_code<>'' and cost_performance<>''").
+      reorder("average_cost_performance desc").group(:item_code).average("cost_performance")
     group.each do |k, v|
       item = Rakuten.get_item(k)
       if item["Items"].present?
