@@ -1,40 +1,97 @@
 version: 2.1
+
+references:
+  defaults: &defaults
+    working_directory: ~/The_Trip_Tip
+
+  ruby_docker_image: &ruby_docker_image
+    image: circleci/ruby:2.5.7-node-browsers
+    environment:
+      BUNDLER_VERSION: 2.1.4
+      RAILS_ENV: test
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_USERNAME: 'root'
+      MYSQL_PASSWORD: ''
+
+  restore_gem_cache: &restore_gem_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
+
 jobs:
-  rspec:
+  checkout_code:
+    <<: *defaults
     docker:
-      - image: circleci/ruby:2.5.7-node-browsers
-        environment:
-          - PGHOST: 127.0.0.1
-          - RAILS_ENV: test
-      - image: circleci/mysql:5.7
-        environment: 
-          - MYSQL_ALLOW_EMPTY_PASSWORD: true
-          - MYSQL_ROOT_HOST: 127.0.0.1
-    working_directory: ~/chocobox
+      - *ruby_docker_image
     steps:
       - checkout
-      - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum “Gemfile.lock” }}
-          - v1-dependencies-
-      - run: gem install bundler:2.0.2
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/project
+
+  test:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+    steps:
+      - checkout
+      - *restore_gem_cache
+      - run: gem install bundler -v 2.1.4
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
-        paths:
-          - ./vendor/bundle
-        key: v1-dependencies-{{ checksum “Gemfile.lock” }}
-      - run: bundle exec rails db:create RAILS_ENV=test
-      - run: bundle exec rails db:schema:load RAILS_ENV=test
-      - run:
-        name: RSpec
-        command: bundle exec rspec
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: yarn install --check-files
 
-  workflows:
-    version: 2.1
-    rspec_and_rubocop:
-      jobs:
-        - rspec
-      filters:
-        branches:
-          only: master
-      
+      - run: mv -f ./config/database.yml.ci ./config/database.yml
+      - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run: bundle exec rake db:create db:schema:load --trace
+
+      - run: bundle exec bin/webpack
+
+      - run: bundle exec rubocop
+      - run: bundle exec rspec
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  deploy:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+    steps:
+      - checkout
+      - *restore_gem_cache
+      - run: gem install bundler -v 2.1.4
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install --check-files
+      - add_ssh_keys:
+          fingerprints:
+            - '23:1f:a5:a5:cd:54:71:f6:fc:7b:5c:a1:b5:07:5f:80'
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
+workflows:
+  version: 2.1
+  test_and_deploy:
+    jobs:
+      - checkout_code
+      - test:
+          requires:
+            - checkout_code
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+    
