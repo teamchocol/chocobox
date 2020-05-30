@@ -12,7 +12,8 @@ references:
       MYSQL_HOST: 127.0.0.1
       MYSQL_USERNAME: 'root'
       MYSQL_PASSWORD: ''
-
+      MYSQL_PORT: 3306
+      
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
