@@ -4,7 +4,7 @@ describe 'いいね登録機能' do
   let!(:user) { FactoryBot.create(:user) }
 
   context 'いいね登録していない場合', js: true do
-    it 'いいね登録できる' do
+    it 'いいね登録できる', :retry => 10 do
       login_as(user, :scope => :user)
       visit chocolates_path
       expect do
