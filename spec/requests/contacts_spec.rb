@@ -1,8 +1,8 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-describe '問い合わせ機能', type: :request do
-  include ActiveJob::TestHelper
-  let(:user) { FactoryBot.create(:user) }
+# describe '問い合わせ機能', type: :request do
+#   include ActiveJob::TestHelper
+#   let(:user) { FactoryBot.create(:user) }
 
   # it '問い合わせが成功すること' do
   #   login_as(user, :scope => :user)
@@ -29,4 +29,4 @@ describe '問い合わせ機能', type: :request do
   #   expect { click_on '送信する' }.to change(Contact, :count).by(0)
   #   expect(page).to have_content 'お問い合わせの送信に失敗しました'
   # end
-end
+# end
