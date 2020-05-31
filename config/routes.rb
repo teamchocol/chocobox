@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
 
-  # resources :brands
   resources :chocolates do
     collection do
       get 'search'
