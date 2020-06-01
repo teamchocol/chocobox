@@ -13,11 +13,11 @@ default: &default
 
 development:
   <<: *default
-  database: chocobox_development #sample_appの部分は、アプリ名に応じて修正
+  database: chocobox_development 
 
 test:
   <<: *default
-  database: chocobox_test #sample_appの部分は、アプリ名に応じて修正
+  database: chocobox_test 
 
 production:
   <<: *default
