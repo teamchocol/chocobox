@@ -72,6 +72,3 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
 ## 主な利用シーン
 休みの日に買い物に出かける前
 仕事の休憩中
-
-test
-update
