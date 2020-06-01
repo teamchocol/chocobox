@@ -111,7 +111,7 @@ $(function(){
    
    });
 
-   $(function () {
+   $(document).on('turbolinks:load',function () {
     let $image = $('#imageModal'),
       $img_field = $('#comment_image'),
       $croppedImage = $('#croppedImage'),
@@ -142,8 +142,8 @@ $(function(){
       }
     };
   
-    $img_field.on('focus',function(e) {
-      $(this).val('');
+    $(document).on('focus','#comment_image',function() {
+      $('#comment_image').val('');
     });
     // when file upload
     $img_field.on('change',function(e) {
@@ -165,6 +165,8 @@ $(function(){
     $button.click(() => {
       imgCropping();
     });
+
+ 
   
     // modalを閉じたとき、cropper要素を初期化
     $cropModal.on('hidden.bs.modal',function() {

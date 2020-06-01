@@ -19,7 +19,7 @@ class ChocolatesController < ApplicationController
       items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
       @items_full = []
       items.each do |item|
-        if item.name.include?("チョコ") and item.name.include?("スマホ") == false
+        if item.name.include?("チョコ") and item.name.include?("ケース") == false
           @items_full.push(item)
         end
       end
