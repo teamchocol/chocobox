@@ -103,3 +103,5 @@ gem 'rubocop-airbnb'
 group :production do
   gem 'mysql2'
 end
+
+gem "aws-sdk-s3", require: false
