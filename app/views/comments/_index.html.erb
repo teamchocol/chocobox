@@ -85,7 +85,7 @@
       <div class="row comment-avatar">
         <div class="comment-user col-xs-3 col-sm-3 col-md-3">
           <div class="">
-            <%= attachment_image_tag(comment.user, :profile_image,size:'100x100', format: 'jpeg', fallback: "no_image.jpg", size:'100x100') %>
+            <%= image_tag(comment.user, :profile_image,size:'100x100', format: 'jpeg', fallback: "no_image.jpg", size:'100x100') %>
           </div>
           <div class="comment-author">
             <%= link_to(comment.user) do %>

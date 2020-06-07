@@ -43,7 +43,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   # 画像投稿
-  attachment :profile_image, destroy: false
+  has_one_attached :profile_image
 
   # お気に入り登録判定
   def favorited_by?(item_code)

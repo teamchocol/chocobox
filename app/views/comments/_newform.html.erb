@@ -32,7 +32,7 @@
 							<img src="" id="croppedImage" class="col-sm-12 col-xs-12 col-md-12">
 					</div>
 				  <%= f.label :画像を投稿 %>
-					<%= f.file_field :image, class: "comment_image",id: "comment_image" %>
+					<%= f.file_field :image, accept: "image/png, image/jpeg, image/gif", class: "comment_image",id: "comment_image" %>
 				  <%= f.hidden_field :x, id:"dataX"%>
 					<%= f.hidden_field :y, id:"dataY"%>
 					<%= f.hidden_field :width, id:"dataWidth"%>
