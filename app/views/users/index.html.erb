@@ -5,7 +5,11 @@
 		<% @users.each do |user| %>
 		<div class="users-profile  col-xs-4 col-md-4">
 			<div class="user-image">
-				<%= attachment_image_tag user, :profile_image,  size: "100x100", format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size: "100x100"  %>
+				<% if user.profile_image.attached? %>
+					<%= image_tag user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+				<% else %>
+					<%= image_tag "no_image.jpg", size:'100x100'%>
+				<% end %>
 			</div>
 			<div class="user-nickname">
 			   <% if user.nickname.nil? %>

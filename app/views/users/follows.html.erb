@@ -14,7 +14,13 @@
 		<tbody>
 			<% @follows.following.each do |user| %>
 			<tr>
-				<td class="align-middle"><%= attachment_image_tag(user, :profile_image,  size:'100x100', fallback: "no_image.jpg", size:'100x100') %></td>
+				<td class="align-middle">
+				<% if user.profile_image.attached? %>
+					<%= image_tag user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+				<% else %>
+					<%= image_tag "no_image.jpg", size:'100x100'%>
+				<% end %>
+				</td>
 				<td class="align-middle"><%= user.nickname%></td>
 				
 				<td class="align-middle">	<% @user ||= current_user %>

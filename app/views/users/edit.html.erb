@@ -29,7 +29,7 @@
  	<tr>
  		<td class="field">
       <%= f.label :画像 %>
-	    <%= f.attachment_field :profile_image, class: "user_image" %>
+	    <%= f.file_field :profile_image, accept: "image/png, image/jpeg, image/gif", class: "user_image" %>
 		</td>
  	</tr>
  	<tr>
