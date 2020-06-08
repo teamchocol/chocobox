@@ -8,6 +8,9 @@
 			  <%= link_to "楽天市場人気ランキングを見る", chocolates_path ,class: "btn btn-warning my-2"%>
        <%= link_to "好きなチョコレートを検索する", search_chocolates_path ,class: "btn btn-success my-2"%>
 		</p>
+		<div id="comment_search">
+        <%= render 'searches/comment_search', word: word, search: search %>
+    </div>
 	</div>
 </section>
 
@@ -43,7 +46,11 @@
 							<div class="row">
 								<div class="comment_index_avatar col-md-5 col-sm-5 col-xs-5">
 									<%= link_to(comment.user) do %>
-									<%= image_tag comment.user, :profile_image,  size:'110x110', format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" , size:'110x110' %>
+										<% if comment.user.profile_image.attached? %>
+											<%= image_tag comment.user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+										<% else %>
+											<%= image_tag "no_image.jpg", size:'100x100'%>
+										<% end %>
 									<% end %>
 								</div>
 								<div class="comment-author col-md-5 col-sm-5 col-xs-5">

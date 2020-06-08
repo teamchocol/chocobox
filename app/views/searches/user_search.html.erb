@@ -1,7 +1,7 @@
-<h2 class="user-index-title">ユーザー 一覧</h2>
-<%= render 'searches/user_search' %>
+<h2 class="user-index-title">検索結果</h2>
 <div class="container">
 	<div class="row users">
+
 		<% @users.each do |user| %>
 		<div class="users-profile  col-xs-4 col-md-4">
 			<div class="user-image">
@@ -47,4 +47,3 @@
 		<% end %>
 	</div>
 </div>
-<%= paginate @users %>
