@@ -66,17 +66,17 @@ class User < ApplicationRecord
   end
 
   # 検索機能
-  def self.search(search, word)
+  def self.user_search(search, word)
     if search == "forward_match"
-      @user = User.where("(name || nickname) LIKE?", word)
+      @users = User.where("(nickname) LIKE?", word)
     elsif search == "backward_match"
-      @user = User.where("(name || nickname) LIKE?", word)
+      @users = User.where("(nickname) LIKE?", word)
     elsif search == "perfect_match"
-      @user = User.where("(name || nickname) LIKE?", word)
+      @users = User.where("(nickname) LIKE?", word)
     elsif search == "partial_match"
-      @user = User.where("(name || nickname) LIKE?", word)
+      @users = User.where("(nickname) LIKE?", word)
     else
-      @user = User.all
+      @users = User.all
     end
   end
 

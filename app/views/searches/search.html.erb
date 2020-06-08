@@ -1,32 +1,90 @@
-<div class="container">
-<div class="row">
-	<div class="col-xs-12">
-		<h2>Results index</h2>
-		<table class="table table-hover table-inverse">
-			<thead>
-				<tr>
-					<th></th>
-					<th>Title</th>
-					<th>Opinion</th>
-					<th colspan="3"></th>
-				</tr>
-			</thead>
-
-      <tbody>
-      
-				<% @comment.each do |comment| %>
-				<tr>
-					<td>
-						<%= link_to(comment.user) do %>
-						<%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
-						<% end %>
-					</td>
-					<td><%= link_to comment.title, comment, class: "comment_#{comment.id}" %></td>
-					<td><%= comment.title %></td>
-          </tr>
-          <% end %>
-      </tbody>
-		</table>
+<div class="comments-all" id="infiniteScrollingContainer">
+<h2 class="comment-index-title">検索結果</h2>
+	<div class="container" >
+		<div class="row">
+			<% @comments.each do |comment| %>
+			<div class="col-md-6 " id="comment-all-<%=comment.id %>">
+				<div class="card-comment mb-4 shadow-sm">
+					<div class="row">
+						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
+						<div class="comment-image col-md-6 col-xs-4 col-sm-6" style="text-align: center;">
+							<%= image_tag(@image[comment.item_code].present? ? @image[comment.item_code] : "/assets/no_image.jpg", style: "width: 180px;height: 160px; margin-right: 0;" ) %>
+						</div>
+						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
+					</div>
+					<div class="comment-item-name col-xs-12 ">
+						<%= @name[comment.item_code].present? ? @name[comment.item_code] : "在庫がないため表示できません" %>
+					</div>
+					<div class="row">
+					  <a class="kutikominaiyou">口コミタイトル</a>
+						<div class="comment-field mx-auto border col-md-10">
+							<%= comment.title %>
+						</div> 
+						<a class="kutikominaiyou">口コミ内容</a>
+						<div class="comment-areas mx-auto border col-md-10">
+							<%= comment.content %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="comment-avatar col-md-10 col-sm-10 col-xs-10">
+							<div class="row">
+								<div class="comment_index_avatar col-md-5 col-sm-5 col-xs-5">
+									<%= link_to(comment.user) do %>
+										<% if comment.user.profile_image.attached? %>
+											<%= image_tag comment.user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+										<% else %>
+											<%= image_tag "no_image.jpg", size:'100x100'%>
+										<% end %>
+									<% end %>
+								</div>
+								<div class="comment-author col-md-5 col-sm-5 col-xs-5">
+									<%= link_to comment.user.name,user_path(id: "comment.user_id") %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="row">
+								<div class="comment-date col-md-7 col-sm-7 col-xs-7">
+									<span class="comment-date">
+										<a>コメント投稿日：</a>
+										<%= comment.created_at.strftime('%Y/%m/%d') %></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="row">
+								<div class="new-comment col-md-8 col-sm-8 col-xs-8">
+									<% if comment.item_code.present? %>
+									<%= link_to "口コミを投稿する",chocolate_path(:id => comment.item_code), class: "btn btn-primary kutikomi-button my-auto" %>
+									<% else %>
+									<%= link_to '在庫切れ', home_sorry_path, class: "btn btn-outline-dark"%>
+									<% end %>
+								</div>
+					      
+        			  <div class=" comment-delete col-xs-3 col-sm-3 col-md-3">
+									<% unless current_user != comment.user %>
+									<div class="delete"><%= link_to comment_path(comment.id), method: :delete, remote: true  do %>      <button
+											 class="btn btn-danger" id="delete-<%= comment.id %>">削除</button>
+										<% end %>
+									</div>       
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <%#カードの締め%>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div>
+	<%= link_to_next_page @comments, '次のページ', class: "next" %>
 	</div>
 </div>
+<div class="yubi">
+	<div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
 </div>

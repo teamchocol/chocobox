@@ -34,10 +34,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-    @users = User.search(params[:search])
-  end
-
   def favorite_chocolates
     @user = User.find(params[:id])
     @items_full = []

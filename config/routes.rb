@@ -66,5 +66,4 @@ Rails.application.routes.draw do
 
   get 'search' => 'searches#search'
   get 'search/user' => 'searches#user_search'
-  get 'search/comment' => 'searches#comment_search'
 end
