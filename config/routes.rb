@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get 'home/health', 'home#health'
   get 'policy', to: 'toppages#policy'
   get 'privacypolicy', to: 'toppages#privacypolicy'
-  get 'contacts', to: 'contacts#new'
+  get 'contact', to: 'contacts#new'
   post 'contacts', to: 'contacts#create'
+  get 'contacts', to: 'contacts#index'
 
   devise_for :admins, skip: :all
   devise_scope :admin do

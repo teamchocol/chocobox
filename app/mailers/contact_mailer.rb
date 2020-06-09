@@ -1,13 +1,14 @@
 class ContactMailer < ApplicationMailer
-  def creation_email(user, contact)
+  
+  def creation_email(contact)
     @contact = contact
     mail(
       subject: 'ChoCoBoXへのお問い合わせありがとうございます。',
       to: contact.email,
-      bcc: 'chocobox@gmail.com',
+      bcc: 'chocoboxchocobox@gmail.com',
       # NOTE: from に環境変数を設定するとdevやtest環境で設定していない場合
       #      既定のアドレスを設定している
-      from: 'chocobox@gmail.com'
+      from: 'chocoboxchocobox@gmail.com'
     )
   end
 
