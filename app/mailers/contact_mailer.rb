@@ -1,5 +1,4 @@
-class ContactMailer < ApplicationMailer
-  
+class ContactMailer < ApplicationMailer  
   def creation_email(contact)
     @contact = contact
     mail(
