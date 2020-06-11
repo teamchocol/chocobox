@@ -4,6 +4,7 @@ describe '問い合わせ機能' do
   include ActiveJob::TestHelper
 
   let(:user) { FactoryBot.create(:user) }
+  
   context '他のユーザーをフォローしている場合' do
     it '問い合わせが成功すること' do
       login_as(user, :scope => :user)
