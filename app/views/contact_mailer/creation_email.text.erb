@@ -1,4 +1,4 @@
-creation_email.text,= "#{@contact.name} 様、 ChocoBoxへのお問い合わせありがとうございます。"
+<%= @contact.name %>様、 ChocoBoxへのお問い合わせありがとうございます。
 
 下記のお問い合わせを承りました。
 
@@ -6,14 +6,14 @@ creation_email.text,= "#{@contact.name} 様、 ChocoBoxへのお問い合わせ�
 
 ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣
 【件名】
-= @contact.title
+<%= @contact.title %>
 
 【お問い合わせ内容】
-= @contact.content
+<%= @contact.content %>
 
 ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣
 
 ──────────────────────────────────
 ChocoBox運営管理者
-Email: chocoboxmanager@gmail.com
+Email: chocoboxchocobox@gmail.com
 ──────────────────────────────────
