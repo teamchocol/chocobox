@@ -99,6 +99,7 @@ class ChocolatesController < ApplicationController
   end
 
   private
+  
   def comment_params
     params.permit(:content, :title, :image, :item_code)
   end

@@ -16,7 +16,6 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     flash[:notice] = "編集しました"
     redirect_to admin_user_path(@user.id)
-    end
   end
 
   def destroy
@@ -26,7 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :nickname, :age, :gender)
   end
