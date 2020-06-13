@@ -25,10 +25,10 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
       expect(comment.errors[:taste]).to include('は数値で入力してください')
     end
 
-    it 'おいしさ評価が1未満だと無効な状態であること' do
+    it 'おいしさ評価が0.5未満だと無効な状態であること' do
       comment.taste = -1
       comment.valid?
-      expect(comment.errors[:taste]).to include('は1以上の値にしてください')
+      expect(comment.errors[:taste]).to include('は0.5以上の値にしてください')
     end
 
     it 'おいしさ評価が1.0だと有効な状態であること' do
@@ -57,10 +57,10 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
       expect(comment.errors[:healthy]).to include('は数値で入力してください')
     end
 
-    it '健康評価が1未満だと無効な状態であること' do
+    it '健康評価が0.5未満だと無効な状態であること' do
       comment.healthy = -1
       comment.valid?
-      expect(comment.errors[:healthy]).to include('は1以上の値にしてください')
+      expect(comment.errors[:healthy]).to include('は0.5以上の値にしてください')
     end
 
     it '健康評価が1.0だと有効な状態であること' do
@@ -89,10 +89,10 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
       expect(comment.errors[:cost_performance]).to include('は数値で入力してください')
     end
 
-    it 'コスパ評価が1未満だと無効な状態であること' do
+    it 'コスパ評価が0.5未満だと無効な状態であること' do
       comment.cost_performance = -1
       comment.valid?
-      expect(comment.errors[:cost_performance]).to include('は1以上の値にしてください')
+      expect(comment.errors[:cost_performance]).to include('は0.5以上の値にしてください')
     end
 
     it 'コスパ評価が1.0だと有効な状態であること' do
