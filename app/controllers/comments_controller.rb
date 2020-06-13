@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
     @choco.set_item_code(@comment.item_code)
     if @comment.user == current_user
       @comment.destroy
-      flash[:success] = "コメントを削除しました!"
     else
       flash[:alert] = "削除できませんでした"
       redirect_to request.referer

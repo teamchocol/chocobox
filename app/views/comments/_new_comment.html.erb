@@ -1,17 +1,17 @@
 	<div class="container" >
 		<div class="row">
-			<% @comments.each do |comment| %>
+			<% comments.each do |comment| %>
 			<div class="col-md-6 " id="comment-all-<%=comment.id %>">
 				<div class="card-comment mb-4 shadow-sm">
 					<div class="row">
 						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
 						<div class="comment-image col-md-6 col-xs-4 col-sm-6" style="text-align: center;">
-							<%= image_tag(@image[comment.item_code].present? ? @image[comment.item_code] : "/assets/no_image.jpg", style: "width: 180px;height: 160px; margin-right: 0;" ) %>
+							<%= image_tag(image[comment.item_code].present? ? image[comment.item_code] : "/assets/no_image.jpg", style: "width: 180px;height: 160px; margin-right: 0;" ) %>
 						</div>
 						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
 					</div>
 					<div class="comment-item-name col-xs-12 ">
-						<%= @name[comment.item_code].present? ? @name[comment.item_code] : "在庫がないため表示できません" %>
+						<%= name[comment.item_code].present? ? name[comment.item_code] : "在庫がないため表示できません" %>
 					</div>
 					<div class="row">
 					  <a class="kutikominaiyou">口コミタイトル</a>
@@ -55,15 +55,10 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="row">
-								<div class="new-comment col-md-8 col-sm-8 col-xs-8">
-									<% if comment.item_code.present? %>
-									<%= link_to "口コミを投稿する",chocolate_path(:id => comment.item_code), class: "btn btn-primary kutikomi-button my-auto" %>
-									<% else %>
-									<%= link_to '在庫切れ', home_sorry_path, class: "btn btn-outline-dark"%>
-									<% end %>
+								<div class="new-comment col-md-10 col-sm-10 col-xs-10">
 								</div>
 					      
-        			  <div class=" comment-delete col-xs-3 col-sm-3 col-md-3">
+        			  <div class=" comment-delete col-xs-2 col-sm-2 col-md-2">
 									<% unless current_user != comment.user %>
 									<div class="delete"><%= link_to comment_path(comment.id), method: :delete, remote: true  do %>      <button
 											 class="btn btn-danger" id="delete-<%= comment.id %>">削除</button>

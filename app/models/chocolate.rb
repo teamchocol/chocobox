@@ -26,21 +26,21 @@ class Chocolate < ApplicationRecord
   def total_taste
     (comments.sum(&:taste) / comments.count).round(1)
   rescue ZeroDivisionError
-    "-"
+    0
   end
 
   # item_codeに紐づいた健康評価の平均値
   def total_healthy
     (comments.sum(&:healthy) / comments.count).round(1)
   rescue ZeroDivisionError
-    "-"
+    0
   end
 
   # item_codeに紐づいたコスパ評価の平均値
   def total_cost_performance
     (comments.sum(&:cost_performance) / comments.count).round(1)
   rescue ZeroDivisionError
-    "-"
+    0
   end
   # クラスメソッドとして呼んでいたが上記に修正
   # def self.total_taste(id)
