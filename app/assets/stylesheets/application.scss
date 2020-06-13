@@ -68,7 +68,6 @@ header {
 }
 
 // TOPページ
-
 .single-blog {
   transition: all 300ms linear 0s;
   position: relative; }
@@ -127,7 +126,6 @@ header {
    .title {
     font-weight: 100;
     font-size: 15px;
-    
     }
   .title1 {
     font-size: 40px;
@@ -151,7 +149,6 @@ header {
     }
 
 
-
 .menu-trigger {
   font-family: "soft";
   position: fixed;
@@ -166,18 +163,24 @@ header {
   border-radius: 4px;
 }
 
-/* Slider */
+// トップページ おいしさランキング
+.toppage-oisisa{
+  font-family: "soft";
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+
+
+/* Slider */
 .slick-list {
   position: relative;
   overflow: hidden;
   margin: 0;
   padding: 0;
-
 }
 
 /* Arrows */
-
 .slick-prev,
 .slick-next {
     line-height: 0px;
@@ -186,7 +189,6 @@ header {
 
 
 /* TOPに戻る矢印 */
-
 #back {
   position: fixed;
   right: 50px;
@@ -195,13 +197,11 @@ header {
 }
 
 /* マウスの形を変える */
-
 .yubi {
   cursor: pointer;
 }
 
 /* ハンバーガーメニュー */
-
 #hm-icon {
   position: relative;
   right: 0px;
@@ -303,7 +303,6 @@ header {
 /* ------------------------ */
 /* ------ spメニュー ------ */
 /* ------------------------ */
-
 #sp-menu {
   font-family: "soft";
   position: fixed;
@@ -333,7 +332,6 @@ header {
 }
 // ログイン画面
 .main-visual {
-  
   display: flex;
   width: 100%;
   height: 80vh;
@@ -350,7 +348,6 @@ header {
   margin-right: auto;
   background-color: #fff;
   padding: 20px 20px ;
-  
 }
 
 // フッター
@@ -368,13 +365,12 @@ ul{
   color: #fff;
   padding-top: 15px;
   padding-bottom:0 ;
-  bottom: 0;
   margin-top: auto;
   margin-bottom: 0;
-  height: 150px;
-  position: relative;    
+  height: 150px;   
   width: 100%;  
 }
+
 // サインアップ 画面
 .sign_up-visual {
   font-family: "soft";
@@ -415,7 +411,6 @@ ul{
 }
 
 // 楽天市場ランキング商品一覧
-
 .rakuten_ranking{
   font-family: "soft";
   height: auto;
@@ -424,6 +419,7 @@ ul{
   padding: 10px;
   text-align: center;
 }
+
 // いいねランキング
 .favo-ranking{
   font-family: "soft";
@@ -690,14 +686,15 @@ ul{
 }
 
 
-// ユーザー一覧
+// ユーザー一覧画面
 
 .users{
   margin: 20px 0 ;
 }
 .user-index-title{
+  font-family: "soft";
   text-align: center;
-  margin: 15px auto;
+  margin: 25px auto;
 }
 .users-profile {
   margin: 10px 0;
@@ -751,7 +748,7 @@ label {
 // チョコサーチ
 .chocosearch{
   text-align: center;
-  margin: 15px auto;
+  margin: 25px auto;
 }
 .list{
   margin: 15px 0;
@@ -764,8 +761,8 @@ label {
   width: 100%;
   position: relative;
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 100px;
+  margin-bottom: 80px;
 }
 .search-visual p {
     position: absolute;
@@ -780,10 +777,11 @@ label {
 }
 .search-box{
   text-align: center;
+  margin-bottom: 50px; 
 }
 
 .search{
-  margin: 10px 0;
+  margin: 40px 0;
 }
 
 .searches{
@@ -792,7 +790,7 @@ label {
 
 .choco-image{
   text-align: center;
-} 
+}
 .search-list{
   font-family: "soft";
   height: auto;

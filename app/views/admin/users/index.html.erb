@@ -1,28 +1,39 @@
-<%= render 'admin/admin_header' %>
-<div class="row" >
-<div class="col-md-8 col-md-offset-2">
-	<h2>会員一覧</h2>
-
-<table class="table table-hover table-inverse">
-			<thead>
-				<tr>
-					<th>氏名</>
-					<th>メールアドレス</th>
-					<th colspan="4"></th>
-				</tr>
-			</thead>
-            <tbody>
-				<% @users.each do |user| %>
-				<tr>
-					<td><%= user.id %></td>
-
-					<td><%= link_to user.name, admin_user_path(user) %></td>
-
-					<td><%= user.email %></td>
-					<td></td>
-				</tr>
+<h2 class="user-index-title">ユーザー 一覧</h2>
+<%= render 'searches/user_search' %>
+<div class="container">
+	<div class="row users">
+		<% @users.each do |user| %>
+		<div class="users-profile  col-xs-4 col-md-4">
+			<div class="user-image">
+				<% if user.profile_image.attached? %>
+					<%= image_tag user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+				<% else %>
+					<%= image_tag "no_image.jpg", size:'100x100'%>
 				<% end %>
-			</tbody>
-</table>
+			</div>
+			<div class="user-nickname">
+			   <% if user.nickname.nil? %>
+				   <a>ニックネームがありません </a>
+				 <% else %>
+				   <%= user.nickname %>   
+				 <% end %>
+			</div>
+			<div><% user ||= current_user %></div>
+			<div>
+				<p id="followers" class="stat">
+					フォロワー
+					<span class="badge badge-pill badge-secondary"><%= user.followers.count %></span>
+				</p>
+			</div>
+			<div class="stats">
+				<p id="following" class="stat">
+					フォロー
+					<span class="badge badge-pill badge-secondary"><%= user.following.count %></span>
+				</p>
+			</div>
+			<div class="profile"><%= link_to "ユーザー詳細へ", admin_user_path(user.id), class: "user_#{user.id}" %></div>
+		</div>
+		<% end %>
+	</div>
 </div>
-</div>
+<%= paginate @users %>

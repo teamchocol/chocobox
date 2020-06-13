@@ -67,12 +67,10 @@
    </section>
    <div class="jumbotron">
        <div class="jumbotron jumbotron-extend">
-
-           <p class="web-title">ChoCO BoX</p>
+           <p class="web-title">ChoCo BoX</p>
            <p class="start-button">
-             <%= link_to "ChoCoBoXを始める", new_user_registration_path ,class: "btn btn-primary start-button"%>
+             <%= link_to "ChoCoBoXを始める", new_user_registration_path ,class: "btn btn-primary start-button" %>
            </p>
-
            <div class="container">
                <div class="theTarget">
                    <%= image_tag 'チョコ1.jpg' %>
@@ -85,7 +83,13 @@
            </div>
        </div>
    </div>
-
-   <div class="yubi">
-       <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
-   </div>
+   <div>
+      <h2 class="toppage-oisisa">おいしさランキング</h2>
+      <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
+    </div>  
+    <div class="comment-area" id='comment_area'>
+      <%#= render 'comments/index', chocolate: @choco, new_comment: @new_comment %>
+    </div>
+    <div class="yubi">
+        <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
+    </div>

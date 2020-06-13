@@ -1,5 +1,6 @@
 class ChocolatesController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @chocolates = RakutenWebService::Ichiba::Genre[201136].ranking.page(1)
   end
@@ -52,55 +53,53 @@ class ChocolatesController < ApplicationController
         @items_full.push(item)
       end
     end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(5)
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
   end
 
   def taste_ranking
-    @items = []
+    @items_full = []
     group = Comment.where("item_code<>'' and taste<>''").
       reorder("average_taste desc").group(:item_code).average("taste")
     group.each do |k, v|
       item = Rakuten.get_item(k)
       if item["Items"].present?
-        @items.push(item)
+        @items_full.push(item)
       end
     end
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
     @chocolate = Chocolate.new
   end
 
   def healthy_ranking
-    @items = []
+    @items_full = []
     group = Comment.where("item_code<>'' and healthy<>''").
       reorder("average_healthy desc").group(:item_code).average("healthy")
     group.each do |k, v|
       item = Rakuten.get_item(k)
       if item["Items"].present?
-        @items.push(item)
+        @items_full.push(item)
       end
     end
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
     @chocolate = Chocolate.new
   end
 
   def cost_performance_ranking
-    @items = []
+    @items_full = []
     group = Comment.where("item_code<>'' and cost_performance<>''").
       reorder("average_cost_performance desc").group(:item_code).average("cost_performance")
     group.each do |k, v|
       item = Rakuten.get_item(k)
       if item["Items"].present?
-        @items.push(item)
+        @items_full.push(item)
       end
     end
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
     @chocolate = Chocolate.new
   end
 
   private
-
   def comment_params
     params.permit(:content, :title, :image, :item_code)
   end
-  # def chocolate_params
-  #   params.permit(:name, :medium_image_url, :price, :item_code)
-  # end
-  # チョコレートテーブルに保存するように設定した時に使用
 end

@@ -1,15 +1,44 @@
-<%= render 'admin/admin_header' %>
-<div class="col-md-8 col-md-offset-2">
-<h1>会員詳細</h1>
-<p>顧客ID      <%= @user.id%>
-	<%if @user.user_status == '有効'%>
-		<p>有効会員</p>
-		<% else %>
-		<p>退会済み</p>
-	<% end %>
-</p>
-<p>氏名        <%= @user.name%></p>
-<p>ニックネーム      <%= @user.nickname%></p>
-<p>メールアドレス  <%= @user.email%></p>
-<td><%= link_to '編集する', edit_admin_user_path(@user), class: "btn btn-primary" %></td>
-</div>
+ <table class="table table-striped ç">
+ 	<tr>
+ 		<td colspan="2" class="user-show-image">
+		 <% if @user.profile_image.attached? %>
+ 			<%= image_tag @user.profile_image.variant(resize:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+		 <% else %>
+      <%= image_tag "no_image.jpg", size:'150x150'%>
+		 <% end %>
+ 		</td>
+ 	</tr>
+ 	<tr>
+ 		<td>ニックネーム</td>
+ 		<td><%= @user.nickname %></td>
+ 	</tr>
+ 	<tr>
+ 		<td>性別</td>
+ 		<td><%= @user.gender %></td>
+ 	</tr>
+ 	<tr>
+ 		<td>年齢</td>
+ 		<td><%= @user.age %></td>
+ 	</tr>
+ 	<tr>
+ 		<td>自己紹介</td>
+ 		<td><%= @user.introduction %></td>
+ 	</tr>
+ </table>
+
+ <table class="table  table-striped user-follow-table">
+ 	<tbody>		
+ 		<tr>
+ 			<td>
+ 				<% @user ||= current_user %>
+ 				<div class="stats">
+          <div class="delete">
+					  <%= link_to admin_user_path(@user.id), method: :delete, data: { confirm: '本当に消しますか？' } do %> <button
+              class="btn btn-danger">ユーザーを削除</button>
+            <% end %>
+          </div>       
+				</div>	
+ 			</td>
+ 		</tr>
+ 	</tbody>
+ </table>

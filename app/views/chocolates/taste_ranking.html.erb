@@ -10,80 +10,8 @@
     </p>
   </div>
 </section>
-
-  <div class="container ranking">
-    <div class="row">
-      <% @items.each do |chocolate| %>
-      <div class="kutikomi-ranking col-xs-12 col-md-12 col-sm-12">
-        <div class="row">
-          <div class="col-xs-5 col-sm-5 col-md-5">
-            <div class="item">
-              <div class="oisiichoco-image">
-                <% if chocolate["Items"].blank? %>
-                <%= image_tag("/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
-                <% else %>
-                <%= image_tag(chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"].present? ? chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"] : "/assets/no_image.jpg", style: "width: 230px;height: 200px;display: inline-block;") %>
-                <% end %>
-              </div>
-              <div class="oisiichoco-name">
-                <div><%= chocolate["Items"][0]["Item"]["itemName"] %></div>
-              </div>
-              <div class="choco_price">
-                <% if chocolate["Items"][0]["Item"]["itemPrice"].present? %>
-                <a>価格<%= chocolate["Items"][0]["Item"]["itemPrice"]%>円</a>
-                <% else %>
-                <a>価格データなし</a>
-                <% end %>
-              </div>
-              <div class="kutikomitoukou">
-                <% if chocolate["Items"][0]["Item"]["itemCode"].present? %>
-                <%= link_to 'この商品に口コミを投稿する', chocolate_path(chocolate["Items"][0]["Item"]["itemCode"]), class: '' %>
-                <% else %>
-                <%= link_to 'この商品に口コミを投稿する', home_sorry_path, class: '' %>
-                <% end %>
-              </div>
-            </div>
-            <div class="favo">
-              <a>いいねの数<%= Favorite.where(item_code: chocolate["Items"][0]["Item"]["itemCode"]).count %>個</a>
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="mychart-ranking">
-              <canvas width="50px" id="myChart-<%= chocolate["Items"][0]["Item"]["itemCode"] %>" class="chart-ranking"></canvas>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-              <script>
-                <% @chocolate.set_item_code(chocolate["Items"][0]["Item"]["itemCode"]) %>
-                  var ctx = document.getElementById("myChart-<%= chocolate["Items"][0]["Item"]["itemCode"] %>");
-                var myChart = new Chart(ctx, {
-                  type: 'radar',
-                  data: {
-                    labels: ["おいしさ", "コストパフォーマンス", "健康"],
-                    datasets: [{
-                      label: '項目別評価',
-                      backgroundColor: "rgba(0,255,0,0.4)",
-                      borderColor: "rgba(0,255,0,1)",
-
-                      data: [ <%= @chocolate.total_taste %> , <%= @chocolate.total_cost_performance %> , <%= @chocolate.total_healthy %>
-                      ]
-                    }]
-                  },
-                  options: {
-                    responsive: true,
-                    scale: {
-                      ticks: {
-                        max: 5,
-                        min: 0
-                      }
-                    }
-                  }
-                });
-              </script>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
+  <div>
+    <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
   </div>
   <div class="yubi">
     <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
