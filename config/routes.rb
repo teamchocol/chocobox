@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'home/sorry', 'home#sorry'
   get 'home/health', 'home#health'
-  get 'policy', to: 'toppages#policy'
-  get 'privacypolicy', to: 'toppages#privacypolicy'
+  get 'policy', to: 'home#policy'
+  get 'privacypolicy', to: 'home#privacypolicy'
   get 'contact', to: 'contacts#new'
   post 'contacts', to: 'contacts#create'
   get 'contacts', to: 'contacts#index'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
     post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
     delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
+    
   end
 
   devise_for :users, skip: [:sessions],

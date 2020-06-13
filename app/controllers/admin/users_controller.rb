@@ -1,11 +1,4 @@
 class Admin::UsersController < ApplicationController
-  def followers
-    @followers = User.find(params[:id])
-  end
-
-  def follows
-    @follows = User.find(params[:id])
-  end
 
   def show
     @user = User.find(params[:id])
@@ -17,40 +10,22 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if @user.id != current_user.id
-      redirect_to user_path(current_user)
-    end
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(@user.id)
-    else
-      render "edit"
+    flash[:notice] = "編集しました"
+    redirect_to admin_user_path(@user.id)
     end
   end
 
-  def search
-    @users = User.search(params[:search])
-  end
-
-  def favorite_chocolates
+  def destroy
     @user = User.find(params[:id])
-    @items_full = []
-    favorite = Favorite.where(user_id: @user.id)
-    favorite.each do |favo|
-      item = Rakuten.get_item(favo.item_code)
-      if item["Items"] != []
-        @items_full.push(item)
-      end
-    end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(6)
+    @user.destroy
+    flash[:success] = " ユーザーを削除しました!"
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :nickname, :age, :gender)
   end
