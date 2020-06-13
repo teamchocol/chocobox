@@ -1,6 +1,4 @@
 $('#comment_area').html("<%= escape_javascript(render('comments/index', chocolates: @chocolates,  chocolate: @choco,  comment: @comment, new_comment: @new_comment) ) %>");
-alert("本当に削除しますか？");
 
 
-
-
+$('#comment-all-<%=@comment.id %>').remove();

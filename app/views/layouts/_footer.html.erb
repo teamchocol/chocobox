@@ -4,26 +4,26 @@
       <div class= "col-md-3 col-sm-3 col-xs-3">  
       <ul>
         <li class="footer-page"><%=  link_to 'トップページ', root_path %></li>
-        <li><%=  link_to '利用規約', policy_path %></li>
-        <li><%=  link_to 'プライバシーポリシー', privacypolicy_path %></li>
-        <li><%=  link_to 'お問い合わせ', contact_path %></li>
+        <li class="footer-page"><%=  link_to '利用規約', policy_path %></li>
+        <li class="footer-page"><%=  link_to 'プライバシーポリシー', privacypolicy_path %></li>
+        <li class="footer-page"><%=  link_to 'お問い合わせ', contact_path %></li>
       </ul>
       </div>
       <div class= "col-md-6 col-sm-6 col-xs-6",.text-light>  
       <div class="text-white">
       <ul>  
-        <li><%=  link_to 'チョコレートを探す', search_chocolates_path %></li>
-        <li><%=  link_to '楽天市場人気チョコレートを見る', chocolates_path %></li>
-        <li><%=  link_to 'いいね数ランキングを見る', favorite_ranking_chocolates_path %></li>
-        <li><%=  link_to 'ユーザー 一覧を見る', users_path %></li>
-        <li><%= link_to '口コミ 一覧を見る', comments_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
+        <li class="footer-page"><%=  link_to 'チョコレートを探す', search_chocolates_path %></li>
+        <li class="footer-page"><%=  link_to '楽天市場人気チョコレートを見る', chocolates_path %></li>
+        <li class="footer-page"><%=  link_to 'いいね数ランキングを見る', favorite_ranking_chocolates_path %></li>
+        <li class="footer-page"><%=  link_to 'ユーザー 一覧を見る', users_path %></li>
+        <li class="footer-page"><%= link_to '口コミ 一覧を見る', comments_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
       </ul>
       </div>    
       </div> 
-      <div class= "col-md-3 col-sm-3 col-xs-3">  
-        <%=  link_to 'ChoCo BoX', root_path %>    
-        <p>© 2020. All Rights Reserved.</p>
-    </div> 
+      <div class= "col-md-3 col-sm-3 col-xs-3 footer-title"> 
+        <div class="choco-logo"><%=  link_to 'ChoCo BoX', root_path %></div>    
+        <p class="footer-logo">© 2020. All Rights Reserved.</p>
+      </div> 
   </div>
 </footer>
 

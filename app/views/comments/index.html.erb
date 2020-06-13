@@ -15,8 +15,8 @@
 </section>
 
 <div class="comments-all" id="infiniteScrollingContainer">
-  <div>
-	  <%= render 'comments/new_comment'  %>
+  <div id="comment-all">
+	  <%= render 'comments/new_comment', comments: @comments, name: @name, image: @image %>
 	</div>
 	<div>
 	  <%= link_to_next_page @comments, '次のページ', class: "next" %>

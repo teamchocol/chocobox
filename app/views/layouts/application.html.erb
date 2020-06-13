@@ -7,13 +7,12 @@
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
   </head>
 
 <body>
-<div class="fullheight">
+<div>
   <header> 
   <div class="container">
       <div class="row">
@@ -48,7 +47,7 @@
               </nav>
               <nav>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to 'ホーム画面', root_path, class: 'glyphicon glyphicon-home home' %></li>
+                  <li><%= link_to 'ホーム画面', root_path, class: 'glyphicon glyphicon-home home', data: {turbolinks: false} %></li>
                   <li><%= link_to 'このサイトについて ', "/home/about", class: 'glyphicon glyphicon-link about' %></li>
                   
                 <% if user_signed_in? %>
@@ -82,8 +81,9 @@
         <% end %>     
       <% end %> 
     <% end %>
-
-    <%= yield %>
+    <div class="fullheight">
+      <%= yield %>
+    </div>
     <div class="footer">
     <%= render 'layouts/footer' %>
     </div>

@@ -18,6 +18,8 @@
 @import "bootstrap"; 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "slick-theme"; 
+@import "slick";
 
 // フォント
 @font-face {
@@ -50,10 +52,10 @@
   box-sizing: border-box;
 }
 // 画面サイズ
-
-.fullheight {
-  height: 100%;
+.fullheight{
+  min-height: 630px;
 }
+
 
 // ヘッダー
 header {
@@ -355,11 +357,28 @@ ul{
   list-style: none;
 }
 
+.footer-page{
+  margin: 10px;
+}
+
+.choco-logo{
+  font-size: 25px;
+}
+
+.footer-title{
+  margin: 20px auto;
+
+}
+
+.footer-logo{
+  margin-top: 20px;
+}
+
 .footer .container a{
   color: white;
 }
 .footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   background-color: #111;
   color: #fff;
@@ -367,7 +386,7 @@ ul{
   padding-bottom:0 ;
   margin-top: 20px;
   margin-bottom: 0;
-  height: 150px;   
+  height: 250px;   
   width: 100%;  
 }
 
