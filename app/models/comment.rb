@@ -25,17 +25,17 @@ class Comment < ApplicationRecord
   validates :taste,
             numericality: {
               less_than_or_equal_to: 5,
-              greater_than_or_equal_to: 1,
+              greater_than_or_equal_to: 0.5,
             }
   validates :healthy,
             numericality: {
               less_than_or_equal_to: 5,
-              greater_than_or_equal_to: 1,
+              greater_than_or_equal_to: 0.5,
             }
   validates :cost_performance,
             numericality: {
               less_than_or_equal_to: 5,
-              greater_than_or_equal_to: 1,
+              greater_than_or_equal_to: 0.5,
             }
 
   validates :content, length: { maximum: 200 }
