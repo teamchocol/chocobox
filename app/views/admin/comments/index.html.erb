@@ -1,0 +1,24 @@
+<section class="jumbotron text-center">
+	<div class="container">
+		<!-- <h1 class="jumbotron-heading">Album example</h1> -->
+		<h1 class="jumbotron-heading">みんなの口コミを見てみよう！</h1>
+
+		<p class="lead text-muted">口コミはあくまで感想!</br> 自分の舌で確かめることが大事です!!</p>
+		<p>
+			  <%= link_to "楽天市場人気ランキングを見る", chocolates_path ,class: "btn btn-warning my-2"%>
+       <%= link_to "好きなチョコレートを検索する", search_chocolates_path ,class: "btn btn-success my-2"%>
+		</p>
+	</div>
+</section>
+
+<div class="comments-all" id="infiniteScrollingContainer">
+  <div id="comment-all">
+	  <%= render 'admin/comments/new_comment', comments: @comments, name: @name, image: @image %>
+	</div>
+	<div>
+	  <%= link_to_next_page @comments, '次のページ', class: "next" %>
+	</div>
+</div>
+<div class="yubi">
+	<div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
+</div>

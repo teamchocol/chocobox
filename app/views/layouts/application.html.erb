@@ -49,7 +49,6 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li><%= link_to 'ホーム画面', root_path, class: 'glyphicon glyphicon-home home', data: {turbolinks: false} %></li>
                   <li><%= link_to 'このサイトについて ', "/home/about", class: 'glyphicon glyphicon-link about' %></li>
-                  
                 <% if user_signed_in? %>
                   <li><%= link_to 'あなたの好きなチョコレートを登録する', search_chocolates_path, class: 'glyphicon glyphicon-chocolate search' %></li>
                   <li><%= link_to 'マイページ', user_path(current_user), class: 'glyphicon glyphicon-chocolate ' %></li> 
@@ -60,6 +59,10 @@
                   <li><%= link_to '「おいしさランキング」一覧', taste_ranking_chocolates_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
                   <li><%= link_to '「健康面ランキング」一覧', healthy_ranking_chocolates_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
                   <li><%= link_to '「コスパランキング」一覧', cost_performance_ranking_chocolates_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
+                  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+                <% elsif admin_signed_in? %>
+                  <li><%= link_to '「ユーザー」一覧', admin_users_path, class: 'glyphicon glyphicon-user users' %></li>
+                  <li><%= link_to '「口コミ」一覧', admin_comments_path, class: 'glyphicon glyphicon-chocolate comments' %></li>
                   <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
                 <% else %>        
                   <li><%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>

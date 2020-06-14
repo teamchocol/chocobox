@@ -1,27 +1,10 @@
-class CommentsController < ApplicationController
-  before_action :authenticate_user!
-  def create
-    @new_comment = current_user.comments.new(comment_params)
-    if @new_comment.save
-      session[:crop_x] = comment_params[:x]
-      session[:crop_y] = comment_params[:y]
-      session[:crop_width] = comment_params[:width]
-      session[:crop_height] = comment_params[:height]
-    else
-      redirect_to chocolate_path(@new_comment.item_code), flash: { error: @new_comment.errors.full_messages }
-    end
-    @comment = Comment.new
-    @chocolate = Chocolate.new
-    @chocolate.set_item_code(@new_comment.item_code)
-  end
-
+class Admin::CommentsController < ApplicationController
   def destroy
     @choco = Chocolate.new
     @comment = Comment.find(params[:id])
     @choco.set_item_code(@comment.item_code)
     if @comment.user == current_user
       @comment.destroy
-      redirect_to admin_comments_path
     else
       flash[:alert] = "削除できませんでした"
       redirect_to request.referer
@@ -49,23 +32,5 @@ class CommentsController < ApplicationController
         end
       end
     end
-  end
-
-  private
-
-  def comment_params
-    params.require(:comment).permit(
-      :title,
-      :content,
-      :image,
-      :taste,
-      :healthy,
-      :cost_performance,
-      :item_code,
-      :x,
-      :y,
-      :width,
-      :height
-    )
   end
 end
