@@ -51,6 +51,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+// 成功メッセージ
+.alert-message{
+  text-align: center;
+}
+
 // 画面サイズ
 .fullheight{
   min-height: 630px;
