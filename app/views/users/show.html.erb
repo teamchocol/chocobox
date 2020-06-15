@@ -2,7 +2,7 @@
  	<tr>
  		<td colspan="2" class="user-show-image">
 		 <% if @user.profile_image.attached? %>
- 			<%= image_tag @user.profile_image.variant(resize:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+ 			<%= image_tag (rails_blob_path(@user.profile_image)), size:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb" %>
 		 <% else %>
       <%= image_tag "no_image.jpg", size:'150x150'%>
 		 <% end %>

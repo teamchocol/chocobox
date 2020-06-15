@@ -37,7 +37,6 @@ class CommentsController < ApplicationController
       item_code = comment.item_code
       if item_code.present?
         chocolate = Rakuten.get_item(item_code)
-        puts chocolate
         next if chocolate["Items"].blank?
         image_url = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"]
         item_name = chocolate["Items"][0]["Item"]["itemName"]

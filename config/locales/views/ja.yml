@@ -1,0 +1,8 @@
+ja:
+  flash:
+    new: 作成しました！
+    updated: 更新しました！
+    failed: 失敗しました！
+    destroy: 削除しました！
+    login: ログインしました！
+    logout: ログアウトしました！

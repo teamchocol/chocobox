@@ -87,8 +87,9 @@
       <h2 class="toppage-oisisa">おいしさランキング</h2>
       <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
     </div>  
-    <div class="comment-area" id='comment_area'>
-      <%#= render 'comments/index', chocolate: @choco, new_comment: @new_comment %>
+    <div>
+      <h2 class="toppage-oisisa">最新の口コミ</h2>
+      <%= render 'comments/new_comment', comments: @comments, name: @name, image: @image %>
     </div>
     <div class="yubi">
         <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
