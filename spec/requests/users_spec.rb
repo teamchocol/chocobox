@@ -114,7 +114,7 @@ describe 'ユーザー認証のテスト' do
         end
         it '編集に成功する' do
           click_button '保存'
-          expect(page).to have_content 'successfully'
+          expect(page).to have_content 'ユーザーの編集が完了しました'
           expect(current_path).to eq('/users/' + user.id.to_s)
         end
         it '編集に失敗する' do
