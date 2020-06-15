@@ -2,6 +2,9 @@
 <h2 class="comment-index-title">検索結果</h2>
 	<div class="container" >
 		<div class="row">
+		<% if @comments.nil? %>
+		  <h2>見つかりませんでした<h2>
+		<% else %>	
 			<% @comments.each do |comment| %>
 			<div class="col-md-6 " id="comment-all-<%=comment.id %>">
 				<div class="card-comment mb-4 shadow-sm">
@@ -79,10 +82,13 @@
 				</div> <%#カードの締め%>
 			</div>
 			<% end %>
+		<% end %>	
 		</div>
 	</div>
 	<div>
+	<% if @comments.present? %>
 	<%= link_to_next_page @comments, '次のページ', class: "next" %>
+	<% end %>
 	</div>
 </div>
 <div class="yubi">
