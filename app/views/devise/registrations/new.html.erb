@@ -6,32 +6,32 @@
          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
          <%= render "devise/shared/error_messages", resource: resource %>
 
-         <div class="field">
+         <div class="field registration-form">
            <%= f.label :名前 %> <br />
            <%= f.text_field :name, autofocus: true, maxlength: "16" %>
          </div>
 
-         <div class="field">
+         <div class="field registration-form">
            <%= f.label :ニックネーム %> <br />
            <%= f.text_field :nickname, autofocus: true, maxlength: "20" %>
          </div>
 
-         <div class="field">
+         <div class="field registration-form">
            <%= f.label :Eメール %><br />
            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
          </div>
 
-         <div class="field">
+         <div class="field registration-form">
             <%= f.label :性別 %><br />
             <%= f.select :gender, [["女性"], ["男性"], ["不明"], ["秘密"]] %>
          </div>
 
-         <div class="field">
+         <div class="field registration-form">
            <%= f.label :年齢 %><br />
            <%= f.select :age, [["10代"], ["20代前半"], ["20代後半"], ["30代前半"],["30代後半"], ["40代前半"], ["40代後半"], ["50代前半"],["50代後半"], ["60代前半"], ["60代後半"], ["70代以上"]] %>
          </div>
 
-         <div class="field">
+         <div class="field registration-form">
            <%= f.label :パスワード %>
            <% if @minimum_password_length %>
            (<%= @minimum_password_length %> 文字以上)
@@ -39,7 +39,7 @@
            <%= f.password_field :password, autocomplete: "new-password" %>
          </div>
 
-         <div class="field">
+         <div class="field registration-form">
            <%= f.label :パスワード確認用 %><br />
            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
          </div>
@@ -48,7 +48,7 @@
            <%= f.submit "新規登録" ,class: "btn btn-primary" %>
          </div>
          <% end %>
-         <div class="guest">
+         <div class="guest registration-form">
            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-danger" %>
          </div>
        </div>
