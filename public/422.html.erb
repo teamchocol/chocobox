@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>ChoCo BoX チョコレート口コミサイト</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -54,13 +52,16 @@
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
+<div class="rails-default-error-page">
+  <%= image_tag "chocoboxlogo.jpg", size:'300x300' %>
   <div class="dialog">
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <div class="sorry-title">
+        <h1>ページが表示できません</h1>
+      </div>
+      <p>ご不便をおかけして申し訳ございません。</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>正常にご覧いただけるよう、解決に取り組んで参ります。</p>
   </div>
-</body>
-</html>
+</div>
+
