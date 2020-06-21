@@ -6,7 +6,7 @@
 					<div class="row">
 						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
 						<div class="comment-image col-md-6 col-xs-4 col-sm-6" style="text-align: center;">
-							<%= image_tag(image[comment.item_code].present? ? image[comment.item_code] : "/assets/no_image.jpg", style: "width: 180px;height: 160px; margin-right: 0;" ) %>
+							<%= image_tag(image[comment.item_code].present? ? image[comment.item_code] : "/public/no_image.jpg", style: "width: 180px;height: 160px; margin-right: 0;" ) %>
 						</div>
 						<div class="blank col-md-3 col-xs-4 col-sm-2"></div>
 					</div>
@@ -29,7 +29,7 @@
 								<div class="comment_index_avatar col-md-5 col-sm-5 col-xs-5">
 									<%= link_to(comment.user) do %>
 										<% if comment.user.profile_image.attached? %>
-											<%= image_tag comment.user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+											<%= image_tag (rails_blob_path(comment.user.profile_image)), size:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb" %>
 										<% else %>
 											<%= image_tag "no_image.jpg", size:'100x100'%>
 										<% end %>

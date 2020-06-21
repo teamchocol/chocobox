@@ -202,6 +202,12 @@ header {
   border-radius: 4px;
 }
 
+// chocobox始めるボタン
+.chocobox-start{
+  background-color: #D7E01A ;
+  color: white;
+}
+
 // トップページ おいしさランキング
 .toppage-oisisa{
   font-family: "soft";
@@ -668,6 +674,9 @@ ul{
 }
 .jumbotron {
   background-color: #EAC7CD;
+}
+.jumbotron-extend{
+  background-color:	#FEEEED;
 }
 
 // いいねアイコン
