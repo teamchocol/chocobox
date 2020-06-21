@@ -750,8 +750,11 @@ ul{
   font-weight: lighter
 }
 .comment-delete{
-  padding-bottom: 0;
-  margin-bottom: 0;
+  position: relative;
+}
+.delete{
+  position: absolute;
+	bottom: 0;
 }
 
 

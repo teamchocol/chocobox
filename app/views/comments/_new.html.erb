@@ -73,7 +73,7 @@
         <div class=" comment-delete col-xs-1 col-sm-1 col-md-1">
           <% unless current_user != comment.user %>
           <div class="delete"><%= link_to comment_path(comment.id), method: :delete, remote: true  do %> <button
-              class="btn btn-danger">コメントを削除</button>
+              class="btn btn-danger">コメント削除</button>
             <% end %>
           </div>
           <% end %>
