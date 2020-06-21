@@ -14,7 +14,7 @@
         <div class="comment-user col-xs-3 col-sm-3 col-md-3">
           <div class="">
             <% if comment.user.profile_image.attached? %>
-              <%= image_tag comment.user.profile_image.variant(resize:'110x110', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+              <%= image_tag (rails_blob_path(comment.user.profile_image)), size:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb" %>
             <% else %>
               <%= image_tag "no_image.jpg", size:'110x110'%>
             <% end %>
@@ -62,7 +62,7 @@
                   labels: ["おいしさ", "コストパフォーマンス", "健康"],
                   datasets: [{
                     label: '項目別評価',
-                    backgroundColor: "rgba(240,216,185,0.7)",
+                    backgroundColor: "rgba(240,216, 185,0.7)",
                     borderColor: "rgba(240,216,185,1)",
                     data: [<%= comment.taste %>, <%= comment.cost_performance %>, <%= comment.healthy %>]
                   }]

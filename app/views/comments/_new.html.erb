@@ -4,7 +4,7 @@
         <div class="comment-user col-xs-3 col-sm-3 col-md-3">
           <div class="">
             <% if comment.user.profile_image.attached? %>
-              <%= image_tag comment.user.profile_image.variant(resize:'110x110', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
+              <%= image_tag (rails_blob_path(comment.user.profile_image)), size:'150x150', format: 'jpeg', class: "img-circle pull-left profile-thumb" %>
             <% else %>
               <%= image_tag "no_image.jpg", size:'110x110'%>
             <% end %>
