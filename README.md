@@ -64,7 +64,6 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
     - Nginx, puma
 
 ## AWS構成図
-
 ![cloud_architecture](https://raw.github.com/wiki/teamchocol/chocobox/images/AWS.jpg)
 
 ## アプリ制作の背景（テーマ選定理由）
