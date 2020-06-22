@@ -1,4 +1,4 @@
-# chocobox
+# ChoCoBoX
 
 #### 生粋のチョコレート好きが「健康」「美味しさ」「コスパ」の３点を踏まえて共有する口コミサービスです。
 
@@ -9,13 +9,12 @@
 - インフラ(AWS)
 - 単体・統合テスト(RSpec, factory_bot, capybara)
 - データベース(MySQL)
-- 画像アップロード(mini_magick)
+- 画像アップロード(Active_strage)
 - ページネーション(kaminari)
 - 無限スクロール(jscroll)
-- 無限スクロール(cropper)
+- 画像トリミング(cropper)
 - お問い合わせメール送信(ActionMailer)
 - アイテム情報取得(Rakuten API, rakuten-web-service)
-- 検索(ransack)
 - デザイン(Bootstrap4)
 - 認証関連(ログイン, 管理者ユーザー)
 - ユーザー関連（フォロー・フォロワー）
@@ -28,17 +27,46 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
 
 
 ## 使用技術
-- フロント
-    - HTML Scss 
-    - Javascript
-        - jQuery
-        - Ajax
-- バックエンド
-    - Ruby
-    - Rails 
-- インフラ  
-    - AWS
-    
+
+- **バックエンド**
+
+  - Ruby 2.5.7
+  - Rails 5.2.4.2
+  - MySQL 5.7.29
+
+- **フロントエンド**
+
+  - html
+  - Scss
+  - JavaScript
+  - jQuery
+  - Ajax
+
+- **インフラストラクチャー**
+
+  - ローカル開発環境
+
+    - Docker
+    - docker-compose
+
+  - CircleCI/CD
+
+    - github 上の master 以外のブランチ への push→CI 実行（Rspec,rubocop)
+    - github 上の master ブランチ へのプルリクエストのマージ →CD 実行（Capistrano)
+
+  - AWS
+    - VPC
+    - EC2(AZを2つ使用)
+    - RDS
+    - ALB
+    - Route53
+    - S3
+    - Nginx, puma
+
+## AWS構成図
+
+![cloud_architecture](https://raw.github.com/wiki/teamchocol/chocobox/images/AWS.jpg)
+
 ## アプリ制作の背景（テーマ選定理由）
 健康ブームが騒がれる中、２０１７年ごろからお菓子売り場にて乳酸菌入りチョコレートが並び始め、現在では当たり前の光景になっています。
 
