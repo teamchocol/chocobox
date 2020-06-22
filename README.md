@@ -22,10 +22,6 @@
 - コメント・評価関連（星評価, レーダーチャート評価, 投稿機能非同期, 投稿削除非同期, 画像トリミング機能）
 
 
-chocobox機能一覧
-https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6xT4/edit#gid=0
-
-
 ## 使用技術
 
 - **バックエンド**
@@ -64,7 +60,7 @@ https://docs.google.com/spreadsheets/d/1NXsMrgiNHxxUn-QMmJDiDwA4DyEj4TUREjnRHki6
     - Nginx, puma
 
 ## AWS構成図
-![cloud_architecture](https://raw.github.com/wiki/teamchocol/chocobox/images/AWS.jpg)
+![AWS](https://user-images.githubusercontent.com/59323868/85283030-a486a300-b4c7-11ea-9f45-ffc6eae63d78.jpg)
 
 ## アプリ制作の背景（テーマ選定理由）
 健康ブームが騒がれる中、２０１７年ごろからお菓子売り場にて乳酸菌入りチョコレートが並び始め、現在では当たり前の光景になっています。
