@@ -60,7 +60,7 @@
     - Nginx, puma
 
 ## AWS構成図
-![AWS](https://user-images.githubusercontent.com/59323868/85283030-a486a300-b4c7-11ea-9f45-ffc6eae63d78.jpg)
+![AWS構成図](https://user-images.githubusercontent.com/59323868/85283758-d9472a00-b4c8-11ea-83ea-82dec6f2ef88.jpg)
 
 ## アプリ制作の背景（テーマ選定理由）
 健康ブームが騒がれる中、２０１７年ごろからお菓子売り場にて乳酸菌入りチョコレートが並び始め、現在では当たり前の光景になっています。
