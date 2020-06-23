@@ -1,11 +1,4 @@
 class Chocolate < ApplicationRecord
-  # 楽天APIから直接取得  テーブルを使用しないため
-  # # 口コミ投稿との関連付け
-  # has_many :comments, dependent: :destroy
-  # # お気に入り機能追加用中間テーブル追加
-  # has_many :favorites, dependent: :destroy
-  # belongs_to :user
-
   # item_codeインスタンス化
   def set_item_code(item_code)
     @item_code = item_code
@@ -42,20 +35,6 @@ class Chocolate < ApplicationRecord
   rescue ZeroDivisionError
     0
   end
-  # クラスメソッドとして呼んでいたが上記に修正
-  # def self.total_taste(id)
-  #   chocolate = Chocolate.find(id)
-  #     # レコードが見つからない場合は規定値を返す
-  #     unless chocolate
-  #       return 0
-  #     end
-  #   comments = chocolate.comments
-  #   sum = 0
-  #   comments.each do |a|
-  #     sum += (a.taste.round(1))/comments.count.to_i
-  #   end
-  #   return sum.round(1)
-  # end
 
   # ページネーションの表示件数追加
   paginates_per 15
