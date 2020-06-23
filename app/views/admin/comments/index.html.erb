@@ -5,12 +5,11 @@
 
 		<p class="lead text-muted">口コミはあくまで感想!</br> 自分の舌で確かめることが大事です!!</p>
 		<p>
-			  <%= link_to "楽天市場人気ランキングを見る", chocolates_path ,class: "btn btn-warning my-2"%>
-       <%= link_to "好きなチョコレートを検索する", search_chocolates_path ,class: "btn btn-success my-2"%>
+			<%= link_to "楽天市場人気ランキングを見る", chocolates_path ,class: "btn btn-warning my-2"%>
+			<%= link_to "好きなチョコレートを検索する", search_chocolates_path ,class: "btn btn-success my-2"%>
 		</p>
 	</div>
 </section>
-
 <div class="comments-all" id="infiniteScrollingContainer">
   <div id="comment-all">
 	  <%= render 'admin/comments/new_comment', comments: @comments, name: @name, image: @image %>
