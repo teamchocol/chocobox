@@ -1,4 +1,5 @@
 <div class="container">
+  <div>
 	<h3>いいね数  ランキング</h3>
 	<div class="row favo_row">
 		<% @items.each do |chocolate| %>
@@ -35,17 +36,10 @@
 		<% end %>
 	</div>
 
-	<div class="page">
+	<div class="favo-page">
 		<% if @items.present? %>
-		<%= paginate @items, class: "paginate" %>
+		<%= paginate @items, class: "favo-paginate" %>
 		<% end %> 
-	</div>
-
-	<div>
-		<%= form_tag(ranking_chocolates_path,method:"get") do %>
-		<%= select_tag 'range', options_for_select([["売れ筋ランキング 1~30位","1"], ["売れ筋ランキング 31~60位","2"], ["売れ筋ランキング 61~90位","3"], ["売れ筋ランキング 91~120位","4"]],:selected=>"1") %>
-		<%= submit_tag "検索" %>
-		<% end %>
 	</div>
 
 	<div class="yubi">
