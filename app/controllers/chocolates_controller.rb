@@ -53,7 +53,7 @@ class ChocolatesController < ApplicationController
         @items_full.push(item)
       end
     end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(10)
   end
 
   def taste_ranking
@@ -66,7 +66,7 @@ class ChocolatesController < ApplicationController
         @items_full.push(item)
       end
     end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(10)
     @chocolate = Chocolate.new
   end
 
@@ -80,7 +80,7 @@ class ChocolatesController < ApplicationController
         @items_full.push(item)
       end
     end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(10)
     @chocolate = Chocolate.new
   end
 
@@ -94,7 +94,7 @@ class ChocolatesController < ApplicationController
         @items_full.push(item)
       end
     end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(10)
     @chocolate = Chocolate.new
   end
 
