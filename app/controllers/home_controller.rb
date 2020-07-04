@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def top
-    # トップページに最新のコメントが４件表示するため
+    # おいしさランキングの表示
     @items_full = []
     group = Comment.where("item_code<>'' and taste<>''").
       reorder("average_taste desc").group(:item_code).average("taste")
@@ -10,12 +10,13 @@ class HomeController < ApplicationController
         @items_full.push(item)
       end
     end
-    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(3)
+    @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(4)
     @chocolate = Chocolate.new
 
-    # おいしさランキングの表示
+    # トップページに最新のコメントが４件表示するため
     @users = User.all
     @comments = Comment.page(params[:page]).without_count.per(4).order(created_at: :desc)
+    
     @name = {}
     @image = {}
     @comments.each do |comment|
@@ -48,5 +49,23 @@ class HomeController < ApplicationController
   end
 
   def policy
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(
+      :title,
+      :content,
+      :image,
+      :taste,
+      :healthy,
+      :cost_performance,
+      :item_code,
+      :x,
+      :y,
+      :width,
+      :height
+    )
   end
 end
