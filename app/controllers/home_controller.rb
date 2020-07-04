@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     # トップページに最新のコメントが４件表示するため
     @users = User.all
     @comments = Comment.page(params[:page]).without_count.per(4).order(created_at: :desc)
-    
+
     @name = {}
     @image = {}
     @comments.each do |comment|
