@@ -595,3 +595,5 @@ Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
 ubuntu-bionic login: [   23.554865] cloud-init[1330]: Cloud-init v. 19.3-41-gc4735dd3-0ubuntu1~18.04.1 running 'modules:final' at Mon, 13 Jul 2020 13:01:22 +0000. Up 23.20 seconds.
 [   23.555199] cloud-init[1330]: Cloud-init v. 19.3-41-gc4735dd3-0ubuntu1~18.04.1 finished at Mon, 13 Jul 2020 13:01:23 +0000. Datasource DataSourceNoCloud [seed=/dev/sdb][dsmode=net].  Up 23.53 seconds
+[172016.048977] Out of memory: Kill process 4408 (ruby2.5) score 776 or sacrifice child
+[172016.057851] Killed process 19732 (nodejs) total-vm:989472kB, anon-rss:54384kB, file-rss:0kB, shmem-rss:0kB

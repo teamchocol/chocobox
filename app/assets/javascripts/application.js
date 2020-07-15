@@ -66,7 +66,7 @@ $(document).on('turbolinks:load', function(){
     // 表示中の画像を中央へ
     centerMode: true,
     // 中央のpadding
-    centerPadding: '160px'
+    centerPadding: '0px'
   })
 });
   
