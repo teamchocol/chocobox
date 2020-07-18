@@ -1,19 +1,6 @@
-<section class="jumbotron text-center">
-  <div class="container">
-    <!-- <h1 class="jumbotron-heading">Album example</h1> -->
-    <h1 class="jumbotron-heading">健康評価の高いチョコレートを見てみよう！</h1>
-
-    <p class="lead text-muted">口コミはあくまで感想!</br> チョコレートの健康効果の指標は重金属含有量の少なさとポリフェノールの量が大事です!!　ポリフェノールには肌を紫外線に強くする働きがあります！</p>
-    <p>
-       <%= link_to "おいしさランキングはこちら", taste_ranking_chocolates_path ,class: "btn btn-success my-2"%>
-       <%= link_to "コスパランキングはこちら", cost_performance_ranking_chocolates_path ,class: "btn btn-info my-2"%>
-    </p>
-  </div>
-</section>
-
-  <div class="container ranking">
+<div class="container ranking">
     <div class="row">
-      <% @items.each do |chocolate| %>
+      <% items.each do |chocolate| %>
       <div class="kutikomi-ranking col-xs-12 col-md-12 col-sm-12">
         <div class="row">
           <div class="col-xs-5 col-sm-5 col-md-5">
@@ -52,7 +39,7 @@
               <canvas width="50px" id="myChart-<%= chocolate["Items"][0]["Item"]["itemCode"] %>" class="chart-ranking"></canvas>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
               <script>
-                <% @chocolate.set_item_code(chocolate["Items"][0]["Item"]["itemCode"]) %>
+                <% chocolate.set_item_code(chocolate["Items"][0]["Item"]["itemCode"]) %>
                   var ctx = document.getElementById("myChart-<%= chocolate["Items"][0]["Item"]["itemCode"] %>");
                 var myChart = new Chart(ctx, {
                   type: 'radar',
@@ -63,7 +50,7 @@
                       backgroundColor: "rgba(240,216,185,0.7)",
                       borderColor: "rgba(240,216,185,1)",
 
-                      data: [ <%= @chocolate.total_taste %> , <%= @chocolate.total_cost_performance %> , <%= @chocolate.total_healthy %>
+                      data: [ <%= chocolate.total_taste %> , <%= chocolate.total_cost_performance %> , <%= chocolate.total_healthy %>
                       ]
                     }]
                   },
@@ -85,13 +72,10 @@
       <% end %>
     </div>
   </div>
-  <div class="container ranking">
-    <%= render 'chocolates/healthy_ranking', chocolate: @chocolate, items: @items, item_code: @item_code %>
-    <div>
-      <% if @items.present? %>
-      <%= paginate @items %>
-      <% end %> 
-	  </div>
-  </div>
+  <div>
+		<% if items.present? %>
+		<%= paginate items %>
+		<% end %> 
+	</div>
 </div>
 </div>
