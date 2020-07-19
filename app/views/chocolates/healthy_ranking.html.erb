@@ -85,13 +85,10 @@
       <% end %>
     </div>
   </div>
-  <div class="container ranking">
-    <%= render 'chocolates/healthy_ranking', chocolate: @chocolate, items: @items, item_code: @item_code %>
-    <div>
-      <% if @items.present? %>
-      <%= paginate @items %>
-      <% end %> 
-	  </div>
-  </div>
+  <div>
+		<% if @items.present? %>
+		<%= paginate @items %>
+		<% end %> 
+	</div>
 </div>
 </div>

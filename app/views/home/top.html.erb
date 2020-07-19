@@ -43,7 +43,7 @@
                                 <p class="title3 top-ranking"><i class="fas fa-utensils"></i> 『おいしさランキング』</p>
                                 <p class="title3 top-ranking"><i class="fas fa-money-check"></i>『コスパランキング』</p>
                                 <p class="title3 top-ranking"><i class="far fa-comments"></i> 『口コミ一覧』</p>
-                                <p class="title3 top-content"><i class="fas fa-heart"></i> 好きなチョコを見つけましょう！！</p>
+                                <p class="title3 top-content"><i class="fas fa-heart"></i> 好きなチョコを見つけよう！</p>
                             </div>
                         </div>                
                    </div>
@@ -73,8 +73,8 @@
         <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
     </div>
     <div class="container ranking">
-        <h2 class="toppage-oisisa">ChoCoBoXユーザーが選ぶ<br>健康ランキング</h2>
-        <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
+        <h2 class="toppage-oisisa">ChoCoBoXユーザーが選ぶ<br>いいね数ランキング</h2>
+        <%= render 'chocolates/favorite_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
     </div>
     <div class="yubi">
         <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
