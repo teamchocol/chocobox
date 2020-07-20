@@ -12,27 +12,16 @@ class HomeController < ApplicationController
     end
     @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(4)
     @chocolate = Chocolate.new
-
-    # トップページに最新のコメントが４件表示するため
-    @users = User.all
-    @comments = Comment.page(params[:page]).without_count.per(2).order(created_at: :desc)
-    @name = {}
-    @image = {}
-    @comments.each do |comment|
-      item_code = comment.item_code
-      if item_code.present?
-        chocolate = Rakuten.get_item(item_code)
-        next if chocolate["Items"].blank?
-        image_url = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"]
-        item_name = chocolate["Items"][0]["Item"]["itemName"]
-        if image_url.present?
-          @image[item_code] = image_url
-        end
-        if item_name.present?
-          @name[item_code] = item_name
-        end
+    # いいねランキングの表示
+    @chocolates_full = []
+    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
+    ranking_list.each do |a|
+      item = Rakuten.get_item(a.item_code)
+      if item["Items"].present?
+        @chocolates_full.push(item)
       end
     end
+    @chocolates = Kaminari.paginate_array(@chocolates_full).page(params[:page]).per(8)
   end
 
   def about
