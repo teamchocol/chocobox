@@ -11,7 +11,7 @@
   </div>
 </section>
   <div class="container ranking">
-    <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
+    <%= render 'chocolates/taste', choco: @chocolate, items: @items, item_code: @item_code %>
     <div>
       <% if @items.present? %>
       <%= paginate @items %>

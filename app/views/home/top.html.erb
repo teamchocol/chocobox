@@ -70,11 +70,11 @@
    </div>
     <div class="container ranking">
         <h2 class="toppage-oisisa">ChoCoBoXユーザーが選ぶ<br>おいしさランキング</h2>
-        <%= render 'chocolates/taste_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
+        <%= render 'chocolates/taste', choco: @chocolate, items: @items, item_code: @item_code %>
     </div>
     <div class="container ranking">
         <h2 class="toppage-oisisa">ChoCoBoXユーザーが選ぶ<br>いいね数ランキング</h2>
-        <%= render 'chocolates/favorite_ranking', choco: @chocolate, items: @items, item_code: @item_code %>
+        <%= render 'chocolates/favorite', choco: @chocolate, chocolates: @chocolates, item_code: @item_code %>
     </div>
     <div class="yubi">
         <div id="back"><%= image_tag "arrow.png", size:'50x50' %></div>
