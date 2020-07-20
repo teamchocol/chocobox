@@ -12,16 +12,7 @@ class HomeController < ApplicationController
     end
     @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(4)
     @chocolate = Chocolate.new
-    # いいねランキングの表示
-    @chocolates_full = []
-    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
-    ranking_list.each do |a|
-      choco = Rakuten.get_item(a.item_code)
-      if choco["Items"].present?
-        @chocolates_full.push(choco)
-      end
-    end
-    @chocolates = Kaminari.paginate_array(@chocolates_full).page(params[:page]).per(8)
+
   end
 
   def about
