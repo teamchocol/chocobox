@@ -12,7 +12,6 @@ class HomeController < ApplicationController
     end
     @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(4)
     @chocolate = Chocolate.new
-
   end
 
   def about
