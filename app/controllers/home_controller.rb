@@ -40,20 +40,7 @@ class HomeController < ApplicationController
   end
 
   private
-
   def comment_params
-    params.require(:comment).permit(
-      :title,
-      :content,
-      :image,
-      :taste,
-      :healthy,
-      :cost_performance,
-      :item_code,
-      :x,
-      :y,
-      :width,
-      :height
-    )
+    params.permit(:content, :title, :image, :item_code)
   end
 end
