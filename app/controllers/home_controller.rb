@@ -14,14 +14,14 @@ class HomeController < ApplicationController
     @chocolate = Chocolate.new
     # いいねランキングの表示
     @items_full = []
-    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
+    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(5)
     ranking_list.each do |a|
       choco = Rakuten.get_item(a.item_code)
       if choco["Items"].present?
         @items_full.push(choco)
       end
     end
-    @chocolates = Kaminari.paginate_array(@items_full).page(params[:page]).per(8)
+    @chocolates = Kaminari.paginate_array(@items_full).page(params[:page]).per(5)
   end
 
   def about
