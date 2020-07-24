@@ -80,6 +80,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 
+gem 'pry-rails'
 gem 'pry-byebug'
 
 gem 'chart-js-rails', '~> 0.1.4'
