@@ -45,15 +45,15 @@ class ChocolatesController < ApplicationController
   end
 
   def favorite_ranking
-    @items_full = []
-    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(10)
-    ranking_list.each do |a|
-      choco = Rakuten.get_item(a.item_code)
-      if choco["Items"].present?
-        @items_full.push(choco)
+    @chocos_full = []
+    ranking_list = Favorite.group(:item_code).select(:item_code).order('count(item_code) desc').limit(10)
+    ranking_list.each do |r|
+      choco = RakutenWebService::Ichiba::Item.search(itemCode: r.item_code)
+      if choco.present?
+        @chocos_full.push(choco)
       end
     end
-    @chocolates = Kaminari.paginate_array(@items_full).page(params[:page]).per(8)
+    @chocolates = Kaminari.paginate_array(@chocos_full).page(params[:page]).per(10)
   end
 
   def taste_ranking
