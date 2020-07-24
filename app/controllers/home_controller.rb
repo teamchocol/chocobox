@@ -14,10 +14,10 @@ class HomeController < ApplicationController
     @chocolate = Chocolate.new
     # いいねランキングの表示
     @chocos_full = []
-    ranking_list = Favorite.group(:item_code).reorder('count(item_code) desc').limit(5)
+    ranking_list = Favorite.group(:item_code).select(:item_code).order('count(item_code) desc').limit(5)
     ranking_list.each do |r|
-      choco = Rakuten.get_item(r.item_code)
-      if choco["Items"].present?
+      choco = RakutenWebService::Ichiba::Item.search(itemCode: r.item_code)
+      if choco.present?
         @chocos_full.push(choco)
       end
     end
