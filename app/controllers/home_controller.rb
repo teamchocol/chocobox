@@ -14,9 +14,9 @@ class HomeController < ApplicationController
     @chocolate = Chocolate.new
     # いいねランキングの表示
     @chocos_full = []
-    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(5)
-    ranking_list.each do |a|
-      choco = Rakuten.get_item(a.item_code)
+    ranking_list = Favorite.group(:item_code).order('count(item_code) desc').limit(5).select('favorites_id')
+    ranking_list.each do |r|
+      choco = Rakuten.get_item(r.item_code)
       if choco["Items"].present?
         @chocos_full.push(choco)
       end
