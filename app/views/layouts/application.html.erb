@@ -17,7 +17,9 @@
     <div class="container">
         <div class="row">
                 <div class= "col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                  <a id="chocobox-logo"><%= image_tag "chocobox_logo.jpg", :size => '90x90'%></a>
+                  <%= link_to root_path do %>
+                  <%= image_tag "chocobox_logo.jpg", :size => '90x90'%>
+                  <% end %>
                 </div>  
                 <div class= "col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 chocobox-top-text">
                   <a id="chocobox-text"><%= image_tag "chocobox_text.jpg",:height => '80px'%></a>

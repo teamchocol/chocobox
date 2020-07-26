@@ -6,15 +6,15 @@ class Comment < ApplicationRecord
 
   def self.search(search, word)
     if search == "forward_match"
-      @comments = Comment.where("(title)  LIKE?", word)
+      @comment = Comment.where("(title) LIKE?", word)
     elsif search == "backward_match"
-      @comments = Comment.where("(title) LIKE?", word)
+      @comment = Comment.where("(title) LIKE?", word)
     elsif search == "perfect_match"
-      @comments = Comment.where("(title) LIKE?", word)
+      @comment = Comment.where("(title) LIKE?", word)
     elsif search == "partial_match"
-      @comments = Comment.where("(title) LIKE?", word)
+      @comment = Comment.where("(title) LIKE?", word)
     else
-      @comments = Comment.all
+      @comment = Comment.all
     end
   end
 
