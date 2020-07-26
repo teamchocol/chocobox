@@ -2,13 +2,13 @@ class SearchesController < ApplicationController
   def user_search
     search = params[:search]
     word = params[:word]
-    @users = User.user_search(search,word)
+    @users = User.user_search(search, word)
   end
 
   def search
     search = params[:search]
     word = params[:word]
-    @comment = Comment.search(search,word)
+    @comment = Comment.search(search, word)
     @users = User.all
     @comments = Comment.page(params[:page]).without_count.per(4).order(created_at: :desc)
     @name = {}
@@ -28,6 +28,5 @@ class SearchesController < ApplicationController
         end
       end
     end
-  
   end
 end
