@@ -35,7 +35,7 @@
 				<% unless current_user.id == user.id %>
 				<div class="follow"  id="follow_form">
 					<% if current_user.following?(user) %>
-					<%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-success", method: :post %>
+					<%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-secondary", method: :post %>
 					<% else %>
 					<%= link_to "フォローする", follow_path(user.id), class: "btn btn-success" ,method: :post %>
 					<% end %>

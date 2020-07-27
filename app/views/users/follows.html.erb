@@ -1,29 +1,32 @@
 <div class="container">
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-12 col-xs-12 col-md-12">
   <h2 class="follow-title">フォロー 一覧</h2>
 	<table class="table">
 		<thead>
 			<tr>
-				<th class="align-middle">image</th>
-				<th class="align-middle">name</th>
-				<th colspan="3"></th>
+				<th>image</th>
+				<th>name</th>
+				<th>follow</th>
+				<th>follower</th>
+				<th>follow button</th>
+				<th>profile</th>
 	    </tr>
 		</thead>
    
 		<tbody>
 			<% @follows.following.each do |user| %>
 			<tr>
-				<td class="align-middle">
+				<td>
 				<% if user.profile_image.attached? %>
 					<%= image_tag user.profile_image.variant(resize:'100x100', format: 'jpeg', class: "img-circle pull-left profile-thumb") %>
 				<% else %>
 					<%= image_tag "no_image.jpg", size:'100x100'%>
 				<% end %>
 				</td>
-				<td class="align-middle"><%= user.nickname%></td>
+				<td><%= user.nickname%></td>
 				
-				<td class="align-middle">	<% @user ||= current_user %>
+				<td>	<% @user ||= current_user %>
 					<a href="<%= following_user_path(@user) %>">
 						<strong id="following" class="stat">
 						  フォロー数
@@ -31,7 +34,7 @@
 						</strong>
 					</a>
 				</td>
-				<td class="align-middle">	
+				<td>	
 					<a href="<%= followers_user_path(user) %>">
 						<strong id="followers" class="stat">
 						  フォロワー数
@@ -39,7 +42,7 @@
 						</strong>
 					</a>
 				</td>	
-        <td class="align-middle">
+        <td>
 			  <% unless current_user.id == user.id %>
 					<div id="follow_form">
 					<% if current_user.following?(user) %>
@@ -53,12 +56,11 @@
 					</div>
 				<% end %>
 				</td>
-				<td class="align-middle"><%= link_to "プロフィール", user, class: "user_#{user.id}" %></td>
+				<td><%= link_to "プロフィール", user, class: "user_#{user.id}" %></td>
 			</tr>
 			<% end %>
 		</tbody>
 	</table>
-	<!--users一覧 -->
 	</div>
 </div>
 </div>
