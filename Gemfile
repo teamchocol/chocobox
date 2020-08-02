@@ -92,9 +92,6 @@ gem 'omniauth-facebook'
 
 gem 'dotenv-rails'
 
-gem "ruby-debug-ide"
-gem "debase"
-
 gem 'cropper-rails'
 
 gem "active_model_serializers"

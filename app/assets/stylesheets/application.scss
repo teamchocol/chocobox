@@ -574,7 +574,7 @@ ul{
 
 // コメント一覧
 .card-comment{
-  height: 900px;
+  height: auto;
   margin-bottom: 100px;
   
 }
@@ -596,6 +596,12 @@ ul{
   padding: auto auto;
   height: 130px;
 }
+.comment-areas-empty{
+  margin-bottom: 30px;
+  padding: auto auto;
+  height: 130px;
+}
+
 
 .card-comment{
   margin-bottom: 40px;
@@ -604,6 +610,28 @@ ul{
 .comment_index_avatar{
   text-align: center;
 }
+
+/*dropdown*/
+.fa-angle-down {
+	color: #8B8B8B;
+	font-size: 20px;
+}
+.dropdown-angle {
+	border-radius: 50%;
+}
+.dropdown-angle:hover {
+	border-radius: 50%;
+	background-color: #FFEDC1;
+	transition: 0.5s;
+}
+.dropdown-toggle::after {
+  margin: 0;
+}
+.dropdown-menu{
+  min-width: 50px;
+}
+
+
 // 口コミ一覧 詳細ページへの部分テンプレート
 .comment-author{
   text-align: center;
