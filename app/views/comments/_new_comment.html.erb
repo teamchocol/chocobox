@@ -18,10 +18,16 @@
 						<div class="comment-field mx-auto border col-md-10">
 							<%= comment.title %>
 						</div> 
-						<a class="kutikominaiyou">口コミ内容</a>
+						<a class="kutikominaiyou">口コミ内容</a>	
+						<% if comment.content.empty? %>
+						<div class="comment-areas-empty mx-auto border col-md-10">
+						  <a class="content_empty">口コミ内容の詳細はありません</a>
+						</div>
+						<% else %>
 						<div class="comment-areas mx-auto border col-md-10">
 							<%= comment.content %>
 						</div>
+						<% end %>
 					</div>
 					<div class="row">
 						<div class="comment-avatar col-md-10 col-sm-10 col-xs-10">
@@ -35,8 +41,23 @@
 										<% end %>
 									<% end %>
 								</div>
-								<div class="comment-author col-md-5 col-sm-5 col-xs-5">
+								<div class="comment-author col-md-4 col-sm-4 col-xs-4">
 									<%= link_to comment.user.name,user_path(id: "comment.user_id") %>
+								</div>
+								<div class=" comment-delete col-xs-1 col-sm-1 col-md-1">
+									<% unless current_user != comment.user %>
+										<div class="dropdown">
+											<button class="btn dropdown-toggle dropdown-angle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+												
+											</button>
+											<ul class="dropdown-menu">
+												<li class="dropmenu"><%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true  do %>
+												    <i class="far fa-trash-alt" id="delete-<%= comment.id %>">削除</i>
+												    <% end %>
+												</li>
+											</ul>
+										</div>
+									<% end %>
 								</div>
 							</div>
 						</div>
@@ -52,24 +73,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="row">
-								<div class="new-comment col-md-10 col-sm-10 col-xs-10">
-								</div>
-					      
-        			  <div class=" comment-delete col-xs-2 col-sm-2 col-md-2">
-									<% unless current_user != comment.user %>
-									<div class="delete"><%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true  do %>      <button
-											 class="btn btn-danger" id="delete-<%= comment.id %>">削除</button>
-										<% end %>
-									</div>       
-									<% end %>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> <%#カードの締め%>
+				</div>
 			</div>
 			<% end %>
 		</div>
