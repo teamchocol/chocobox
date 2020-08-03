@@ -1,12 +1,16 @@
 <div class="container">
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-12 col-md-12 col-sm-12">
   <h2 class="follow-title">フォロー 一覧</h2>
 	<table class="table">
 		<thead>
 			<tr>
 				<th class="align-middle">image</th>
 				<th class="align-middle">name</th>
+				<th class="align-middle">follows</th>
+				<th class="align-middle">followers</th>
+				<th class="align-middle">follow button</th>
+				<th class="align-middle">profile</th>
 				<th colspan="3"></th>
 	    </tr>
 		</thead>
@@ -24,15 +28,15 @@
 				<td class="align-middle"><%= user.nickname%></td>
 				
 				<td class="align-middle">	<% @user ||= current_user %>
-					<a href="<%= following_user_path(@user) %>">
+					<a>
 						<strong id="following" class="stat">
-						  フォロー数
+						  フォロー
 							<%= user.following.count %>
 						</strong>
 					</a>
 				</td>
 				<td class="align-middle">	
-					<a href="<%= followers_user_path(user) %>">
+					<a>
 						<strong id="followers" class="stat">
 						  フォロワー数
 							<%= user.followers.count %>
@@ -44,11 +48,11 @@
 					<div id="follow_form">
 					<% if current_user.following?(user) %>
 					
-					 <%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-success", method: :post %> 
+					 <%= link_to "フォローを外す", unfollow_path(user.id), class: "btn btn-block btn-unfollow-primary", method: :post %> 
 				
 					<% else %>	
 					
-					 <%= link_to "フォローする", follow_path(user.id), class: "btn btn-block btn-default" ,method: :post %> 
+					 <%= link_to "フォローする", follow_path(user.id), class: "btn btn-block btn-follow-primary" ,method: :post %> 
 					<% end %>	
 					</div>
 				<% end %>
