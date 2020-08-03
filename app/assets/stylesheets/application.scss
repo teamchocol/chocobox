@@ -910,11 +910,24 @@ label {
 .follow-title{
   text-align: center;
 }
+.btn-unfollow-primary {
+  color: #007bff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #007bff;
+}
 
 // フォロワー一覧画面
 .follower-title{
   text-align: center;
 }
+.btn-follow-primary {
+  color: #fff;
+  background-color: #ff7bff;
+  border-color: #ff7bff;
+  background-image: none;
+}
+
 
 // チョコサーチ
 .chocosearch{
