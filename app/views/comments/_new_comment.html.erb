@@ -47,8 +47,7 @@
 								<div class=" comment-delete col-xs-1 col-sm-1 col-md-1">
 									<% unless current_user != comment.user %>
 										<div class="dropdown">
-											<button class="btn dropdown-toggle dropdown-angle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-												
+											<button class="btn dropdown-toggle dropdown-angle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">								
 											</button>
 											<ul class="dropdown-menu">
 												<li class="dropmenu"><%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true  do %>
