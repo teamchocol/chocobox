@@ -72,3 +72,61 @@
  		</tr>
  	</tbody>
  </table>
+ <div class="u-width">
+	<a>最近のコメント一覧</a>
+</div>
+
+<div class="top-space bottom-space show-form" id="reviewed-items">
+	<div class="comments-all" id="infiniteScrollingContainer">
+		<div id="comment-all">
+			<%= render 'users/my_comments', comments: @comments, name: @name, image: @image %>
+		</div>
+		<% if @comments.present? %>
+		<div>
+			<%= link_to_next_page @comments, '次のページ', class: "next" %>
+		</div>
+		<% end %>
+	</div>
+	<% if @user.comments.count > 4 %>
+		<%= link_to my_comments_user_path(@user) do %>
+			<div class="u-width">
+				<button class="see-more">もっと見る</button>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+
+<style>
+	.search_for_purchase {
+		display: block;
+	}
+</style>
+
+<script>
+const navTabs = document.getElementById('nav-tabs');
+const tabs = navTabs.querySelectorAll('li');
+const rItems = document.getElementById('reviewed-items');
+const bItems = document.getElementById('bookmarked-items');
+
+tabs[0].addEventListener('click', () => {
+	tabs[0].classList.add('active');
+	tabs[1].classList.remove('active');
+	if (rItems.classList.contains('hide-form')) {
+		rItems.classList.remove('hide-form');
+		rItems.classList.add('show-form');
+		bItems.classList.remove('show-form');
+		bItems.classList.add('hide-form');
+	}
+});
+
+tabs[1].addEventListener('click', () => {
+	tabs[1].classList.add('active');
+	tabs[0].classList.remove('active');
+	if (bItems.classList.contains('hide-form')) {
+		bItems.classList.remove('hide-form');
+		bItems.classList.add('show-form');
+		rItems.classList.remove('show-form');
+		rItems.classList.add('hide-form');
+	}
+});
+</script>
