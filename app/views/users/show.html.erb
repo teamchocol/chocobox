@@ -79,7 +79,7 @@
 <div class="top-space bottom-space show-form" id="reviewed-items">
 	<div class="comments-all" id="infiniteScrollingContainer">
 		<div id="comment-all">
-			<%= render 'users/my_comments', comments: @comments, name: @name, image: @image %>
+			<%= render 'users/my_comments', user: @user, comments: @comments, name: @name, image: @image %>
 		</div>
 		<% if @comments.present? %>
 		<div>

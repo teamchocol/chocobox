@@ -11,6 +11,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @comments = Comment.page(params[:page]).without_count.per(4).order(created_at: :desc)
+    @name = {}
+    @image = {}
+    @comments.each do |comment|
+      item_code = comment.item_code
+      if item_code.present?
+        chocolate = Rakuten.get_item(item_code)
+        next if chocolate["Items"].blank?
+        image_url = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"]
+        item_name = chocolate["Items"][0]["Item"]["itemName"]
+        if image_url.present?
+          @image[item_code] = image_url
+        end
+        if item_name.present?
+          @name[item_code] = item_name
+        end
+      end
+    end
   end
 
   def index
@@ -48,28 +66,6 @@ class UsersController < ApplicationController
       end
     end
     @items = Kaminari.paginate_array(@items_full).page(params[:page]).per(6)
-  end
-
-  def my_comments
-    @user = User.find(params[:id])
-    @comments = Comment.where(user_id: current_user.id).page(params[:page]).per(8).reverse_order
-    @name = {}
-    @image = {}
-    @comments.each do |comment|
-      item_code = comment.item_code
-      if item_code.present?
-        chocolate = Rakuten.get_item(item_code)
-        next if chocolate["Items"].blank?
-        image_url = chocolate["Items"][0]["Item"]["mediumImageUrls"][0]["imageUrl"]
-        item_name = chocolate["Items"][0]["Item"]["itemName"]
-        if image_url.present?
-          @image[item_code] = image_url
-        end
-        if item_name.present?
-          @name[item_code] = item_name
-        end
-      end
-    end
   end
 
   private

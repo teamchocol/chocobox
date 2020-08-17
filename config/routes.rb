@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
       get :favorite_chocolates
-      get :my_comments
     end
     collection do
       get 'search'
