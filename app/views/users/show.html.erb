@@ -61,12 +61,8 @@
  		</tr>
 		<tr>
  			<td>
- 			<% if @user == current_user && @user.email != "test@example.com" %>
+ 			<% if @user == current_user && @user.email != "guest@example.com" %>
 					<p><%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-block btn-default glyphicon glyphicon-wrench" %></p>
-			<% elsif current_user.following?(@user) %>
-					<%= link_to "フォローを外す", unfollow_path(@user.id), class: "btn btn-success", method: :post %>
-			<% else %>
-					<%= link_to "フォローする", follow_path(@user.id), class: "btn btn-success" ,method: :post %>
 			<% end %>
  			</td>
  		</tr>
@@ -87,46 +83,4 @@
 		</div>
 		<% end %>
 	</div>
-	<% if @user.comments.count > 4 %>
-		<%= link_to my_comments_user_path(@user) do %>
-			<div class="u-width">
-				<button class="see-more">もっと見る</button>
-			</div>
-		<% end %>
-	<% end %>
 </div>
-
-<style>
-	.search_for_purchase {
-		display: block;
-	}
-</style>
-
-<script>
-const navTabs = document.getElementById('nav-tabs');
-const tabs = navTabs.querySelectorAll('li');
-const rItems = document.getElementById('reviewed-items');
-const bItems = document.getElementById('bookmarked-items');
-
-tabs[0].addEventListener('click', () => {
-	tabs[0].classList.add('active');
-	tabs[1].classList.remove('active');
-	if (rItems.classList.contains('hide-form')) {
-		rItems.classList.remove('hide-form');
-		rItems.classList.add('show-form');
-		bItems.classList.remove('show-form');
-		bItems.classList.add('hide-form');
-	}
-});
-
-tabs[1].addEventListener('click', () => {
-	tabs[1].classList.add('active');
-	tabs[0].classList.remove('active');
-	if (bItems.classList.contains('hide-form')) {
-		bItems.classList.remove('hide-form');
-		bItems.classList.add('show-form');
-		rItems.classList.remove('show-form');
-		rItems.classList.add('hide-form');
-	}
-});
-</script>
