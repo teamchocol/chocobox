@@ -1,9 +1,12 @@
 <div class="container">
   <div>
 	<div class="row favo_row">
-		<% chocolates.each do |chocolate| %>
+		<% chocolates.each_with_index do |chocolate, index| %>
 		<% if chocolate.first.present? %>
 		<div class="favo-ranking col-xs-10 col-md-9">
+		  <div>
+			  第<%= index+1 %>位
+			</div>
 			<div class="favo_image">
 				  <%= image_tag(chocolate.first["mediumImageUrls"][0].present? ? chocolate.first["mediumImageUrls"][0] : "/assets/no_image.jpg", style: "width: 280px;height: 240px;display: inline-block;") %>
 			</div>

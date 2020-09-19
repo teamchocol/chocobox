@@ -7,6 +7,9 @@
 	<div class="row">	
 	<% @last_chocolates.each_with_index do |chocolate, index| %>
 		<div class="rakuten_ranking  col-xs-4 col-sm-4 col-md-4">
+		  <div>
+				第<%= index+1 %>位
+			</div>
 			<div>
 				<%= image_tag(chocolate.medium_image_urls[0], style: "max-width: 100%;height: auto;display: inline-block;") %>
 			</div>
