@@ -5,16 +5,16 @@ describe 'ユーザーフォロー機能', type: :request do
   let(:other_user) { FactoryBot.create(:user) }
   let(:relationship) { FactoryBot.create(:relationship, followed: user, follower: other_user) }
 
-  context '他のユーザーをフォローしていない場合' do
-    it 'フォローできること' do
-      login_as(user, :scope => :user)
-      visit user_path(other_user)
-      expect do
-        click_on 'フォローする'
-      end.to change(Relationship, :count).by(1)
-      expect(page).to have_content 'フォローを外す'
-    end
-  end
+  # context '他のユーザーをフォローしていない場合' do
+  #   it 'フォローできること' do
+  #     login_as(user, :scope => :user)
+  #     visit user_path(other_user)
+  #     expect do
+  #       click_on 'フォローする'
+  #     end.to change(Relationship, :count).by(1)
+  #     expect(page).to have_content 'フォローを外す'
+  #   end
+  # end
 
   context '他のユーザーをフォローしている場合' do
     it 'ユーザーのフォロー状況の確認' do
